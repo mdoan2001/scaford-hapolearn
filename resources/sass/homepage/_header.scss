@@ -1,13 +1,35 @@
 .navbar-nav {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .example {
-  display: flex;
-  align-items: center;
-  min-height: 54vh;
+    display: flex;
+    align-items: center;
+    min-height: 54vh;
+}
+
+.nav-item {
+    border-radius: 17px;
+    overflow: hidden;
+}
+
+.nav-item+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-link {
+    text-transform: uppercase;
+    display: block;
+    font-weight: 700;
+    padding: 5px 7px;
+    color: #505353 !important;
+}
+
+.nav-link:hover {
+    background-color: #B2D235;
+    color: #FFF !important;
 }
 
 @media (max-width: 992px) {
-	// TODO
+    // TODO
 }
