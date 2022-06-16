@@ -1,0 +1,52 @@
+@font-face {
+    font-family: UTM BryantLG;
+    src: url('../../assets/fonts/UTM_BryantLG_B.ttf');
+    src: url('../../assets/fonts/UTM_BryantLG.ttf');
+    src: url('../../assets/fonts/utm_bryantlg-webfont.woff');
+    src: url('../../assets/fonts/utm_bryantlg-webfont.woff2');
+}
+
+.banner {
+    background-image: url("https://s3-alpha-sig.figma.com/img/866b/63ac/1e9eca12ac0612fb7b885045132e08f8?Expires=1656288000&Signature=fi5zO28FGkRL9BlOjUjcVHpGWY~CNB7hvniINENMJhiV9ugqI1egDePJ6oz2wyOqcm4RiHvH66qSy5p~G-XCDBsid3mtEyuRYR72TTC-L5DvhLYtMA-aTd4a7GwQh3Wn~W7wkFNyOauA-Fr0fL8zCmMVLQC~kz2AYYVjxjRiwgcbzGpWV1k2xpSXWKXgBW2EZrSm7apBBKYYI48zKjJzfFcvQV~B~d1UVwo31WR0J~h1gfRUeAdpXx7C30s9bYknXbfJN3Vx2Jel4vw2CUG-vMUTUyS44ecHVCRskx~Ul4f6Sy5FY39UmJ9SM~KOHsAxcuW~Nf7FzLodQXJ-uoJL9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
+    height: 655px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    display: flex;
+    align-items: center;
+    font-family: UTM BryantLG;
+    .content {
+        padding-left: 60px;
+        .tittle {
+            font-size: 50px;
+            line-height: 61.3px;
+            font-weight: 400;
+            color: #11114E;
+        }
+        .text {
+            font-size: 20px;
+            color: #505353;
+            margin: 10px 0 26px 0;
+        }
+        .start {
+            padding: 10px 25px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FFF;
+            border-radius: 35px;
+            background-color: #B2D235;
+            border: 0;
+            box-shadow: 0 -5px #94af2b;
+        }
+    }
+}
+
+.banner .tittle {
+    span {
+        font-weight: 700;
+    }
+    img {
+        width: 48px;
+        height: 44px;
+    }
+}

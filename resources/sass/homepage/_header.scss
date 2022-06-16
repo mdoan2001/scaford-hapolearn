@@ -1,3 +1,7 @@
+.main-header {
+    border-bottom: 4px solid #F5F5F5;
+}
+
 .navbar-nav {
     justify-content: flex-end;
 }
@@ -11,6 +15,7 @@
 .nav-item {
     border-radius: 17px;
     overflow: hidden;
+    display: block;
 }
 
 .nav-item+.nav-item {
@@ -21,11 +26,11 @@
     text-transform: uppercase;
     display: block;
     font-weight: 700;
-    padding: 5px 7px;
+    padding: 5px 12px !important;
     color: #505353 !important;
 }
 
-.nav-link:hover {
+.nav-item.active .nav-link {
     background-color: #B2D235;
     color: #FFF !important;
 }

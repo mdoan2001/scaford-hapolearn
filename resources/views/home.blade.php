@@ -2,18 +2,17 @@
 
 @section('content')
 
-<section class="example">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        Hello World!!!
-                    </div>
-                </div>
-            </div>
+<section class="banner">
+    <div class="content">
+        <div class="tittle">
+            Learn Anytime, Anywhere <br> <span>at HapoLearn<img src="{{ asset('images/Group 6.png') }}" alt="" class="img">!</span>
         </div>
+        <p class="text">
+            Interaclive lessons, "on-the-go" <br> practice, peer suport.
+        </p>
+        <button class="start">
+            Start Learning Now!
+        </button>
     </div>
 </section>
 @endsection
