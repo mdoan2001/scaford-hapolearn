@@ -1,11 +1,21 @@
 // HIHIHIHIHHI
 .main-header {
     border-bottom: 4px solid #F5F5F5;
+    font-family: Open Sans;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar-brand {
+    padding-left: 44px;
 }
 
 .navbar-nav {
+    display: flex;
     justify-content: flex-end;
-    margin-right: 50px !important;
+    margin-right: 60px !important;
 }
 
 .example {
@@ -37,6 +47,30 @@
     color: #FFF !important;
 }
 
-@media (max-width: 992px) {
+.logo-image {
+    transform: translateY(-6px);
+}
+
+// Tablet
+@media (max-width: 768px) {
     // TODO
+    .navbar-brand {
+        padding-left: 11px;
+    }
+    .navbar-nav {
+        margin-right: 27px !important;
+    }
+    .logo-image {
+        width: 224px;
+        height: 50.81px;
+    }
+}
+
+// Mobile
+@media (max-width: 439px) {
+    // TODO
+    .logo-image {
+        width: 150px;
+        height: 26.75px;
+    }
 }
