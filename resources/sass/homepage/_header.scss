@@ -1,76 +1,83 @@
-// HIHIHIHIHHI
 .main-header {
-    border-bottom: 4px solid #F5F5F5;
-    font-family: Open Sans;
+  border-bottom: 4px solid #f5f5f5;
+  font-family: Open Sans;
 }
 
 .navbar {
-    display: flex;
+  display: flex;
 }
 
 .navbar-brand {
-    padding-left: 44px;
+  padding-left: 44px;
 }
 
 .navbar-nav {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 60px !important;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 60px !important;
 }
 
 .example {
-    display: flex;
-    align-items: center;
-    min-height: 54vh;
+  display: flex;
+  align-items: center;
+  min-height: 54vh;
 }
 
 .nav-item {
-    border-radius: 17px;
-    overflow: hidden;
-    display: block;
+  border-radius: 17px;
+  overflow: hidden;
+  display: block;
 }
 
-.nav-item+.nav-item {
-    margin-left: 20px;
+.nav-item + .nav-item {
+  margin-left: 20px;
 }
 
 .nav-link {
-    text-transform: uppercase;
-    display: block;
-    font-weight: 700;
-    padding: 5px 12px !important;
-    color: #505353 !important;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 700;
+  padding: 5px 12px !important;
+  color: #505353 !important;
 }
 
 .nav-item.active .nav-link {
-    background-color: #B2D235;
-    color: #FFF !important;
+  background-color: #b2d235;
+  color: #fff !important;
 }
 
 .logo-image {
-    transform: translateY(-6px);
+  transform: translateY(-6px);
 }
-
+@media (max-width: 1020px) AND (min-width: 990px) {
+  .nav-link{
+    font-size: 14px;
+  }
+}
 // Tablet
 @media (max-width: 768px) {
-    // TODO
-    .navbar-brand {
-        padding-left: 11px;
-    }
-    .navbar-nav {
-        margin-right: 27px !important;
-    }
-    .logo-image {
-        width: 224px;
-        height: 50.81px;
-    }
+  // TODO
+  .navbar-brand {
+    padding-left: 11px;
+  }
+  .navbar-nav {
+    margin-right: 27px !important;
+  }
+  .logo-image {
+    width: 224px;
+    height: 50.81px;
+  }
 }
 
 // Mobile
 @media (max-width: 439px) {
-    // TODO
-    .logo-image {
-        width: 150px;
-        height: 26.75px;
-    }
+  // TODO
+  .logo-image {
+    width: 150px;
+    height: 26.75px;
+  }
+  .navbar{
+    display: flex;
+    flex-wrap: nowrap;
+  }
 }
