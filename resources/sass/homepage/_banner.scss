@@ -1,55 +1,154 @@
-//Link img bannner
-//DOAN
-$path-img: "https://s3-alpha-sig.figma.com/img/866b/63ac/1e9eca12ac0612fb7b885045132e08f8?Expires=1656288000&Signature=fi5zO28FGkRL9BlOjUjcVHpGWY~CNB7hvniINENMJhiV9ugqI1egDePJ6oz2wyOqcm4RiHvH66qSy5p~G-XCDBsid3mtEyuRYR72TTC-L5DvhLYtMA-aTd4a7GwQh3Wn~W7wkFNyOauA-Fr0fL8zCmMVLQC~kz2AYYVjxjRiwgcbzGpWV1k2xpSXWKXgBW2EZrSm7apBBKYYI48zKjJzfFcvQV~B~d1UVwo31WR0J~h1gfRUeAdpXx7C30s9bYknXbfJN3Vx2Jel4vw2CUG-vMUTUyS44ecHVCRskx~Ul4f6Sy5FY39UmJ9SM~KOHsAxcuW~Nf7FzLodQXJ-uoJL9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
-@font-face {
-    font-family: UTM BryantLG;
-    src: url('../../assets/fonts/UTM_BryantLG_B.ttf');
-    src: url('../../assets/fonts/UTM_BryantLG.ttf');
-    src: url('../../assets/fonts/utm_bryantlg-webfont.woff');
-    src: url('../../assets/fonts/utm_bryantlg-webfont.woff2');
-}
-
 .banner {
-    background-image: url($path-img);
-    height: 655px;
+
+  .bg-banner {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-    display: flex;
-    align-items: center;
+  }
+
+  .content {
     font-family: UTM BryantLG;
-    .content {
-        padding-left: 60px;
-        .tittle {
-            font-size: 50px;
-            line-height: 61.3px;
-            font-weight: 400;
-            color: #11114E;
-        }
-        .text {
-            font-size: 20px;
-            color: #505353;
-            margin: 10px 0 26px 0;
-        }
-        .start {
-            padding: 10px 25px;
-            font-size: 30px;
-            font-weight: bold;
-            color: #FFF;
-            border-radius: 35px;
-            background-color: #B2D235;
-            border: 0;
-            box-shadow: 0 -5px #94af2b;
-        }
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+
+    .tittle {
+      color: #11114e;
+      font-weight: 400;
+      font-size: 3.74vw;
+      line-height: 4.24vw;
     }
+    
+    .text {
+      color: #505353;
+      margin: 20px 0;
+      font-size: 1.389vw;
+      line-height: 1.7vw;
+    }
+
+    .button {
+      color: #fff;
+      font-weight: 700;
+      background-color: #b2d235;
+      border-radius: 35px;
+      box-shadow: 0 -5px #94af2b;
+      line-height: 2.56vw;
+      font-size: 2.083vw;
+      border: 0;
+      padding: 1.18vw 3.89vw;
+    }
+  }
 }
 
 .banner .tittle {
-    span {
-        font-weight: 700;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 770px) {
+  .banner {
+    position: relative;
+    .bg-banner {
+      background-image: url("../../assets/images/hapo_learn_banner_pc.png");
+      padding-top: 45.486%;
     }
-    img {
-        width: 48px;
-        height: 44px;
+
+    .content {
+      position: absolute;
     }
+  }
+}
+
+// Tablet
+@media (max-width: 770px) and (min-width: 440px) {
+  .banner {
+    position: relative;
+
+    .bg-banner {
+      background-image: url("../../assets/images/hapo_learn_banner_pc.png");
+      padding-top: 49.415%;
+    }
+
+    .content {
+      position: absolute;
+      left: 27px;
+
+      .tittle {
+        font-size: 3.9vw;
+        line-height: 3.478vw;
+      }
+      
+      .text {
+        font-size: 2.08vw;
+        line-height: 2.55vw;
+      }
+
+      .button {
+        font-size: 2.08vw;
+        line-height: 2.55vw;
+        border: 0;
+        padding: 1.04vw 3.9vw;
+      }
+    }
+  }
+  
+  .banner {
+    
+    .content {
+
+      .tittle-img {
+        width: 40px;
+      }
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 440px) {
+
+  .banner {
+    display: flex;
+    flex-direction: column;
+
+    .bg-banner {
+      background-image: url("../../assets/images/hapo_learn_banner_pc.png");
+      padding-top: 45.558%;
+    }
+
+    .content {
+      margin: 110px 0 0 60px;
+      display: flex;
+      flex-direction: column;
+
+      .tittle {
+        font-size: 5.68vw;
+        line-height: 6.07vw;
+      }
+
+      .text {
+        font-size: 3.64vw;
+        line-height: 4.46vw;
+      }
+
+      .button {
+        font-size: 4.09vw;
+        line-height: 4.45vw;
+        border: 0;
+        padding: 2.27vw 14.77vw;
+        align-self: center;
+      }
+    }
+  }
+
+  .banner {
+
+    .content {
+      
+      .tittle-img {
+        width: 34px;
+      }
+    }
+  }
 }

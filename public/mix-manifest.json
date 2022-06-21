@@ -1,6 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/hapo_learn_banner_mobile.png": "/images/hapo_learn_banner_mobile.png",
+    "/images/hapo_learn_banner_pc.png": "/images/hapo_learn_banner_pc.png",
+    "/images/hapo_learn_banner_tablet.png": "/images/hapo_learn_banner_tablet.png",
+    "/images/icon.png": "/images/icon.png",
     "/images/logo.png": "/images/logo.png",
     "/fonts/utm_bryantlg-webfont.woff": "/fonts/utm_bryantlg-webfont.woff",
     "/fonts/utm_bryantlg-webfont.woff2": "/fonts/utm_bryantlg-webfont.woff2",
