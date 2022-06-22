@@ -1,6 +1,7 @@
 .main-header {
+  position: relative;
   border-bottom: 4px solid #f5f5f5;
-  font-family: Open Sans;
+  font-family: "UTM BryantLG";
 }
 
 .navbar {
@@ -50,15 +51,13 @@
   transform: translateY(-6px);
 }
 
-@media (max-width: 1020px) AND (min-width: 990px) {
-  .nav-link{
+@media (max-width: 1020px) and (min-width: 990px) {
+  .nav-link {
     font-size: 14px;
   }
 }
 
-// Tablet
 @media (max-width: 768px) {
-
   .navbar-brand {
     padding-left: 11px;
   }
@@ -73,15 +72,13 @@
   }
 }
 
-// Mobile
 @media (max-width: 439px) {
-
   .logo-image {
     width: 150px;
     height: 26.75px;
   }
 
-  .navbar{
+  .navbar {
     display: flex;
     flex-wrap: nowrap;
   }

@@ -1,6 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/course_1.png": "/images/course_1.png",
+    "/images/course_2.png": "/images/course_2.png",
+    "/images/course_3.png": "/images/course_3.png",
+    "/images/course_4.png": "/images/course_4.png",
+    "/images/course_5.png": "/images/course_5.png",
+    "/images/course_6.png": "/images/course_6.png",
     "/images/hapo_learn_banner_mobile.png": "/images/hapo_learn_banner_mobile.png",
     "/images/hapo_learn_banner_pc.png": "/images/hapo_learn_banner_pc.png",
     "/images/hapo_learn_banner_tablet.png": "/images/hapo_learn_banner_tablet.png",
