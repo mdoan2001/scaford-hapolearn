@@ -1,9 +1,11 @@
 .bg-dark-blue {
 	background-color: #3f6185;
 }
+
 .bg-red {
 	background-color: #dc594c;
 }
+
 .bg-violet {
 	background-color: #556598;
 }
@@ -28,7 +30,7 @@
 		line-height: 95px;
 	}
 
-	.list-title::before{
+	.list-title::before {
 		position: absolute;
 		display: inline-block;
 		content: "";
@@ -38,7 +40,6 @@
 		bottom: -16px;
 		border-radius: 3px;
 	}
-
 }
 
 .list-course {
@@ -109,7 +110,7 @@
 	}
 }
 
-.list-bot{
+.list-bot {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -117,24 +118,24 @@
 	font-family: "UTM BryantLG";
 	margin-top: 60px;
 
-	.text{
+	.text {
 		font-size: 40px;
 		font-weight: 700;
 	}
 
-	.icon{
+	.icon {
 		font-size: 30px;
 		padding-left: 10px;
 	}
 }
 
 @media (max-width: 769px) and (min-width: 440px) {
-	.list-top{
-		.list-title{
+	.list-top {
+		.list-title {
 			font-size: 50px;
 		}
 
-		.list-title::before{
+		.list-title::before {
 			bottom: 4px;
 		}
 	}
@@ -191,12 +192,12 @@
 	.list-bot{
 		margin-top: 22px;
 	
-		.text{
+		.text {
 			font-size: 28px;
 			font-weight: 700;
 		}
 	
-		.icon{
+		.icon {
 			font-size: 20px;
 			padding-left: 10px;
 		}
@@ -210,14 +211,14 @@
 }
 
 @media (max-width: 439px) {
-	.list-top{
+	.list-top {
 		margin-bottom: 84px;
 
-		.list-title{
+		.list-title {
 			font-size: 50px;
 		}
 
-		.list-title::before{
+		.list-title::before {
 			bottom: 4px;
 		}
 	}
@@ -240,15 +241,15 @@
 		margin-top: 0;
 	}
 
-	.list-bot{
+	.list-bot {
 		margin-top: 22px;
 	
-		.text{
+		.text {
 			font-size: 22px;
 			font-weight: 700;
 		}
 	
-		.icon{
+		.icon {
 			font-size: 16px;
 			padding-left: 10px;
 		}
