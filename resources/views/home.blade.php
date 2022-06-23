@@ -101,12 +101,12 @@
             </div>
             <div class="card-body">
                <div class="card-top">
-                        <div class="card-title">Java Tutorial</div>
-                        <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    </div>
-                    <div class="card-bot">
-                        <a href="#" class="btn btn-primary">Take This Course</a>
-                    </div>
+                    <div class="card-title">Java Tutorial</div>
+                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
+                </div>
+                <div class="card-bot">
+                    <a href="#" class="btn btn-primary">Take This Course</a>
+                </div>
              </div>
         </div>
     </div>
