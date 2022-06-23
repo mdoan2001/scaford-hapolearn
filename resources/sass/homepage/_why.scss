@@ -4,8 +4,30 @@
     background-size: cover;
     background-position: top center;
     padding: 20px 0;
+    font-family: "UTM BryantLG";
+    color: #FFF;
+
+    .why-title {
+        font-weight: 700;
+        font-size: 70px;
+    }   
+
+    .why-item {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        .icon-check {
+            font-size: 25px;
+            transform: translateY(2px);
+        }
+
+        .why-text{
+            font-weight: 400;
+            font-size: 20px;
+            margin: 0;
+            padding-left: 10px;
+        }
+    }
 }
 
-.why-item {
-    display: flex;
-}

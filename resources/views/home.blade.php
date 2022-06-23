@@ -122,23 +122,23 @@
                 <div class="why-title">Why Hapolearn?</div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
                 </div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
                 </div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
                 </div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
                 </div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
                 </div>
             </div>
             <div class="col-sm">
