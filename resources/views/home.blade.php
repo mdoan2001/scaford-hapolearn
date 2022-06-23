@@ -36,28 +36,28 @@
                 <img class="card-img" src="{{ asset('images/course_2.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
+                <div class="card-top">
                     <div class="card-title">Laravel Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="course col-md col-sm-12 card">
             <div class="img bg-violet">
                 <img class="card-img" src="{{ asset('images/course_3.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
+                <div class="card-top">
                     <div class="card-title">HTML/CSS/js Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
 </section>
@@ -86,28 +86,28 @@
                 <img class="card-img" src="{{ asset('images/course_5.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
+                <div class="card-top">
                     <div class="card-title">Ruby on rails Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="course col-md col-sm-12 card">
             <div class="img bg-primary">
                 <img class="card-img" src="{{ asset('images/course_6.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
+                <div class="card-top">
                     <div class="card-title">Java Tutorial</div>
-                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
+                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
     <div class="list-bot">
