@@ -115,4 +115,37 @@
     </div>
 </section>
 
+<section class="container-fluid why-hapolearn">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="why-title">Why Hapolearn?</div>
+                <div class="why-item">
+                    <i class="icon-check fa-solid fa-circle-check"></i>
+                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                </div>
+                <div class="why-item">
+                    <i class="icon-check fa-solid fa-circle-check"></i>
+                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                </div>
+                <div class="why-item">
+                    <i class="icon-check fa-solid fa-circle-check"></i>
+                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                </div>
+                <div class="why-item">
+                    <i class="icon-check fa-solid fa-circle-check"></i>
+                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                </div>
+                <div class="why-item">
+                    <i class="icon-check fa-solid fa-circle-check"></i>
+                    <p class="white-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+                </div>
+            </div>
+            <div class="col-sm">
+            <img src="/images/why-laptop.png" alt="may tinh" class="why-img" width="100%" />
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
