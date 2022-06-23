@@ -51,12 +51,12 @@
             </div>
             <div class="card-body">
                <div class="card-top">
-                        <h4 class="card-title">HTML/CSS/js Tutorial</h4>
-                        <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    </div>
-                    <div class="card-bot">
-                        <a href="#" class="btn btn-primary">Take This Course</a>
-                    </div>
+                    <h4 class="card-title">HTML/CSS/js Tutorial</h4>
+                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
+                </div>
+                <div class="card-bot">
+                    <a href="#" class="btn btn-primary">Take This Course</a>
+                </div>
              </div>
         </div>
     </div>
