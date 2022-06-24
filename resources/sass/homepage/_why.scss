@@ -1,33 +1,102 @@
 .why-hapolearn {
-    background-image: url("/images/why-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
-    padding: 20px 0;
-    font-family: "UTM BryantLG";
-    color: #FFF;
+  background-image: url("/images/why-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding: 20px 0;
+  font-family: "UTM BryantLG";
+  color: #fff;
+  padding: 4% 5% 0 12%;
 
-    .why-title {
-        font-weight: 700;
-        font-size: 70px;
-    }   
+  .title,
+  .why-title {
+    font-weight: 700;
+    font-size: 70px;
+  }
 
-    .why-item {
-        display: flex;
-        align-items: center;
-        margin: 10px 0;
+  .title {
+    display: none;
+    text-align: center;
+  }
 
-        .icon-check {
-            font-size: 25px;
-            transform: translateY(2px);
-        }
+  .why-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 
-        .why-text{
-            font-weight: 400;
-            font-size: 20px;
-            margin: 0;
-            padding-left: 10px;
-        }
+    .icon-check {
+      font-size: 25px;
+      transform: translateY(2px);
     }
+
+    .why-text {
+      font-weight: 400;
+      font-size: 20px;
+      margin: 0;
+      padding-left: 10px;
+    }
+  }
 }
 
+.laptop-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .why-hapolearn {
+
+    .title {
+      display: block;
+    }
+
+    .why-title {
+      display: none;
+    }
+
+    .why-item {
+      .icon-check {
+        font-size: 18px;
+      }
+
+      .why-text {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (max-width: 493px) {
+  .why-hapolearn {
+    padding: 14px;
+    margin-top: 20px;
+    position: relative;
+
+    .title {
+      display: block;
+      font-size: 40px;
+      padding-left: 177px;
+      text-align: left;
+    }
+
+    .why-title {
+      display: none;
+    }
+
+    .why-item {
+      .icon-check {
+        font-size: 16px;
+      }
+
+      .why-text {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .laptop-mobile {
+    position: absolute;
+    display: block;
+    top: -132px;
+    left: 0;
+  }
+}

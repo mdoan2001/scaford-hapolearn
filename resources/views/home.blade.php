@@ -23,7 +23,7 @@
             </div>
             <div class="card-body">
                 <div class="card-top">
-                    <h4 class="card-title">HTML/CSS/js Tutorial</h4>
+                    <div class="card-title">HTML/CSS/js Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
                 </div>
                 <div class="card-bot">
@@ -36,28 +36,28 @@
                 <img class="card-img" src="{{ asset('images/course_2.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
-                    <h4 class="card-title">Laravel Tutorial</h4>
+                <div class="card-top">
+                    <div class="card-title">Laravel Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="course col-md col-sm-12 card">
             <div class="img bg-violet">
                 <img class="card-img" src="{{ asset('images/course_3.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
-                        <h4 class="card-title">HTML/CSS/js Tutorial</h4>
-                        <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
-                    </div>
-                    <div class="card-bot">
-                        <a href="#" class="btn btn-primary">Take This Course</a>
-                    </div>
-             </div>
+                <div class="card-top">
+                    <div class="card-title">HTML/CSS/js Tutorial</div>
+                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media. I had coded quite a bit, but never touched anything in regards to web development.</p>
+                </div>
+                <div class="card-bot">
+                    <a href="#" class="btn btn-primary">Take This Course</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -73,7 +73,7 @@
             </div>
             <div class="card-body">
                 <div class="card-top">
-                    <h4 class="card-title">CSS Tutorial</h4>
+                    <div class="card-title">CSS Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
                 </div>
                 <div class="card-bot">
@@ -86,28 +86,28 @@
                 <img class="card-img" src="{{ asset('images/course_5.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
-                    <h4 class="card-title">Ruby on rails Tutorial</h4>
+                <div class="card-top">
+                    <div class="card-title">Ruby on rails Tutorial</div>
                     <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
                 </div>
                 <div class="card-bot">
                     <a href="#" class="btn btn-primary">Take This Course</a>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="course col-md col-sm-12 card">
             <div class="img bg-primary">
                 <img class="card-img" src="{{ asset('images/course_6.png') }}" alt="Card image">
             </div>
             <div class="card-body">
-               <div class="card-top">
-                        <h4 class="card-title">Java Tutorial</h4>
-                        <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
-                    </div>
-                    <div class="card-bot">
-                        <a href="#" class="btn btn-primary">Take This Course</a>
-                    </div>
-             </div>
+                <div class="card-top">
+                    <div class="card-title">Java Tutorial</div>
+                    <p class="card-text">I knew hardly anything about HTML, JS, and CSS before entering New Media,...</p>
+                </div>
+                <div class="card-bot">
+                    <a href="#" class="btn btn-primary">Take This Course</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="list-bot">
@@ -115,35 +115,37 @@
     </div>
 </section>
 
-<section class="container-fluid why-hapolearn">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="why-title">Why Hapolearn?</div>
-                <div class="why-item">
-                    <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
-                </div>
-                <div class="why-item">
-                    <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
-                </div>
-                <div class="why-item">
-                    <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
-                </div>
-                <div class="why-item">
-                    <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
-                </div>
-                <div class="why-item">
-                    <i class="icon-check fa-solid fa-circle-check"></i>
-                    <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
-                </div>
+<section class="why-hapolearn">
+    <img src="/images/why-laptop-mobile.png" alt="laptop" class="laptop-mobile">
+    <div class="row">
+        <div class="col-12 title title">Why Hapolearn?</div>
+    </div>
+    <div class="row">
+        <div class="col-8 col-sm-7 col-12 why-des">
+            <div class="why-title">Why Hapolearn?</div>
+            <div class="why-item">
+                <i class="icon-check fa-solid fa-circle-check"></i>
+                <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
             </div>
-            <div class="col-sm">
-            <img src="/images/why-laptop.png" alt="may tinh" class="why-img" width="100%" />
+            <div class="why-item">
+                <i class="icon-check fa-solid fa-circle-check"></i>
+                <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
             </div>
+            <div class="why-item">
+                <i class="icon-check fa-solid fa-circle-check"></i>
+                <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+            </div>
+            <div class="why-item">
+                <i class="icon-check fa-solid fa-circle-check"></i>
+                <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+            </div>
+            <div class="why-item">
+                <i class="icon-check fa-solid fa-circle-check"></i>
+                <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
+            </div>
+        </div>
+        <div class="col-4 col-sm-5 col-12">
+            <img src="/images/why-laptop.png" alt="laptop" class="why-img" width="100%" />
         </div>
     </div>
 </section>
