@@ -4,8 +4,23 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/solid';
+<<<<<<< HEAD
 @import 'variables';
+=======
+//Slider
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
+// Variables
+@import 'variables';
+
+>>>>>>> 1b354e3 ([#13]Design slider)
 @import './homepage/header';
 @import './homepage/banner';
 @import './homepage/course';
 @import './homepage/why';
+<<<<<<< HEAD
+=======
+@import './homepage/feedback.scss';
+
+>>>>>>> 1b354e3 ([#13]Design slider)
