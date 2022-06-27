@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/become-bg.png": "/images/become-bg.png",
     "/images/course_1.png": "/images/course_1.png",
     "/images/course_2.png": "/images/course_2.png",
     "/images/course_3.png": "/images/course_3.png",
@@ -11,6 +12,7 @@
     "/images/Hapo_Learn_banner_pc.png": "/images/Hapo_Learn_banner_pc.png",
     "/images/Hapo_Learn_banner_tablet.png": "/images/Hapo_Learn_banner_tablet.png",
     "/images/icon.png": "/images/icon.png",
+    "/images/logo-2.png": "/images/logo-2.png",
     "/images/logo.png": "/images/logo.png",
     "/images/user-avatar.png": "/images/user-avatar.png",
     "/images/why-bg.png": "/images/why-bg.png",
