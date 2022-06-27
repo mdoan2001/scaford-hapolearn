@@ -238,4 +238,11 @@
     </div>
 </section>
 
+<section class="become">
+    <div class="become-group">
+        <div class="become-title">Become a member of our <br /> growing community!</div>
+        <button class="become-btn">Start Learning Now!</button>
+    </div>
+</section>
+
 @endsection

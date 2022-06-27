@@ -1,0 +1,36 @@
+.become {
+  position: relative;
+  font-family: "UTM BryantLG";
+  background-image: url("/images/become-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding-top: 30%;
+}
+
+.become-group{
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.become-title{
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 74px;
+  color: #FFF;
+}
+
+.become-btn {
+  margin-top: 32px;
+  font-weight: 700;
+  font-size: 30px;
+  color: #90AB26;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 0;
+}
