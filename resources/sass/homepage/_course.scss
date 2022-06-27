@@ -1,0 +1,256 @@
+.bg-dark-blue {
+  background-color: #3f6185;
+}
+
+.bg-red {
+  background-color: #dc594c;
+}
+
+.bg-violet {
+  background-color: #556598;
+}
+
+.container {
+  margin-top: 34px;
+  padding: 0 5px;
+}
+
+.list-top {
+  display: flex;
+  margin-bottom: 60px;
+
+  .list-title {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 80px;
+    font-weight: 700;
+    color: $dark-blue;
+    font-family: "UTM BryantLG";
+    line-height: 95px;
+  }
+
+  .list-title::before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 6px;
+    background-color: $green;
+    bottom: -16px;
+    border-radius: 3px;
+  }
+}
+
+.list-course {
+  z-index: 1;
+}
+
+.course {
+  margin: 0 10px;
+  padding: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  font-family: "UTM BryantLG";
+
+  .img {
+    height: 215px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    .card-img {
+      width: 226px;
+      height: 125px;
+    }
+  }
+
+  .card-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.card-body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  .card-top {
+    margin-bottom: 10px;
+
+    .card-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: $green;
+    }
+
+    .card-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #505353;
+    }
+  }
+
+  .card-bot {
+    margin-top: auto;
+
+    .btn {
+      background-color: $green;
+      border: 0;
+      border-radius: 22px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 8px 30px;
+      margin-top: auto;
+    }
+  }
+}
+
+.list-bot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $green;
+  font-family: "UTM BryantLG";
+  margin-top: 60px;
+
+  .text {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .icon {
+    font-size: 30px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 769px) and (min-width: 440px) {
+  .list-top {
+    .list-title {
+      font-size: 50px;
+    }
+
+    .list-title::before {
+      bottom: 4px;
+    }
+  }
+
+  .course {
+    display: flex;
+    flex-direction: row;
+
+    .img {
+      width: 198px;
+      height: 123px;
+    }
+
+    .card-body {
+      padding-top: 10px;
+      padding-bottom: 0;
+      flex: 1;
+
+      .card-title,
+      .card-text,
+      .btn {
+        font-weight: 400;
+      }
+
+      .card-title,
+      .card-text {
+        text-align: left;
+      }
+
+      .card-title {
+        font-size: 20px;
+        padding: 0;
+      }
+
+      .card-text {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .btn {
+        font-size: 14px;
+        text-align: right;
+        padding: 2px 10px;
+        transform: translate(38%, -10px);
+      }
+    }
+  }
+
+  .course + .course {
+    margin-top: 32px;
+  }
+
+  .list-bot {
+    margin-top: 22px;
+
+    .text {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .icon {
+      font-size: 20px;
+      padding-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 570px) and (min-width: 440px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 439px) {
+  .list-top {
+    margin-bottom: 84px;
+
+    .list-title {
+      font-size: 50px;
+    }
+
+    .list-title::before {
+      bottom: 4px;
+    }
+  }
+
+  .list-course {
+    transform: translateY(-56px);
+  }
+
+  .course {
+    margin: 0 54px;
+
+    .card-body {
+      .card-title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .course + .course {
+    margin-top: 0;
+  }
+
+  .list-bot {
+    margin-top: 22px;
+
+    .text {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .icon {
+      font-size: 16px;
+      padding-left: 10px;
+    }
+  }
+}
