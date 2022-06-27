@@ -182,7 +182,7 @@
                     “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
                 </div>
                 <div class="slider-user">
-                    <img src="/images/user-avatar.png" alt="" class="user-avatar">
+                    <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
                     <div class="user-info">
                         <div class="user-name">Hoang Anh Nguyen</div>
                         <div class="user-language">PHP</div>
@@ -201,7 +201,7 @@
                     “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
                 </div>
                 <div class="slider-user">
-                    <img src="/images/user-avatar.png" alt="" class="user-avatar">
+                    <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
                     <div class="user-info">
                         <div class="user-name">Hoang Anh Nguyen</div>
                         <div class="user-language">PHP</div>
@@ -220,7 +220,7 @@
                     “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
                 </div>
                 <div class="slider-user">
-                    <img src="/images/user-avatar.png" alt="" class="user-avatar">
+                    <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
                     <div class="user-info">
                         <div class="user-name">Hoang Anh Nguyen</div>
                         <div class="user-language">PHP</div>
