@@ -121,7 +121,7 @@
         <div class="col-12 title title">Why Hapolearn?</div>
     </div>
     <div class="row">
-        <div class="col-8 col-sm-7 col-12 why-des">
+        <div class="col-8 col-sm-7 col-12 why-description">
             <div class="why-title">Why Hapolearn?</div>
             <div class="why-item">
                 <i class="icon-check fa-solid fa-circle-check"></i>
@@ -153,7 +153,7 @@
 <section class="feedback">
     <div class="feedback-top">
         <div class="title" id="title">Feedback</div>
-        <div class="des">What other students turned professionals have to say about us after learning with us and reaching their goals</div>
+        <div class="description">What other students turned professionals have to say about us after learning with us and reaching their goals</div>
     </div>
     <div class="container">
         <div class="slider">
