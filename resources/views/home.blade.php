@@ -245,4 +245,10 @@
     </div>
 </section>
 
+<section class="statistic">
+    <div class="statistic-top">
+        <div class="title" id="title">Feedback</div>
+    </div>
+</section>
+
 @endsection

@@ -1,0 +1,38 @@
+.statistic {
+    margin-top: 32px;
+  }
+  
+  .statistic-top {
+    .title {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+      font-size: 80px;
+      font-weight: 700;
+      color: $dark-blue;
+      font-family: "UTM BryantLG";
+      line-height: 95px;
+      transform: translateX(-50%);
+      left: 50%;
+    }
+  
+    .title::before {
+      position: absolute;
+      display: inline-block;
+      content: "";
+      width: 100%;
+      height: 6px;
+      background-color: $green;
+      bottom: -16px;
+      border-radius: 3px;
+    }
+  
+    .des {
+      font-size: 25px;
+      font-weight: 400;
+      text-align: center;
+      color: $text;
+      margin-top: 32px;
+      padding: 0 25%;
+    }
+  }
