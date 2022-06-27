@@ -1,6 +1,10 @@
 footer {
   padding-top: 46px;
   background-color: #505353;
+  
+  img {
+    width: 100%;
+  }
 
   .social {
     display: flex;
@@ -24,7 +28,48 @@ footer {
     }
   }
 
-  .link{
+  .link {
     font-size: 20px;
+  }
+}
+
+.content-mobile {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .content {
+    display: none;
+  }
+
+  .content-mobile {
+    display: block;
+
+    img {
+      width: 150px;
+    }
+
+    .text {
+      font-size: 14px;
+    }
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+
+      .social-item {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+      }
+
+      .social-item + .social-item {
+        margin-left: 18px;
+      }
+    }
+
+    .link {
+      display: none;
+    }
   }
 }

@@ -8,7 +8,7 @@
   padding-top: 30%;
 }
 
-.become-group{
+.become-group {
   position: absolute;
   display: inline-block;
   left: 0;
@@ -18,20 +18,44 @@
   text-align: center;
 }
 
-.become-title{
+.become-title {
   font-weight: 700;
   font-size: 60px;
   line-height: 74px;
-  color: #FFF;
+  color: #fff;
 }
 
 .become-btn {
   margin-top: 32px;
   font-weight: 700;
   font-size: 30px;
-  color: #90AB26;
+  color: #90ab26;
   padding: 10px 20px;
   border-radius: 35px;
   border: 0;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .become-title {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .become-btn {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 439px) {
+  .become-title {
+    font-size: 23px;
+    line-height: 28px;
+  }
+
+  .become-btn {
+    margin-top: 12px;
+    font-size: 18px;
+    padding: 1px 12px;
+  }
 }

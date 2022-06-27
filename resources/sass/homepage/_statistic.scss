@@ -57,3 +57,14 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .statistic-main {
+    .statistic-item {
+      .statistic-name,
+      .statistic-number {
+        text-align: center;
+      }
+    }
+  }
+}
