@@ -2,6 +2,11 @@ footer {
   padding-top: 46px;
   background-color: $text;
 
+  .text-bottom {
+    background-color: $gray-dark;
+    color: white;
+  }
+
   img {
     width: 100%;
   }
