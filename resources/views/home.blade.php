@@ -238,4 +238,33 @@
     </div>
 </section>
 
+<section class="become">
+    <div class="become-group">
+        <div class="become-title">Become a member of our <br /> growing community!</div>
+        <button class="become-btn">Start Learning Now!</button>
+    </div>
+</section>
+
+<section class="statistic">
+    <div class="statistic-top">
+        <div class="title" id="title">Statistic</div>
+    </div>
+    <div class="statistic-main">
+        <div class="row">
+            <div class="statistic-item col-sm">
+                <div class="statistic-name">Courses</div>
+                <div class="statistic-number">1,586</div>
+            </div>
+            <div class="statistic-item col-sm">
+                <div class="statistic-name">Lessons</div>
+                <div class="statistic-number">2,689</div>
+            </div>
+            <div class="statistic-item col-sm">
+                <div class="statistic-name">Learners</div>
+                <div class="statistic-number">16,882</div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection

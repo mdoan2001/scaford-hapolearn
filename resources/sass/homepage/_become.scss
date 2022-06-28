@@ -1,0 +1,61 @@
+.become {
+  position: relative;
+  font-family: "UTM BryantLG";
+  background-image: url("/images/become-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding-top: 30%;
+}
+
+.become-group {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.become-title {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 74px;
+  color: white;
+}
+
+.become-btn {
+  margin-top: 32px;
+  font-weight: 700;
+  font-size: 30px;
+  color: $green2;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 0;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .become-title {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .become-btn {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 439px) {
+  .become-title {
+    font-size: 23px;
+    line-height: 28px;
+  }
+
+  .become-btn {
+    margin-top: 12px;
+    font-size: 18px;
+    padding: 1px 12px;
+  }
+}

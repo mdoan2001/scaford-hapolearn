@@ -1,0 +1,61 @@
+.statistic {
+  margin: 32px 0 64px 0;
+}
+
+.statistic-top {
+  .title {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 80px;
+    font-weight: 700;
+    color: $dark-blue;
+    font-family: "UTM BryantLG";
+    line-height: 95px;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+
+  .title::before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 6px;
+    background-color: $green;
+    bottom: -16px;
+    border-radius: 3px;
+  }
+}
+
+.statistic-main {
+  margin-top: 32px;
+  padding: 0 0 0 12%;
+  font-family: "UTM BryantLG";
+
+  .statistic-item {
+    .statistic-name {
+      color: $text;
+      font-size: 60px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    .statistic-number {
+      color: $green;
+      font-size: 60px;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .statistic-main {
+    .statistic-item {
+      .statistic-name,
+      .statistic-number {
+        text-align: center;
+      }
+    }
+  }
+}
