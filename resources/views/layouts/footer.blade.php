@@ -10,7 +10,6 @@
                         Interactive lessons, "on-the-go" practice, peer support.
                     </p>
                 </div>
-
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-white">
                     <p>
                         <a href="#!" class="text-reset">Home</a>
@@ -24,7 +23,6 @@
                         <a href="#!" class="text-reset">Blog</a>
                     </p>
                 </div>
-
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-white">
                     <p>
                         <a href="#!" class="text-reset">Contact</a>
@@ -36,7 +34,6 @@
                         <a href="#!" class="text-reset">FAQ</a>
                     </p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-white">
                     <div class="social">
                         <div class="social-item">
@@ -85,7 +82,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6 mx-auto mb-4 ">
@@ -112,15 +108,9 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </section>
-
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2020 HapoLearn, Inc.
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/">All rights reserved.</a>
