@@ -18,6 +18,7 @@ class CreateTableToCourseTag extends Migration
             $table->integer('course_id');
             $table->primary(['tag_id', 'course_id']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

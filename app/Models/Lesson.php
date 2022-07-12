@@ -10,7 +10,6 @@ class Lesson extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $dates = ['deleted_at'];
     protected $fillable = [
         'course_id',
         'name',

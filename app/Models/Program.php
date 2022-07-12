@@ -10,7 +10,6 @@ class Program extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $dates = ['deleted_at'];
     protected $fillable = [
         'lesson_id',
         'name',

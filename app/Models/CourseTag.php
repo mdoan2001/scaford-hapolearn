@@ -11,7 +11,6 @@ class CourseTag extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'course_tag';
-    protected $dates = ['deleted_at'];
     protected $fillable = [
         'course_id',
         'tag_id',
