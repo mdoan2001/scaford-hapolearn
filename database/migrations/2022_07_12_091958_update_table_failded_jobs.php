@@ -26,7 +26,7 @@ class UpdateTableFaildedJobs extends Migration
     public function down()
     {
         Schema::table('failed_jobs', function (Blueprint $table) {
-            $table->removeColumn('deleted_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }

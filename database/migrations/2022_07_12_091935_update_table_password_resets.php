@@ -26,7 +26,7 @@ class UpdateTablePasswordResets extends Migration
     public function down()
     {
         Schema::table('password_resets', function (Blueprint $table) {
-            $table->removeColumn('deleted_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }

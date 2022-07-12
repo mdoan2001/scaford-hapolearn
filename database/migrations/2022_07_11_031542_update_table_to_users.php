@@ -39,6 +39,8 @@ class UpdateTableToUsers extends Migration
             $table->dropColumn('birthday');
             $table->dropColumn('telephone');
             $table->dropColumn('about');
+            $table->renameColumn('user_name', 'name');
+            $table->dropColumn('deleted_at');
         });
     }
 }
