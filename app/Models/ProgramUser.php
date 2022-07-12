@@ -11,6 +11,7 @@ class ProgramUser extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'program_user';
+
     protected $fillable = [
         'user_id',
         'program_id',

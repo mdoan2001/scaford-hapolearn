@@ -49,17 +49,17 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class)->withTimestamps();
+        return $this->belongsToMany(Course::class);
     }
 
     public function lessons()
     {
-        return $this->belongsToMany(Lesson::class)->withTimestamps();
+        return $this->belongsToMany(Lesson::class);
     }
 
     public function programs()
     {
-        return $this->belongsToMany(Program::class)->withTimestamps();
+        return $this->belongsToMany(Program::class);
     }
 
     public function reviews()

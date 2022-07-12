@@ -16,6 +16,6 @@ class Tag extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class)->withTimestamps();
+        return $this->belongsToMany(Course::class);
     }
 }
