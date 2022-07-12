@@ -18,7 +18,7 @@ class LessonFactory extends Factory
         return [
             'course_id' => $this->faker->numberBetween(0, 10),
             'name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl('public/storage/images',400,300),
+            'image' => $this->faker->imageUrl('public/storage/images', 400, 300),
             'time' => $this->faker->dateTime()->format('H:i:s'),
             'description' => $this->faker->text(255),
             'requirement' => $this->faker->text(255),
