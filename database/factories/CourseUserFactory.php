@@ -22,9 +22,9 @@ class CourseUserFactory extends Factory
             'user_id' => $this->faker->randomElement(User::pluck('id')),
             'course_id' => $this->faker->randomElement(Course::pluck('id')),
             'registration_date' => new DateTime(),
-            'created_at'=>new DateTime(),
-            'updated_at'=>new DateTime(),
-            'deleted_at'=>new DateTime(),
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+            'deleted_at' => new DateTime(),
         ];
     }
 }

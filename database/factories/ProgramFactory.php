@@ -16,11 +16,11 @@ class ProgramFactory extends Factory
     {
         return [
             'lesson_id' => $this->faker->randomElement(Lesson::pluck('id')),
-            'name'=>$this->faker->name(),
-            'link'=>$this->faker->url(),
-            'type'=>$this->faker->numberBetween(1,3),
-            'created_at'=>$this->faker->date(),
-            'updated_at'=>$this->faker->date(),
+            'name' => $this->faker->name(),
+            'link' => $this->faker->url(),
+            'type' => $this->faker->numberBetween(1, 3),
+            'created_at' => $this->faker->date(),
+            'updated_at' => $this->faker->date(),
         ];
     }
 }
