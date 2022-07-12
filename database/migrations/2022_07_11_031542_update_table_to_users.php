@@ -21,6 +21,7 @@ class UpdateTableToUsers extends Migration
             $table->string('telephone')->nullable();
             $table->string('about')->nullable();
             $table->renameColumn('name', 'user_name');
+            $table->softDeletes();
         });
     }
 
