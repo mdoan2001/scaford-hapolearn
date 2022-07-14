@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use DateTime;
+use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
@@ -27,7 +28,7 @@ class UserFactory extends Factory
             'user_name' => $this->faker->userName,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => $this->faker->password(),
+            'password' => Hash::make('123'),
             'role' => $this->faker->numberBetween(0, 1),
             'full_name' => $this->faker->name(),
             'birthday' => $this->faker->date('Y-m-d'),

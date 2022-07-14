@@ -1,0 +1,174 @@
+.login {
+  margin-bottom: 40px;
+}
+
+.card-header {
+  background-color: white;
+  border-bottom: 0;
+}
+
+.card-body {
+  padding: 0 38px 38px 38px;
+}
+
+.card-header {
+  font-family: Arial, Helvetica, sans-serif;
+  color: $green;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  label,
+  .form-control {
+    flex: 1;
+  }
+
+  label {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .form-control {
+    background-color: #fafafa;
+    width: 100%;
+    padding: 24px 12px;
+    font-size: 22px;
+    border-color: #cecece;
+  }
+
+  .invalid-feedback {
+    font-size: 16px;
+    text-align: left;
+  }
+}
+
+.form-group-submit {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  .btn-submit {
+    font-size: 20px;
+    border: 0;
+    padding: 14px 84px;
+    background-color: $green;
+    color: white;
+    border-radius: 22px;
+    box-shadow: inset 0px 1.5px 2px #6f8710;
+  }
+
+  .btn-link {
+    color: $green;
+    text-decoration: underline;
+  }
+}
+
+.login-footer {
+  display: flex;
+  flex-direction: column;
+
+  .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    padding: 8px 0;
+    font-size: 20px;
+  }
+
+  .login-google {
+    color: $red;
+    border: 1px solid $red;
+
+    i {
+      font-size: 38px;
+      margin-right: 5px;
+    }
+  }
+
+  .login-create {
+    color: white;
+    background-color: $green;
+    box-shadow: inset 0px 1.5px 2px #6f8710;
+  }
+}
+
+.text-hr {
+  position: relative;
+  display: inline-block;
+  color: $text;
+  font-size: 20px;
+  margin: 48px 0;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    z-index: 1;
+    background-color: white;
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    display: block;
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 440px) {
+  .card-header {
+    font-size: 24px;
+  }
+
+  .form-group {
+    .form-control {
+      font-size: 16px;
+      padding: 12px 18px;
+    }
+
+    label {
+      font-size: 16px;
+    }
+  }
+
+  .form-group-submit {
+    flex-direction: column;
+
+    .btn-submit {
+      font-size: 16px;
+      padding: 10px 30px;
+    }
+  }
+
+  .text-hr {
+    font-size: 12px;
+    margin: 20px 0;
+
+    p {
+      padding: 2px;
+    }
+  }
+
+  .login-footer {
+    .login-btn {
+      font-size: 12px;
+
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+}
