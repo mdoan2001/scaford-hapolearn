@@ -29,19 +29,11 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'required' => ':attribute bắt buộc phải nhập',
-            'min' => ':attribute phải có ít nhất :min ký tự'
-        ];
-    }
-
     public function attributes()
     {
         return [
-            'user_name' => 'Tên đăng nhập',
-            'password' => 'Mật khẩu'
+            'user_name' => __('artribute.user_name'),
+            'password' => __('artribute.password'),
         ];
     }
 }
