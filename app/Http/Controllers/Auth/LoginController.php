@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('test');
         }
-        return redirect()->back()->with('error', __('message.loginError'));
+        return redirect()->back()->with('error', __('message.login_error'));
     }
 
     public function logout()

@@ -13,5 +13,5 @@ return [
     |
     */
 
-    'loginError' => 'Tên đăng nhập hoặc mật khẩu chưa chính xác',
+    'login_error' => 'Tên đăng nhập hoặc mật khẩu chưa chính xác',
 ];

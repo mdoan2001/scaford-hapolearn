@@ -13,5 +13,5 @@ return [
     |
     */
 
-    'loginError' => 'username or password is incorrect',
+    'login_error' => 'username or password is incorrect',
 ];
