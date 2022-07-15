@@ -16,6 +16,7 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 60px !important;
+  align-items: center;
 }
 
 .example {
@@ -28,6 +29,15 @@
   border-radius: 17px;
   overflow: hidden;
   display: block;
+}
+
+.nav-item--login{
+  display: flex;
+  align-items: center;
+
+  .nav-link {
+    padding: 0 !important;
+  }
 }
 
 .nav-item + .nav-item {
