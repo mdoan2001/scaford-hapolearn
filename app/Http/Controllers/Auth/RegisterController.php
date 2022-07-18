@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -69,5 +71,30 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $users = DB::table('users')
+            ->where('user_name', '=', $request->user_name)
+            ->get();
+
+        if ($users) {
+            return redirect()->back()->with('error', __('message.register_error'));
+        }
+
+        $check = DB::table('users')->insert([
+            'user_name' => $request->user_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'created_at' => now(),
+            'remember_token' => $request->_token
+        ]);
+
+        if ($check) {
+            return redirect()->route('home');
+        } else {
+            return redirect()->back()->with('error', __('message.register_error'));
+        }
     }
 }

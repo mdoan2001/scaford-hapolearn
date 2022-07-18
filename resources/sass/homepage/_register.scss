@@ -1,0 +1,16 @@
+.register {
+  margin-bottom: 40px;
+
+  .sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-register {
+    background-color: $green;
+    box-shadow: inset 0px 1.5px 2px #6f8710;
+    border-radius: 22px;
+    padding: 10px 40px;
+  }
+}

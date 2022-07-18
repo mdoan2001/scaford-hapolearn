@@ -14,4 +14,5 @@ return [
     */
 
     'login_error' => 'username or password is incorrect',
+    'register_error' => 'Registration failed',
 ];

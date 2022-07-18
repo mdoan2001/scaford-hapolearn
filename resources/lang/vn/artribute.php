@@ -15,4 +15,5 @@ return [
 
     'user_name' => 'Tên đăng nhập',
     'password' => 'Mật khẩu',
+    'password_confirmation' =>'Xác nhận mật khẩu'
 ];

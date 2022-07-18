@@ -18,4 +18,5 @@ return [
     'min' => [
         'string' => 'Trường :attribute phải có ít nhất :min ký tự',
     ],
+    'same' => ':attribute và :other phải trùng nhau',
 ];

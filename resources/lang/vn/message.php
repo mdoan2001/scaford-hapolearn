@@ -14,4 +14,5 @@ return [
     */
 
     'login_error' => 'Tên đăng nhập hoặc mật khẩu chưa chính xác',
+    'register_error' => 'Đăng ký không thành công'
 ];
