@@ -36,7 +36,7 @@ class RegisterRequest extends FormRequest
         return [
             'user_name' => __('artribute.user_name'),
             'password' => __('artribute.password'),
-            'password_confirmation'=> __('artribute.password_confirmation')
+            'password_confirmation' => __('artribute.password_confirmation')
         ];
     }
 }

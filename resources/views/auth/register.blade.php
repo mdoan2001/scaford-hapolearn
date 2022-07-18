@@ -18,7 +18,7 @@
                             @endif
 
                             <div class="form-group row">
-                                <label for="user_name" class="col-md col-form-label">{{ __('Username') }}</label>
+                                <label for="user_name" class="col-md col-form-label">{{ __('User name') }}</label>
 
                                 <div class="col-md">
                                     <input id="user_name" type="text"
