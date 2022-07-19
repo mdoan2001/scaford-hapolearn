@@ -77,11 +77,6 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $check = User::checkUserNameExistsed($request['user_name']);
-        if (!is_null($check)) {
-            return redirect()->back()->with('error', __('message.register_error'));
-        }
-
         $user = $this->create($request->all());
 
         if ($user) {
