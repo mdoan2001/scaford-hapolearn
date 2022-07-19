@@ -15,4 +15,15 @@ return [
 
     'user_name' => 'Tên đăng nhập',
     'password' => 'Mật khẩu',
+    'password_confirmation' => 'Xác nhận mật khẩu',
+    'notification' => 'Thông báo',
+    'sign_up' => 'Đăng ký',
+    'sign_in' => 'Đăng ký',
+    'user_name' => 'Tên đăng nhập',
+    'password' => 'Mật khẩu',
+    'forgot_password' => 'Quên mật khẩu',
+    'create_new_account' => 'Tạo tài khoản',
+    'sign_up_hapolearn' => 'Đăng ký tài khoản HapoLearn',
+    'sign_in_hapolearn' => 'Đăng nhập tài khoản HapoLearn'
+
 ];

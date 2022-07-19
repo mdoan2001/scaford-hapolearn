@@ -17,7 +17,7 @@
       font-size: 3.74vw;
       line-height: 4.24vw;
     }
-    
+
     .text {
       color: #505353;
       margin: 20px 0;
@@ -36,6 +36,15 @@
       border: 0;
       padding: 1.18vw 3.89vw;
     }
+  }
+}
+
+.banner .tittle span {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 100%;
   }
 }
 
@@ -87,7 +96,7 @@
         font-size: 3.9vw;
         line-height: 3.478vw;
       }
-      
+
       .text {
         font-size: 2.08vw;
         line-height: 2.55vw;
@@ -101,7 +110,7 @@
       }
     }
   }
-  
+
   .banner {
     .content {
       .tittle-img {

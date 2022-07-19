@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-header">{{ __('Sign in to Hapolearn') }}</div>
+                    <div class="card-header">{{ __('artribute.sign_in_hapolearn') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -18,7 +18,8 @@
                             @endif
 
                             <div class="form-group row">
-                                <label for="user_name" class="col-form-label text-md-left">{{ __('User Name') }}</label>
+                                <label for="user_name"
+                                    class="col-form-label text-md-left">{{ __('artribute.user_name') }}</label>
 
                                 <div class="">
                                     <input id="user_name" type="text"
@@ -34,7 +35,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-form-label text-md-left">{{ __('Password') }}</label>
+                                <label for="password"
+                                    class="col-form-label text-md-left">{{ __('artribute.password') }}</label>
 
                                 <div class="">
                                     <input id="password" type="password"
@@ -52,12 +54,12 @@
                             <div class="form-group  row mb-0">
                                 <div class="form-group-submit">
                                     <button type="submit" class="btn-submit">
-                                        {{ __('Sign in') }}
+                                        {{ __('artribute.sign_in') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Password?') }}
+                                            {{ __('artribute.forgot_password') }}
                                         </a>
                                     @endif
                                 </div>
@@ -74,7 +76,7 @@
                                     <p>or New to Hapolearn</p>
                                 </div>
                                 <a href="" class="btn btn-block login-btn login-create">
-                                    Create New Account
+                                    {{ __('artribute.create_new_account') }}
                                 </a>
                             </div>
                         </form>

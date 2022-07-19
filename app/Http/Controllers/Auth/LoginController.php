@@ -35,7 +35,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['user_name', 'password']);
         if (Auth::attempt($credentials)) {
-            return redirect()->route('test');
+            return redirect()->route('home');
         }
         return redirect()->back()->with('error', __('message.login_error'));
     }
@@ -44,6 +44,6 @@ class LoginController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return redirect('login');
+        return redirect('home');
     }
 }
