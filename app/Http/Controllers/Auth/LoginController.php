@@ -35,7 +35,6 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['user_name', 'password']);
         if (Auth::attempt($credentials)) {
-            notify()->success(__('message.login_success'), __('message.notification'));
             return redirect()->route('home');
         }
         return redirect()->back()->with('error', __('message.login_error'));
@@ -45,7 +44,6 @@ class LoginController extends Controller
     {
         Session::flush();
         Auth::logout();
-        notify()->success(__('message.logout_success'), __('message.notification'));
         return redirect('home');
     }
 }
