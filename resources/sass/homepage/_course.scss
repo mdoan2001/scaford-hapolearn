@@ -61,8 +61,8 @@
     flex-shrink: 0;
 
     .card-img {
-      width: 226px;
-      height: 125px;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -80,6 +80,10 @@
 
   .card-top {
     margin-bottom: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     .card-title {
       font-size: 30px;
@@ -91,12 +95,11 @@
       font-size: 14px;
       font-weight: 700;
       color: #505353;
+      margin-top: auto;
     }
   }
 
   .card-bot {
-    margin-top: auto;
-
     .btn {
       background-color: $green;
       border: 0;
