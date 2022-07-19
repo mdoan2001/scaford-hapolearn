@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -71,19 +70,15 @@ class RegisterController extends Controller
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'created_at' => now(),
             'remember_token' => $data['_token'],
-            'role' => 1
+            'role' => config('role.user')
         ]);
     }
 
     public function register(RegisterRequest $request)
     {
-        $check = DB::table('users')
-            ->where('user_name', $request->user_name)
-            ->get();
-
-        if ($check == null) {
+        $check = User::checkUserNameExistsed($request['user_name']);
+        if (!is_null($check)) {
             return redirect()->back()->with('error', __('message.register_error'));
         }
 
@@ -91,6 +86,7 @@ class RegisterController extends Controller
 
         if ($user) {
             Auth::login($user);
+            notify()->success(__('message.register_success'), __('message.notification'));
             return redirect()->route('home');
         }
         return redirect()->back()->with('error', __('message.register_error'));

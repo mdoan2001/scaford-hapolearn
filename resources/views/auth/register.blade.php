@@ -85,7 +85,7 @@
                             <div class="form-group row sign-up">
                                 <div class="col-md-6">
                                     <button type="submit" class="btn col btn-register">
-                                        {{ __('Sign up') }}
+                                        {{ __('message.sign_up') }}
                                     </button>
                                 </div>
                             </div>
