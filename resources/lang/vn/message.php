@@ -18,7 +18,4 @@ return [
     'register_success' => 'Bạn đã đăng ký thành công',
     'logout_success' => 'Bạn đã đăng suất thành công',
     'login_success' => 'Bạn đã đăng nhập thành công 🔥 !',
-    'notification' => 'Thông báo',
-    'sign_up' => 'Đăng ký'
-
 ];

@@ -15,4 +15,14 @@ return [
 
     'user_name' => 'User Name',
     'password' => 'Password',
+    'notification' => 'Notification',
+    'sign_up' => 'Sign up',
+    'sign_in' => 'Sign in',
+    'user_name' => 'User Name',
+    'password' => 'Password',
+    'forgot_password' => 'Forgot Password',
+    'forgot_password' => 'Forgot Password',
+    'create_new_account' => 'Create New Account',
+    'sign_up_hapolearn' => 'Sign up to HapoLearn',
+    'sign_in_hapolearn' => 'Sign in to HapoLearn'
 ];

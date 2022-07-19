@@ -18,6 +18,4 @@ return [
     'register_success' => 'You have successfully registered',
     'logout_success' => 'You have successfully logouted',
     'login_success' => 'successful login 🔥 !',
-    'notification' => 'Notification',
-    'sign_up' => 'Sign up'
 ];
