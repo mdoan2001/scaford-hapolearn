@@ -33,4 +33,9 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public static function countLession()
+    {
+        return self::get()->count();
+    }
 }

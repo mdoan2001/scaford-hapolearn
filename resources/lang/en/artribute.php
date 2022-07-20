@@ -24,5 +24,6 @@ return [
     'forgot_password' => 'Forgot Password',
     'create_new_account' => 'Create New Account',
     'sign_up_hapolearn' => 'Sign up to HapoLearn',
-    'sign_in_hapolearn' => 'Sign in to HapoLearn'
+    'sign_in_hapolearn' => 'Sign in to HapoLearn',
+    'take_this_course' => 'Take this Course',
 ];

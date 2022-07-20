@@ -18,10 +18,7 @@
     <section class="container">
         <div class="row list-course">
 
-            @for ($i = 0; $i < 3; $i++)
-                @php
-                    $course = $courses[$i];
-                @endphp
+            @foreach ($mainCourses as $course)
                 <div class="course col-md col-sm-12 card">
                     <div class="img bg-dark-blue">
                         <img class="card-img" src="{{ $course->image }}" alt="Card image">
@@ -32,11 +29,11 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="#" class="btn btn-primary">{{ __('message.take_this_course') }}</a>
+                            <a href="#" class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
     </section>
 
     <section class="container">
@@ -44,10 +41,7 @@
             <div class="list-title" id="title">Other courses</div>
         </div>
         <div class="row list-course">
-            @for ($i = 3; $i < 6; $i++)
-                @php
-                    $course = $courses[$i];
-                @endphp
+            @foreach ($otherCourses as $course)
                 <div class="course col-md col-sm-12 card">
                     <div class="img bg-dark-blue">
                         <img class="card-img" src="{{ $course->image }}" alt="Card image">
@@ -58,11 +52,11 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="#" class="btn btn-primary">{{ __('message.take_this_course') }}</a>
+                            <a href="#" class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
         <div class="list-bot">
             <p class="text">View All Our Courses<i class="fa-solid fa-arrow-right icon"></i></p>
@@ -112,87 +106,40 @@
         </div>
         <div class="container">
             <div class="slider">
-                <div class="slider-item">
-                    <div class="slider-message">
-                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
-                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
-                    </div>
-                    <div class="slider-user">
-                        <img src="/images/user-avatar.png" alt="" class="user-avatar">
-                        <div class="user-info">
-                            <div class="user-name">Hoang Anh Nguyen</div>
-                            <div class="user-language">PHP</div>
-                            <div class="user-stars">
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-regular fa-star user-star-icon"></i>
-                                <i class="fa-regular fa-star user-star-icon"></i>
+                @foreach ($reviews as $review)
+                    <div class="slider-item">
+                        <div class="slider-message">
+                            <p>
+                                {{ $review->content }}
+                            </p>
+                        </div>
+                        <div class="slider-user">
+                            @php
+                                $avatar = is_null($review->user->avatar) ? '/images/user-avatar.png' : $review->user->avatar;
+                            @endphp
+                            <img src="{{ $avatar }}" alt="anh" class="user-avatar">
+                            <div class="user-info">
+                                <div class="user-name">{{ $review->user->full_name }}</div>
+                                <div class="user-language">{{ $review->course->name }}</div>
+                                <div class="user-stars">
+
+                                    @php
+                                        $stars = $review->star;
+                                    @endphp
+
+                                    @for ($i = 0; $i < $stars; $i++)
+                                        <i class="fa-solid fa-star user-star-icon"></i>
+                                    @endfor
+
+                                    @for ($i = 0; $i < 5 - $stars; $i++)
+                                        <i class="fa-regular fa-star user-star-icon"></i>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-item">
-                    <div class="slider-message">
-                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
-                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
-                    </div>
-                    <div class="slider-user">
-                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
-                        <div class="user-info">
-                            <div class="user-name">Hoang Anh Nguyen</div>
-                            <div class="user-language">PHP</div>
-                            <div class="user-stars">
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
-                                <i class="fa-regular fa-star user-star-icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="slider-message">
-                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
-                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
-                    </div>
-                    <div class="slider-user">
-                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
-                        <div class="user-info">
-                            <div class="user-name">Hoang Anh Nguyen</div>
-                            <div class="user-language">PHP</div>
-                            <div class="user-stars">
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
-                                <i class="fa-regular fa-star user-star-icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="slider-message">
-                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
-                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
-                    </div>
-                    <div class="slider-user">
-                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
-                        <div class="user-info">
-                            <div class="user-name">Hoang Anh Nguyen</div>
-                            <div class="user-language">PHP</div>
-                            <div class="user-stars">
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-solid fa-star user-star-icon"></i>
-                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
-                                <i class="fa-regular fa-star user-star-icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -212,15 +159,15 @@
             <div class="row">
                 <div class="statistic-item col-sm">
                     <div class="statistic-name">Courses</div>
-                    <div class="statistic-number">1,586</div>
+                    <div class="statistic-number">{{ $countCourse }}</div>
                 </div>
                 <div class="statistic-item col-sm">
                     <div class="statistic-name">Lessons</div>
-                    <div class="statistic-number">2,689</div>
+                    <div class="statistic-number">{{ $countLession }}</div>
                 </div>
                 <div class="statistic-item col-sm">
                     <div class="statistic-name">Learners</div>
-                    <div class="statistic-number">16,882</div>
+                    <div class="statistic-number">{{ $learners }}</div>
                 </div>
             </div>
         </div>

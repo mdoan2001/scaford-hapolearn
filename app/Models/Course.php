@@ -37,4 +37,8 @@ class Course extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public static function countCourse()
+    {
+        return self::get()->count();
+    }
 }
