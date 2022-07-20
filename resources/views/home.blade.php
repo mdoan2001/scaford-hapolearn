@@ -64,7 +64,7 @@
     </section>
 
     <section class="why-hapolearn">
-        <img src="/images/why-laptop-mobile.png" alt="laptop" class="laptop-mobile">
+        <img src="{{ asset('images/why-laptop-mobile.png') }}" alt="laptop" class="laptop-mobile">
         <div class="row">
             <div class="col-12 title title">Why Hapolearn?</div>
         </div>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="col-4 col-sm-5 col-12">
-                <img src="/images/why-laptop.png" alt="laptop" class="why-img" width="100%" />
+                <img src="{{asset('images/why-laptop.png')}}" alt="laptop" class="why-img" width="100%" />
             </div>
         </div>
     </section>

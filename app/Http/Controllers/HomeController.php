@@ -19,8 +19,8 @@ class HomeController extends Controller
         $mainCourses = Course::get()->take(3);
         $otherCourses = Course::get()->skip(3)->take(3);
         $reviews = Review::with('user', 'course')->get()->take(5);
-        $countCourse = Course::countCourse();
-        $countLession = Lesson::countLession();
+        $countCourse = Course::count();
+        $countLession = Lesson::count();
         $learners = CourseUser::countRegistered();
 
         return view('home', compact('mainCourses', 'otherCourses', 'reviews', 'learners', 'countCourse', 'countLession'));
