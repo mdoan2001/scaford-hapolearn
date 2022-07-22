@@ -93,7 +93,11 @@
                 </div>
             </div>
             <div class="col-4 col-sm-5 col-12">
+<<<<<<< HEAD
                 <img src="{{asset('images/why-laptop.png')}}" alt="laptop" class="why-img" width="100%" />
+=======
+                <img src="/images/why-laptop.png" alt="laptop" class="why-img" width="100%" />
+>>>>>>> ddc6bdf ([#27] design list-course page)
             </div>
         </div>
     </section>
@@ -106,6 +110,7 @@
         </div>
         <div class="container">
             <div class="slider">
+<<<<<<< HEAD
                 @foreach ($reviews as $review)
                     <div class="slider-item">
                         <div class="slider-message">
@@ -140,6 +145,89 @@
                     </div>
                 @endforeach
 
+=======
+                <div class="slider-item">
+                    <div class="slider-message">
+                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
+                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
+                    </div>
+                    <div class="slider-user">
+                        <img src="/images/user-avatar.png" alt="" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Hoang Anh Nguyen</div>
+                            <div class="user-language">PHP</div>
+                            <div class="user-stars">
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-regular fa-star user-star-icon"></i>
+                                <i class="fa-regular fa-star user-star-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="slider-message">
+                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
+                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
+                    </div>
+                    <div class="slider-user">
+                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Hoang Anh Nguyen</div>
+                            <div class="user-language">PHP</div>
+                            <div class="user-stars">
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
+                                <i class="fa-regular fa-star user-star-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="slider-message">
+                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
+                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
+                    </div>
+                    <div class="slider-user">
+                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Hoang Anh Nguyen</div>
+                            <div class="user-language">PHP</div>
+                            <div class="user-stars">
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
+                                <i class="fa-regular fa-star user-star-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="slider-message">
+                        “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good
+                        Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.”
+                    </div>
+                    <div class="slider-user">
+                        <img src="/images/user-avatar.png" alt="avatar" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Hoang Anh Nguyen</div>
+                            <div class="user-language">PHP</div>
+                            <div class="user-stars">
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-solid fa-star user-star-icon"></i>
+                                <i class="fa-regular fa-star-half-stroke user-star-icon"></i>
+                                <i class="fa-regular fa-star user-star-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> ddc6bdf ([#27] design list-course page)
             </div>
         </div>
     </section>
@@ -159,6 +247,7 @@
             <div class="row">
                 <div class="statistic-item col-sm">
                     <div class="statistic-name">Courses</div>
+<<<<<<< HEAD
                     <div class="statistic-number">{{ $countCourse }}</div>
                 </div>
                 <div class="statistic-item col-sm">
@@ -168,6 +257,17 @@
                 <div class="statistic-item col-sm">
                     <div class="statistic-name">Learners</div>
                     <div class="statistic-number">{{ $learners }}</div>
+=======
+                    <div class="statistic-number">1,586</div>
+                </div>
+                <div class="statistic-item col-sm">
+                    <div class="statistic-name">Lessons</div>
+                    <div class="statistic-number">2,689</div>
+                </div>
+                <div class="statistic-item col-sm">
+                    <div class="statistic-name">Learners</div>
+                    <div class="statistic-number">16,882</div>
+>>>>>>> ddc6bdf ([#27] design list-course page)
                 </div>
             </div>
         </div>

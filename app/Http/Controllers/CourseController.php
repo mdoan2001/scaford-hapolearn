@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\CourseUser;
-use App\Models\Lesson;
 
 class CourseController extends Controller
 {
@@ -23,13 +22,11 @@ class CourseController extends Controller
             $data[$course->id]['name'] = $course->name;
             $data[$course->id]['image'] = $course->image;
             $data[$course->id]['description'] = $course->description;
-            $data[$course->id]['lessions'] = $course->lessons()->count();
+            $data[$course->id]['lessons'] = $course->lessons()->count();
             $data[$course->id]['learners'] = CourseUser::where('course_id', $course->id)->groupBy('course_id')->count();
             $data[$course->id]['times'] = $course->sumTimeLesson($course->id);
         }
-
-        echo '<pre>';
-        print_r($data);
+        return view('list_course', compact('data'));
     }
 
 

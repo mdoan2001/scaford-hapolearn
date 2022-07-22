@@ -11,13 +11,13 @@
 }
 
 .container {
-  margin-top: 34px;
   padding: 0 5px;
 }
 
 .list-top {
   display: flex;
   margin-bottom: 60px;
+  z-index: 1;
 
   .list-title {
     position: relative;
@@ -40,10 +40,6 @@
     bottom: -16px;
     border-radius: 3px;
   }
-}
-
-.list-course {
-  z-index: 1;
 }
 
 .course {
@@ -137,11 +133,13 @@
   justify-content: center;
   color: $green;
   font-family: "UTM BryantLG";
-  margin-top: 60px;
+  margin: 60px 0;
 
   .text {
     font-size: 40px;
     font-weight: 700;
+    text-decoration: none;
+    color: $green;
   }
 
   .icon {
