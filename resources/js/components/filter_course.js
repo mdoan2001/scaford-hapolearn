@@ -37,16 +37,6 @@ $(document).ready(function () {
             label.classList.add('btn-active');
         }
     }
-
-    //avatar
-    const avatars = document.querySelectorAll('.course-main img');
-    for (let i = 0; i < avatars.length; i++) {
-        const avatar = avatars[i];
-        // console.log(avatar);
-        avatar.style.height = avatar.offsetWidth + 'px';
-        console.log(avatar.offsetWidth);
-        console.log(avatar.offsetHeight);
-    }
 });
 
 
