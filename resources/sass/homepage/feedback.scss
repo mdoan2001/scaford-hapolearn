@@ -208,11 +208,50 @@
       font-weight: 700;
 
       .user-name {
-        font-size: 26px;
+        font-size: 22px;
       }
 
       .user-language {
         font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .feedback-top .title {
+    font-size: 30px;
+
+    &::before {
+      bottom: 5px;
+    }
+
+    .description {
+      margin-top: 10px;
+      text-align: justify;
+    }
+  }
+
+  .slider-item .slider-user {
+    margin-top: 10px;
+  }
+
+  .slider-item .slider-user {
+    font-size: 12px;
+  }
+
+  .slider-user {
+    flex-direction: column;
+
+    .user-info {
+      text-align: center;
+
+      .user-name {
+        font-size: 18px;
+      }
+
+      .user-language {
+        font-size: 12px;
       }
     }
   }

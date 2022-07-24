@@ -86,16 +86,34 @@
     flex: 1;
 
     .card-title {
+      margin: 20px 0;
       font-size: 30px;
       font-weight: 700;
       color: $green;
+      display: -webkit-box;
+      max-height: 3.2rem;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      -webkit-line-clamp: 2;
+      line-height: 1.6rem;
     }
 
     .card-text {
+      text-align: justify;
       font-size: 14px;
       font-weight: 700;
       color: #505353;
       margin-top: auto;
+      display: -webkit-box;
+      max-height: 6.4rem;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      -webkit-line-clamp: 4;
+      line-height: 1.6rem;
     }
   }
 
@@ -132,6 +150,26 @@
   }
 }
 
+@media (max-width: 991px) and (min-width: 768px) {
+  .course {
+    .img {
+      height: 164px;
+    }
+
+    .card-body {
+      padding: 0 15px 25px 15px;
+
+      .card-top .card-title {
+        font-size: 25px;
+      }
+
+      .card-bot .btn {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
 @media (max-width: 769px) and (min-width: 440px) {
   .list-top {
     .list-title {
@@ -149,7 +187,7 @@
 
     .img {
       width: 198px;
-      height: 123px;
+      height: 164px;
     }
 
     .card-body {
@@ -181,8 +219,8 @@
       .btn {
         font-size: 14px;
         text-align: right;
-        padding: 2px 10px;
-        transform: translate(38%, -10px);
+        padding: 4px 10px;
+        transform: translate(38%, -6px);
       }
     }
   }
@@ -207,12 +245,20 @@
 }
 
 @media (max-width: 570px) and (min-width: 440px) {
+  .card-body .card-top .card-title {
+    margin: 10px 0;
+  }
+
   .container {
     width: 100%;
   }
 }
 
 @media (max-width: 439px) {
+  .card-body .card-top .card-title {
+    margin: 10px 0;
+  }
+
   .list-top {
     margin-bottom: 84px;
 
@@ -232,15 +278,25 @@
   .course {
     margin: 0 54px;
 
+    .img {
+      height: 164px;
+    }
+
     .card-body {
+      padding: 0 15px 25px 15px;
+
       .card-title {
         font-size: 20px;
+      }
+
+      .card-bot .btn {
+        font-size: 14px;
       }
     }
   }
 
   .course + .course {
-    margin-top: 0;
+    margin-top: 30px;
   }
 
   .list-bot {
@@ -254,6 +310,22 @@
     .icon {
       font-size: 16px;
       padding-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .list-top .list-title {
+    font-size: 30px;
+  }
+
+  .course {
+    .img {
+      height: 100px;
+    }
+
+    .card-bot .btn {
+      padding: 8px 10px;
     }
   }
 }

@@ -1,4 +1,6 @@
 .banner {
+  position: relative;
+
   .bg-banner {
     background-repeat: no-repeat;
     background-size: cover;
@@ -165,6 +167,22 @@
 
   .banner::before {
     height: 200px;
-    transform: translateY(-60px);
+    bottom: 60px;
+  }
+}
+
+@media (max-width: 250px) {
+  .banner {
+    .content {
+      margin: 66px 0 0 20px;
+
+      .tittle-img {
+        width: 20px;
+      }
+    }
+
+    &::before {
+      bottom: -14px;
+    }
   }
 }

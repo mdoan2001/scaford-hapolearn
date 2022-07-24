@@ -24,7 +24,6 @@ class CourseUserFactory extends Factory
             'registration_date' => new DateTime(),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
-            'deleted_at' => new DateTime(),
         ];
     }
 }
