@@ -17,11 +17,11 @@ class HomeController extends Controller
     public function index()
     {
         $mainCourses = Course::main()->get();
-        $otherCourses = Course::other()->orderBy('id', config('course.course_sort_descending'))->get();
+        $otherCourses = Course::other()->get();
         $reviews = Review::main()->get();
         $countCourse = Course::count();
         $countLession = Lesson::count();
-        $learners = CourseUser::countRegistered();
+        $learners = CourseUser::leaners();
 
         return view('home', compact('mainCourses', 'otherCourses', 'reviews', 'learners', 'countCourse', 'countLession'));
     }

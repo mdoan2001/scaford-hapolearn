@@ -18,7 +18,7 @@ class CourseUser extends Model
         'registration_date',
     ];
 
-    public static function countRegistered()
+    public static function leaners()
     {
         return self::select('user_id')->groupBy('user_id')->get()->count();
     }
