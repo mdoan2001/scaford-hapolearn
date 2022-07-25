@@ -44,6 +44,6 @@ class Course extends Model
 
     public function scopeOther($query)
     {
-        return $query->orderBy('id', config('course.course_sort_descending'))->take(config('course.home_other_course_num'));
+        return $query->orderBy('id', config('course.sort_descending'))->take(config('course.home_other_course_num'));
     }
 }
