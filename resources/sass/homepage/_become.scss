@@ -37,6 +37,17 @@
   background-color: white;
 }
 
+@media (max-width: 900px) {
+  .become-title {
+    font-size: 50px;
+    line-height: 54px;
+  }
+
+  .become-btn {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .become-title {
     font-size: 35px;
@@ -48,15 +59,27 @@
   }
 }
 
-@media (max-width: 439px) {
+@media (max-width: 600px) {
   .become-title {
-    font-size: 23px;
-    line-height: 28px;
+    font-size: 25px;
+    line-height: 26px;
   }
 
   .become-btn {
-    margin-top: 12px;
     font-size: 18px;
     padding: 1px 12px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .become-title {
+    font-size: 14px;
+    line-height: 15px;
+  }
+
+  .become-btn {
+    font-size: 10px;
+    margin-top: 5px;
   }
 }

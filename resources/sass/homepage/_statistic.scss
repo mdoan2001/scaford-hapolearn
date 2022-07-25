@@ -3,6 +3,8 @@
 }
 
 .statistic-top {
+  text-align: center;
+
   .title {
     position: relative;
     display: inline-block;
@@ -12,8 +14,6 @@
     color: $dark-blue;
     font-family: "UTM BryantLG";
     line-height: 95px;
-    transform: translateX(-50%);
-    left: 50%;
   }
 
   .title::before {
@@ -30,10 +30,12 @@
 
 .statistic-main {
   margin-top: 32px;
-  padding: 0 0 0 12%;
+  padding: 0 12% 0 12%;
   font-family: "UTM BryantLG";
 
   .statistic-item {
+    text-align: center;
+
     .statistic-name {
       color: $text;
       font-size: 60px;
@@ -50,11 +52,38 @@
 }
 
 @media (max-width: 500px) {
+  .statistic-top {
+    .title {
+      font-size: 50px;
+    }
+
+    .title::before {
+      bottom: 4px;
+    }
+  }
+
   .statistic-main {
     .statistic-item {
       .statistic-name,
       .statistic-number {
-        text-align: center;
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 200px) {
+  .statistic-top {
+    .title {
+      font-size: 30px;
+    }
+  }
+
+  .statistic-main {
+    .statistic-item {
+      .statistic-name,
+      .statistic-number {
+        font-size: 25px;
       }
     }
   }

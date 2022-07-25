@@ -31,7 +31,7 @@
   display: block;
 }
 
-.nav-item--login{
+.nav-item--login {
   display: flex;
   align-items: center;
 
@@ -73,7 +73,21 @@
   }
 
   .navbar-nav {
-    margin-right: 27px !important;
+    .nav-item {
+      width: 100%;
+    }
+
+    .nav-item + .nav-item {
+      margin-left: 0;
+    }
+
+    form {
+      width: 100%;
+
+      .btn {
+        width: 100%;
+      }
+    }
   }
 
   .logo-image {
@@ -91,5 +105,21 @@
   .navbar {
     display: flex;
     flex-wrap: nowrap;
+    z-index: 2;
+  }
+}
+
+
+@media (max-width: 250px) {
+  .logo-image {
+    width: 84%;
+    height: 30%;
+  }
+
+  .navbar {
+    .navbar-toggler {
+      padding: 2px;
+      font-size: 18px;
+    }
   }
 }

@@ -36,4 +36,14 @@ class Course extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function scopeMain($query)
+    {
+        return $query->take(config('course.home_main_course_num'));
+    }
+
+    public function scopeOther($query)
+    {
+        return $query->orderBy('id', config('course.sort_descending'))->take(config('course.home_other_course_num'));
+    }
 }
