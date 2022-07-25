@@ -37,8 +37,13 @@ class Course extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public static function countCourse()
+    public function scopeMain($query)
     {
-        return self::get()->count();
+        return $query->take(config('course.home_main_course_num'));
+    }
+
+    public function scopeOther($query)
+    {
+        return $query->take(config('course.home_other_course_num'));
     }
 }

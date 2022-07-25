@@ -225,7 +225,7 @@
     }
   }
 
-  .course + .course {
+  .course+.course {
     margin-top: 32px;
   }
 
@@ -295,7 +295,7 @@
     }
   }
 
-  .course + .course {
+  .course+.course {
     margin-top: 30px;
   }
 
@@ -317,9 +317,12 @@
 @media (max-width: 300px) {
   .list-top .list-title {
     font-size: 30px;
+
   }
 
   .course {
+    margin: 0 25px;
+
     .img {
       height: 100px;
     }

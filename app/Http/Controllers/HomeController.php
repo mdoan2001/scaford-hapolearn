@@ -16,9 +16,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $mainCourses = Course::get()->take(3);
-        $otherCourses = Course::get()->skip(3)->take(3);
-        $reviews = Review::with('user', 'course')->get()->take(5);
+        $mainCourses = Course::main()->get();
+        $otherCourses = Course::other()->orderBy('id', config('course.course_sort_descending'))->get();
+        $reviews = Review::main()->get();
         $countCourse = Course::count();
         $countLession = Lesson::count();
         $learners = CourseUser::countRegistered();
