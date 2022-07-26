@@ -67,7 +67,7 @@ class CourseController extends Controller
             }
         }
 
-        $courses = $courses->simplePaginate(6)->appends(request()->query());
+        $courses = $courses->Paginate(6)->appends(request()->query());
         return view('list_course', compact('courses', 'teachers', 'tags', 'requests'));
     }
 
