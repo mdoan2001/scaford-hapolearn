@@ -1,223 +1,148 @@
 .course-filter .main {
+  display: flex;
+  gap: 14px;
+
+  .btn {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .btn-filter {
     display: flex;
-    gap: 14px;
+    gap: 4px;
+    align-items: center;
+    background-color: white;
+    border: 1px solid $bg-c4;
+    color: $text;
 
-    .btn {
-        font-weight: 700;
-        font-size: 15px;
+    .icon-filter {
+      font-size: 14px;
+    }
+  }
+
+  .btn-search {
+    background-color: $green;
+    border: 1px solid $green;
+    color: white;
+  }
+
+  .search {
+    width: 30%;
+    position: relative;
+
+    input {
+      padding-right: 40px;
     }
 
-    .btn-filter {
-        display: flex;
-        gap: 4px;
-        align-items: center;
-        background-color: white;
-        border: 1px solid $bg-c4;
-        color: $text;
-
-        .icon-filter {
-            font-size: 14px;
-        }
+    .icon-search {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text;
     }
-
-    .btn-search {
-        background-color: $green;
-        border: 1px solid $green;
-        color: white;
-    }
-
-    .search {
-        width: 30%;
-        position: relative;
-
-        input {
-            padding-right: 40px;
-        }
-
-        .icon-search {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: $text;
-        }
-    }
+  }
 }
 
 .course-filter .sub {
-    display: none;
+  display: none;
+  align-items: center;
+  margin-top: 14px;
+  background-color: white;
+  padding: 14px;
+  border: 1px solid $bg-c4;
+  border-radius: 5px;
+
+  .title {
+    display: inline-block;
+    color: $text;
+    margin-right: 14px;
+    font-weight: 700;
+  }
+
+  .group {
+    flex: 1;
+    display: flex;
     align-items: center;
-    margin-top: 14px;
-    background-color: white;
-    padding: 14px;
-    border: 1px solid $bg-c4;
-    border-radius: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
 
-    .title {
-        display: inline-block;
-        color: $text;
-        margin-right: 14px;
-        font-weight: 700;
+    .btn {
+      background-color: $bg-e5;
+      border-radius: 2px;
+      color: $text;
+      border: 0;
+      outline: 0;
+      margin-bottom: 0;
     }
 
-    .group {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        .btn {
-            background-color: $bg-e5;
-            border-radius: 2px;
-            color: $text;
-            border: 0;
-            outline: 0;
-            margin-bottom: 0;
-        }
-
-        .btn-active {
-            background-color: $green;
-            color: white;
-        }
-
-        .item {
-            width: 177px;
-            color: $text;
-        }
-
-        input[type="radio"] {
-            display: none;
-        }
+    .btn-active {
+      background-color: $green;
+      color: white;
     }
+
+    .item {
+      width: 177px;
+      color: $text;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+  }
 }
 
 .course-filter.active .sub {
-    display: flex;
+  display: flex;
 }
 
 .select {
-    position: relative;
-    padding: 5px;
-    min-width: 150px;
-    border: 1px solid $bg-e5;
-    background-color: white;
-    cursor: pointer;
-
-    .select-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        font-size: 16px;
-
-        input {
-            color: $text;
-            margin: 0;
-            width: 100%;
-            border: 0;
-            cursor: pointer;
-
-            &:focus-visible {
-                border: 0;
-                outline: 0;
-            }
-        }
-
-        .icon {
-            font-size: 12px;
-            color: $text;
-        }
-    }
-
-    .select-content {
-        display: none;
-        position: absolute;
-        top: 35px;
-        left: -1px;
-        width: 101%;
-        border: 1px solid $bg-e5;
-        background-color: white;
-        z-index: 10;
-    }
-
-    .select-content.active {
-        display: block;
-    }
-}
-
-.select .select-content {
-    .select-item + .select-item {
-        margin-top: 1px;
-    }
-
-    .select-item {
-        position: relative;
-        padding: 2px 5px;
-        font-weight: 400;
-        font-size: 14px;
-
-        &::after {
-            position: absolute;
-            bottom: -1px;
-            content: "";
-            left: 50%;
-            transform: translateX(-50%);
-            display: block;
-            width: 90%;
-            height: 1px;
-            background-color: $bg-f0;
-        }
-
-        &:nth-last-child(1) {
-            &::after {
-                height: 0;
-            }
-        }
-
-        &:hover {
-            background-color: $bg-e5;
-        }
-    }
+  position: relative;
+  padding: 5px;
+  min-width: 150px;
+  border: 1px solid $bg-e5;
+  background-color: white;
+  cursor: pointer;
 }
 
 @media (max-width: 470px) {
-    .course-filter .main {
-        flex-wrap: wrap;
-        .search {
-            flex: 1;
-            order: 1;
-            flex-basis: 100%;
-        }
-    }
+  .course-filter .main {
+    flex-wrap: wrap;
 
-    .course-filter .sub .group .item {
-        width: 100%;
+    .search {
+      flex: 1;
+      order: 1;
+      flex-basis: 100%;
     }
+  }
 
-    .course-filter .sub .group .btn {
-        width: 45%;
-    }
+  .course-filter .sub .group .item {
+    width: 100%;
+  }
+
+  .course-filter .sub .group .btn {
+    width: 45%;
+  }
 }
 
 @media (max-width: 292px) {
-    .course-filter.active .sub {
-        flex-direction: column;
-        justify-content: center;
+  .course-filter.active .sub {
+    flex-direction: column;
+    justify-content: center;
 
-        .title {
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
+    .title {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .course-filter .main {
+    .btn-filter {
+      font-size: 12px;
     }
 
-    .course-filter .main {
-        .btn-filter {
-            font-size: 12px;
-        }
-
-        .btn-search {
-            font-size: 12px;
-        }
+    .btn-search {
+      font-size: 12px;
     }
+  }
 }

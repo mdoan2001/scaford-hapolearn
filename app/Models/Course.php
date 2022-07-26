@@ -46,20 +46,4 @@ class Course extends Model
     {
         return $query->orderBy('id', config('course.sort_descending'))->take(config('course.home_other_course_num'));
     }
-
-    public function sumTimeLesson($id)
-    {
-        $lessons = Lesson::where('course_id', $id)->get();
-        $sumTime = 0;
-        foreach ($lessons as $value) {
-            $sumTime += $this->seconds($value->time);
-        }
-        return round($sumTime / 3600);
-    }
-
-    public function seconds($time)
-    {
-        $data = explode(':', $time);
-        return $data[0] * 3600 + $data[1] * 60 + $data[2];
-    }
 }
