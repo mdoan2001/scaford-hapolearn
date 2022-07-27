@@ -48,17 +48,30 @@ class Course extends Model
         return $query->orderBy('id', config('course.sort_descending'))->take(config('course.home_other_course_num'));
     }
 
+    public function getLearnersAttribute()
+    {
+        return $this->users()->count();
+    }
+
+    public function getLessonsAttribute()
+    {
+        return $this->lessons()->count();
+    }
+
+    public function getTimesAttribute()
+    {
+        return $this->lessons()->sum('time');
+    }
+
     public static function scopeSearch($query, $request)
     {
-        $query->withCount('lessons', 'users', 'reviews')->withSum('lessons', 'time');
-
-        if (!empty($request->submit)) {
-            if (!empty($request->search)) {
-                $query->where('name', 'LIKE', "%{$request->search}%");
+        if (!empty($request["filter_submit"])) {
+            if (!empty($request["keyword"])) {
+                $query->where('name', 'LIKE', "%{$request["keyword"]}%");
             }
 
-            if ($request->teacher != 0) {
-                $courseUser = CourseUser::where('user_id', $request->teacher)->select('course_id')->get()->toArray();
+            if ($request["teacher"] != 0) {
+                $courseUser = CourseUser::where('user_id', $request["teacher"])->select('course_id')->get()->toArray();
                 $courseIds = [];
                 foreach ($courseUser as $item) {
                     $courseIds[] = $item['course_id'];
@@ -70,20 +83,20 @@ class Course extends Model
                 $query->orderBy('lessons_count', $request['lesson_sort']);
             }
 
-            if ($request->time != 0) {
-                $query->orderBy('lessons_sum_time', $request->time);
+            if ($request["time"] != 0) {
+                $query->orderBy('lessons_sum_time', $request["time"]);
             }
 
-            if ($request->user != 0) {
-                $query->orderBy('users_count', $request->user);
+            if ($request["user"] != 0) {
+                $query->orderBy('users_count', $request["user"]);
             }
 
-            if ($request->review != 0) {
-                $query->withCount('reviews')->orderBy('reviews_count', $request->review);
+            if ($request["review"] != 0) {
+                $query->withCount('reviews')->orderBy('reviews_count', $request["review"]);
             }
 
-            if ($request->tag != 0) {
-                $courseTag = CourseTag::where('tag_id', $request->tag)->select('course_id')->get()->toArray();
+            if ($request["tag"] != 0) {
+                $courseTag = CourseTag::where('tag_id', $request["tag"])->select('course_id')->get()->toArray();
                 $courseIds = [];
                 foreach ($courseTag as $item) {
                     $courseIds[] = $item['course_id'];
@@ -91,8 +104,8 @@ class Course extends Model
                 $query->whereIn('id', $courseIds);
             }
 
-            if (!empty($request->btn)) {
-                $query->orderBy('created_at', $request->btn);
+            if (!empty($request["version"])) {
+                $query->orderBy('created_at', $request["version"]);
             }
         }
 

@@ -16,13 +16,12 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
+        $data = $request->all();
         $teachers = User::teachers()->get();
         $tags = Tag::get();
-        $courses = Course::search($request);
-        return view('list_course', compact('courses', 'teachers', 'tags', 'request'));
+        $courses = Course::search($data);
+        return view('list_course', compact('courses', 'teachers', 'tags', 'data'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
