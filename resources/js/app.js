@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick';
 require('./components/slider');
 require('./components/select2');
 require('./components/filter_course');
+require('./components/course_detail');
 
 const app = new Vue({
     el: '#app',

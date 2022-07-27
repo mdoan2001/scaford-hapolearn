@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('course', CourseController::class)->only('index');
+Route::get('/test', function () {
+    return view('course_detail');
+});
