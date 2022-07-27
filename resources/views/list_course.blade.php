@@ -101,7 +101,12 @@
                         <option value="0" selected class="select-item">Tags</option>
 
                         @foreach ($tags as $tag)
-                            <option value="{{ $tag->id }}" class="select-item">{{ $tag->name }}</option>
+                            @if (isset($requests['tag']) && $tag->id == $requests['tag'])
+                                <option value="{{ $tag->id }}" selected class="select-item">{{ $tag->name }}
+                                </option>
+                            @else
+                                <option value="{{ $tag->id }}" class="select-item">{{ $tag->name }}</option>
+                            @endif
                         @endforeach
 
                     </select>
