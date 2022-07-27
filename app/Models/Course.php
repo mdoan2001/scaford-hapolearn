@@ -80,15 +80,15 @@ class Course extends Model
             }
 
             if ($request['lesson_sort'] != 0) {
-                $query->orderBy('lessons_count', $request['lesson_sort']);
+                $query->withCount('lessons')->orderBy('lessons_count', $request['lesson_sort']);
             }
 
             if ($request["time"] != 0) {
-                $query->orderBy('lessons_sum_time', $request["time"]);
+                $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["time"]);
             }
 
             if ($request["user"] != 0) {
-                $query->orderBy('users_count', $request["user"]);
+                $query->withCount('users')->orderBy('users_count', $request["user"]);
             }
 
             if ($request["review"] != 0) {
