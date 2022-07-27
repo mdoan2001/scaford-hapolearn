@@ -4,7 +4,7 @@
     <div class="course-detail">
         <div class="container">
             <div class="row">
-                <div class="main col-8">
+                <div class="main col-md-8 col-12">
                     <img src="https://product.bachkhoa-aptech.edu.vn:33/resources/upload/image/chia-se/co-nen-hoc-lap-trinh-web-bang-php-02.jpg"
                         alt="" class="course-img">
                     <div class="group">
@@ -232,7 +232,7 @@
                     </div>
                 </div>
 
-                <div class="side-bar col-4">
+                <div class="side-bar col-md-4 col-12">
                     <div class="side-bar-item course-description" id="js-description-course">
                         <div class="title">Descriptions course</div>
                         <p class="content">Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
