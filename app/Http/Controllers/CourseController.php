@@ -30,15 +30,15 @@ class CourseController extends Controller
 
             if ($request->teacher != 0) {
                 $courseUser = CourseUser::where('user_id', $request->teacher)->select('course_id')->get()->toArray();
-                $course_ids = [];
+                $courseIds = [];
                 foreach ($courseUser as $item) {
-                    $course_ids[] = $item['course_id'];
+                    $courseIds[] = $item['course_id'];
                 }
-                $courses = $courses->whereIn('id', $course_ids);
+                $courses = $courses->whereIn('id', $courseIds);
             }
 
-            if ($request->lesson_sort != 0) {
-                $courses = $courses->orderBy('lessons_count', $request->lesson_sort);
+            if ($request['lesson_sort'] != 0) {
+                $courses = $courses->orderBy('lessons_count', $request['lesson_sort']);
             }
 
             if ($request->time != 0) {
@@ -55,11 +55,11 @@ class CourseController extends Controller
 
             if ($request->tag != 0) {
                 $courseTag = CourseTag::where('tag_id', $request->tag)->select('course_id')->get()->toArray();
-                $course_ids = [];
+                $courseIds = [];
                 foreach ($courseTag as $item) {
-                    $course_ids[] = $item['course_id'];
+                    $courseIds[] = $item['course_id'];
                 }
-                $courses = $courses->whereIn('id', $course_ids);
+                $courses = $courses->whereIn('id', $courseIds);
             }
 
             if (!empty($request->btn)) {
