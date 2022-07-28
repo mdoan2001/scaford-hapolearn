@@ -20,7 +20,7 @@ class CourseController extends Controller
         $teachers = User::teachers()->get();
         $tags = Tag::get();
         $courses = Course::search($data);
-        return view('list_course', compact('courses', 'teachers', 'tags', 'data'));
+        return view('courses.index', compact('courses', 'teachers', 'tags', 'data'));
     }
 
     /**

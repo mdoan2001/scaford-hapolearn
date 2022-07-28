@@ -65,48 +65,38 @@ class Course extends Model
 
     public static function scopeSearch($query, $request)
     {
-        if (!empty($request["filter_submit"])) {
-            if (!empty($request["keyword"])) {
-                $query->where('name', 'LIKE', "%{$request["keyword"]}%");
-            }
+        if (isset($request["keyword"]) && !empty($request["keyword"])) {
+            $query->where('name', 'LIKE', "%{$request["keyword"]}%");
+        }
 
-            if ($request["teacher"] != 0) {
-                $courseUser = CourseUser::where('user_id', $request["teacher"])->select('course_id')->get()->toArray();
-                $courseIds = [];
-                foreach ($courseUser as $item) {
-                    $courseIds[] = $item['course_id'];
-                }
-                $query->whereIn('id', $courseIds);
-            }
+        if (isset($request["teacher"]) && !empty($request["teacher"])) {
+            $courseIds = CourseUser::where('user_id', $request["teacher"])->pluck('course_id');
+            $query->whereIn('id', $courseIds);
+        }
 
-            if ($request['lesson_sort'] != 0) {
-                $query->withCount('lessons')->orderBy('lessons_count', $request['lesson_sort']);
-            }
+        if (isset($request["lesson_sort"]) && !empty($request["lesson_sort"])) {
+            $query->withCount('lessons')->orderBy('lessons_count', $request['lesson_sort']);
+        }
 
-            if ($request["time"] != 0) {
-                $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["time"]);
-            }
+        if (isset($request["time"]) && !empty($request["time"])) {
+            $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["time"]);
+        }
 
-            if ($request["user"] != 0) {
-                $query->withCount('users')->orderBy('users_count', $request["user"]);
-            }
+        if (isset($request["user"]) && !empty($request["user"])) {
+            $query->withCount('users')->orderBy('users_count', $request["user"]);
+        }
 
-            if ($request["review"] != 0) {
-                $query->withCount('reviews')->orderBy('reviews_count', $request["review"]);
-            }
+        if (isset($request["review"]) && !empty($request["review"])) {
+            $query->withCount('reviews')->orderBy('reviews_count', $request["review"]);
+        }
 
-            if ($request["tag"] != 0) {
-                $courseTag = CourseTag::where('tag_id', $request["tag"])->select('course_id')->get()->toArray();
-                $courseIds = [];
-                foreach ($courseTag as $item) {
-                    $courseIds[] = $item['course_id'];
-                }
-                $query->whereIn('id', $courseIds);
-            }
+        if (isset($request["tag"]) && !empty($request["tag"])) {
+            $courseIds = CourseTag::where('tag_id', $request["tag"])->pluck('course_id');
+            $query->whereIn('id', $courseIds);
+        }
 
-            if (!empty($request["version"])) {
-                $query->orderBy('created_at', $request["version"]);
-            }
+        if (isset($request["version"]) && !empty($request["version"])) {
+            $query->orderBy('created_at', $request["version"]);
         }
 
         return $query->Paginate(Config('course.course_list_num'))->appends(request()->query());

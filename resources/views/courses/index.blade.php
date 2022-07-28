@@ -68,7 +68,7 @@
                             <option @if ($data['user'] == config('course.sort_descending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @else
-                            <option value="0" selected class="select-item">Số người học</option>
+                            <option value="" selected class="select-item">Số người học</option>
                             <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @endif
@@ -76,13 +76,13 @@
 
                     <select name="time" class="item select">
                         @if (isset($data['time']))
-                            <option value="0" class="select-item">Thời gian học</option>
+                            <option value="" class="select-item">Thời gian học</option>
                             <option @if ($data['time'] == config('course.sort_ascending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option @if ($data['time'] == config('course.sort_descending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @else
-                            <option value="0" selected class="select-item">Thời gian học</option>
+                            <option value="" selected class="select-item">Thời gian học</option>
                             <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @endif
@@ -90,20 +90,20 @@
 
                     <select name="lesson_sort" class="item select">
                         @if (isset($data['lesson_sort']))
-                            <option value="0" class="select-item">Số bài học</option>
+                            <option value="" class="select-item">Số bài học</option>
                             <option @if ($data['lesson_sort'] == config('course.sort_ascending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option @if ($data['lesson_sort'] == config('course.sort_descending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @else
-                            <option value="0" selected class="select-item">Số bài học</option>
+                            <option value="" selected class="select-item">Số bài học</option>
                             <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @endif
                     </select>
 
                     <select name="tag" class="item select">
-                        <option value="0" selected class="select-item">Tags</option>
+                        <option value="" selected class="select-item">Tags</option>
 
                         @foreach ($tags as $tag)
                             @if (isset($data['tag']) && $tag->id == $data['tag'])
@@ -118,13 +118,13 @@
 
                     <select name="review" class="item select">
                         @if (isset($data['review']))
-                            <option value="0" class="select-item">Review</option>
+                            <option value="" class="select-item">Review</option>
                             <option @if ($data['review'] == config('course.sort_ascending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option @if ($data['review'] == config('course.sort_descending')) {{ 'selected' }} @endif
                                 value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @else
-                            <option value="0" selected class="select-item">Review</option>
+                            <option value="" selected class="select-item">Review</option>
                             <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
                             <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                         @endif
