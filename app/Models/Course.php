@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Config;
 
 class Course extends Model
 {
@@ -74,16 +73,16 @@ class Course extends Model
             $query->whereIn('id', $courseIds);
         }
 
-        if (isset($request["lesson_sort"]) && !empty($request["lesson_sort"])) {
-            $query->withCount('lessons')->orderBy('lessons_count', $request['lesson_sort']);
+        if (isset($request["total_lesson"]) && !empty($request["total_lesson"])) {
+            $query->withCount('lessons')->orderBy('lessons_count', $request['total_lesson']);
         }
 
-        if (isset($request["time"]) && !empty($request["time"])) {
-            $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["time"]);
+        if (isset($request["learn_time"]) && !empty($request["learn_time"])) {
+            $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["learn_time"]);
         }
 
-        if (isset($request["user"]) && !empty($request["user"])) {
-            $query->withCount('users')->orderBy('users_count', $request["user"]);
+        if (isset($request["learners"]) && !empty($request["learners"])) {
+            $query->withCount('users')->orderBy('users_count', $request["learners"]);
         }
 
         if (isset($request["review"]) && !empty($request["review"])) {
@@ -95,10 +94,10 @@ class Course extends Model
             $query->whereIn('id', $courseIds);
         }
 
-        if (isset($request["version"]) && !empty($request["version"])) {
-            $query->orderBy('created_at', $request["version"]);
+        if (isset($request["created_time"]) && !empty($request["created_time"])) {
+            $query->orderBy('created_at', $request["created_time"]);
         }
 
-        return $query->Paginate(Config('course.course_list_num'))->appends(request()->query());
+        return $query;
     }
 }

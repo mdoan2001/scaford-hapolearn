@@ -6,5 +6,5 @@ return [
     'home_review_num' => 5,
     'sort_ascending' => 'ASC',
     'sort_descending' => 'DESC',
-    'course_list_num' => 6,
+    'pagination' => 6,
 ];
