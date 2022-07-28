@@ -68,9 +68,10 @@ class Course extends Model
             $query->where('name', 'LIKE', "%{$request["keyword"]}%")->orWhere('description', 'LIKE', "%{$request["keyword"]}%");
         }
 
-        if (isset($request["teacher"]) && !empty($request["teacher"])) {
-            $courseIds = User::find($request["teacher"])->courses()->pluck('id');
-            $query->whereIn('id', $courseIds);
+        if (isset($request["teachers"]) && !empty($request["teachers"])) {
+            $query->whereHas('users', function ($query) use ($request) {
+                $query->whereIn('user_id', $request['teachers']);
+            });
         }
 
         if (isset($request["total_lesson"]) && !empty($request["total_lesson"])) {
@@ -89,13 +90,14 @@ class Course extends Model
             $query->withCount('reviews')->orderBy('reviews_count', $request["rate"]);
         }
 
-        if (isset($request["tag"]) && !empty($request["tag"])) {
-            $courseIds = Tag::find($request["tag"])->courses()->pluck('id');
-            $query->whereIn('id', $courseIds);
+        if (isset($request["tags"]) && !empty($request["tags"])) {
+            $query->whereHas('tags', function ($query) use ($request) {
+                $query->whereIn('tag_id', $request['tags']);
+            });
         }
 
         if (isset($request["created_time"]) && !empty($request["created_time"])) {
-            $query->orderBy('created_at', $request["created_time"]);
+            $query->orderBy('courses.created_at', $request["created_time"]);
         }
 
         return $query;

@@ -19,7 +19,7 @@ class CourseController extends Controller
         $data = $request->all();
         $teachers = User::teachers()->get();
         $tags = Tag::get();
-        $courses = Course::search($data)->paginate(config('course.pagination'))->appends(request()->query());
+        $courses = Course::search($data)->paginate(config('course.pagination'));
         return view('courses.index', compact('courses', 'teachers', 'tags', 'data'));
     }
 
