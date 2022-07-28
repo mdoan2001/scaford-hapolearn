@@ -68,6 +68,6 @@ class User extends Authenticatable
 
     public static function teachers()
     {
-        return self::where('role', config('teacher.role'));
+        return self::where('role', config('roles.teacher'));
     }
 }

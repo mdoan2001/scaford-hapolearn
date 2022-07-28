@@ -9,14 +9,9 @@
                     Filter
                 </div>
                 <div class="search">
-                    @if (isset($data['keyword']))
-                        <input name="keyword" value="{{ $data['keyword'] }}" type="text" placeh older="Search..."
-                            class="form-control">
-                        <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                    @else
-                        <input name="keyword" value="" type="text" placeh older="Search..." class="form-control">
-                        <i class="fa-solid fa-magnifying-glass icon-search"></i>
-                    @endif
+                    <input name="keyword" value="@if (isset($data['keyword'])) {{ $data['keyword'] }} @endif"
+                        type="text" placeh older="Search..." class="form-control">
+                    <i class="fa-solid fa-magnifying-glass icon-search"></i>
                 </div>
                 <input type="submit" name="filter_submit" class="btn btn-search" value="Tìm kiếm">
             </div>
@@ -24,110 +19,67 @@
             <div class="sub">
                 <div class="title">Lọc theo</div>
                 <div class="group">
-
-                    @if (isset($data['created_time']))
-                        <label for="radio-new"
-                            class="btn @if ($data['created_time'] == config('course.sort_descending')) {{ 'btn-active' }} @endif  ">Mới nhất</label>
-                        <input id="radio-new" @if ($data['created_time'] == config('course.sort_descending')) {{ 'checked' }} @endif type="radio"
-                            name="created_time" value="{{ config('course.sort_descending') }}">
-                        <label for="radio-old" class="btn @if ($data['created_time'] == config('course.sort_ascending')) {{ 'btn-active' }} @endif">Cũ
-                            nhất</label>
-                        <input id="radio-old" @if ($data['created_time'] == config('course.sort_ascending')) {{ 'checked' }} @endif type="radio"
-                            name="created_time" value="{{ config('course.sort_ascending') }}">
-                    @else
-                        <label for="radio-new" class="btn btn-active">Mới nhất</label>
-                        <input id="radio-new" checked type="radio" name="created_time"
-                            value="{{ config('course.sort_descending') }}">
-                        <label for="radio-old" class="btn">Cũ nhất</label>
-                        <input id="radio-old" type="radio" name="created_time"
-                            value="{{ config('course.sort_ascending') }}">
-                    @endif
+                    <label for="newRadio" class="btn">Mới nhất</label>
+                    <input id="newRadio"
+                    @if (isset($data['created_time'])) @if ($data['created_time'] == config('course.sort_descending')) {{ 'checked' }} @endif @else
+                        {{ 'checked' }} @endif type="radio"
+                    name="created_time" value="{{ config('course.sort_descending') }}">
+                    <label for="oldRadio" class="btn">Cũ nhất</label>
+                    <input id="oldRadio" @if (isset($data['created_time']) && $data['created_time'] == config('course.sort_ascending')) {{ 'checked' }} @endif type="radio"
+                        name="created_time" value="{{ config('course.sort_ascending') }}">
 
                     <select name="teacher" class="item select">
-                        <option value="0" selected class="select-item">Teacher</option>
+                        <option value="" selected class="select-item">Teacher</option>
 
-                        @if (isset($data['teacher']))
-                            @foreach ($teachers as $teacher)
-                                <option value="{{ $teacher->id }}"
-                                    @if ($data['teacher'] == $teacher->id) {{ 'selected' }} @endif class="select-item">
-                                    {{ $teacher->full_name }}</option>
-                            @endforeach
-                        @else
-                            @foreach ($teachers as $teacher)
-                                <option value="{{ $teacher->id }}" class="select-item">{{ $teacher->full_name }}</option>
-                            @endforeach
-                        @endif
+                        @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->id }}" @if (isset($data['teacher']) && $data['teacher'] == $teacher->id) {{ 'selected' }} @endif
+                                class="select-item">
+                                {{ $teacher->full_name }}</option>
+                        @endforeach
 
                     </select>
 
                     <select name="learners" class="item select">
-                        @if (isset($data['learners']))
-                            <option value="0" class="select-item">Số người học</option>
-                            <option @if ($data['learners'] == config('course.sort_ascending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option @if ($data['learners'] == config('course.sort_descending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @else
-                            <option value="" selected class="select-item">Số người học</option>
-                            <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @endif
+                        <option value="0" class="select-item">Số người học</option>
+                        <option @if (isset($data['learners']) && $data['learners'] == config('course.sort_ascending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
+                        <option @if (isset($data['learners']) && $data['learners'] == config('course.sort_descending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                     </select>
 
                     <select name="learn_time" class="item select">
-                        @if (isset($data['learn_time']))
-                            <option value="" class="select-item">Thời gian học</option>
-                            <option @if ($data['learn_time'] == config('course.sort_ascending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option @if ($data['learn_time'] == config('course.sort_descending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @else
-                            <option value="" selected class="select-item">Thời gian học</option>
-                            <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @endif
+                        <option value="" class="select-item">Thời gian học</option>
+                        <option @if (isset($data['learn_time']) && $data['learn_time'] == config('course.sort_ascending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
+                        <option @if (isset($data['learn_time']) && $data['learn_time'] == config('course.sort_descending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                     </select>
 
                     <select name="total_lesson" class="item select">
-                        @if (isset($data['total_lesson']))
-                            <option value="" class="select-item">Số bài học</option>
-                            <option @if ($data['total_lesson'] == config('course.sort_ascending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option @if ($data['total_lesson'] == config('course.sort_descending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @else
-                            <option value="" selected class="select-item">Số bài học</option>
-                            <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @endif
+                        <option value="" class="select-item">Số bài học</option>
+                        <option @if (isset($data['total_lesson']) && $data['total_lesson'] == config('course.sort_ascending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
+                        <option @if (isset($data['total_lesson']) && $data['total_lesson'] == config('course.sort_descending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                     </select>
 
                     <select name="tag" class="item select">
                         <option value="" selected class="select-item">Tags</option>
 
                         @foreach ($tags as $tag)
-                            @if (isset($data['tag']) && $tag->id == $data['tag'])
-                                <option value="{{ $tag->id }}" selected class="select-item">{{ $tag->name }}
-                                </option>
-                            @else
-                                <option value="{{ $tag->id }}" class="select-item">{{ $tag->name }}</option>
-                            @endif
+                            <option value="{{ $tag->id }}"
+                                @if (isset($data['tag']) && $tag->id == $data['tag']) {{ 'selected' }} @endif class="select-item">
+                                {{ $tag->name }}</option>
                         @endforeach
 
                     </select>
 
-                    <select name="review" class="item select">
-                        @if (isset($data['review']))
-                            <option value="" class="select-item">Review</option>
-                            <option @if ($data['review'] == config('course.sort_ascending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option @if ($data['review'] == config('course.sort_descending')) {{ 'selected' }} @endif
-                                value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @else
-                            <option value="" selected class="select-item">Review</option>
-                            <option value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
-                            <option value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
-                        @endif
+                    <select name="rate" class="item select">
+                        <option value="" class="select-item">Review</option>
+                        <option @if (isset($data['rate']) && $data['rate'] == config('course.sort_ascending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_ascending') }}" class="select-item">Tăng dần</option>
+                        <option @if (isset($data['rate']) && $data['rate'] == config('course.sort_descending')) {{ 'selected' }} @endif
+                            value="{{ config('course.sort_descending') }}" class="select-item">Giảm dần</option>
                     </select>
 
                 </div>

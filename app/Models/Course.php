@@ -65,11 +65,11 @@ class Course extends Model
     public static function scopeSearch($query, $request)
     {
         if (isset($request["keyword"]) && !empty($request["keyword"])) {
-            $query->where('name', 'LIKE', "%{$request["keyword"]}%");
+            $query->where('name', 'LIKE', "%{$request["keyword"]}%")->orWhere('description', 'LIKE', "%{$request["keyword"]}%");
         }
 
         if (isset($request["teacher"]) && !empty($request["teacher"])) {
-            $courseIds = CourseUser::where('user_id', $request["teacher"])->pluck('course_id');
+            $courseIds = User::find($request["teacher"])->courses()->pluck('id');
             $query->whereIn('id', $courseIds);
         }
 
@@ -85,12 +85,12 @@ class Course extends Model
             $query->withCount('users')->orderBy('users_count', $request["learners"]);
         }
 
-        if (isset($request["review"]) && !empty($request["review"])) {
-            $query->withCount('reviews')->orderBy('reviews_count', $request["review"]);
+        if (isset($request["rate"]) && !empty($request["rate"])) {
+            $query->withCount('reviews')->orderBy('reviews_count', $request["rate"]);
         }
 
         if (isset($request["tag"]) && !empty($request["tag"])) {
-            $courseIds = CourseTag::where('tag_id', $request["tag"])->pluck('course_id');
+            $courseIds = Tag::find($request["tag"])->courses()->pluck('id');
             $query->whereIn('id', $courseIds);
         }
 
