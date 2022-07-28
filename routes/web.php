@@ -23,3 +23,6 @@ Route::resource('course', CourseController::class)->only('index');
 Route::get('/test', function () {
     return view('course_detail');
 });
+Route::get('/test2', function () {
+    return view('lesson_detail');
+});
