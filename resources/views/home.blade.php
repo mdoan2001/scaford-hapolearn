@@ -59,7 +59,8 @@
             @endforeach
         </div>
         <div class="list-bot">
-            <p class="text">View All Our Courses<i class="fa-solid fa-arrow-right icon"></i></p>
+            <a href="{{ route('course.index') }}" class="text">View All Our Courses<i
+                    class="fa-solid fa-arrow-right icon"></i></a>
         </div>
     </section>
 
@@ -93,7 +94,7 @@
                 </div>
             </div>
             <div class="col-4 col-sm-5 col-12">
-                <img src="{{asset('images/why-laptop.png')}}" alt="laptop" class="why-img" width="100%" />
+                <img src="{{ asset('images/why-laptop.png') }}" alt="laptop" class="why-img" width="100%" />
             </div>
         </div>
     </section>

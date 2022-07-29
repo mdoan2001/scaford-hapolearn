@@ -19,7 +19,7 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany(Lessons::class);
+        return $this->hasMany(Lesson::class);
     }
 
     public function reviews()
@@ -45,5 +45,61 @@ class Course extends Model
     public function scopeOther($query)
     {
         return $query->orderBy('id', config('course.sort_descending'))->take(config('course.home_other_course_num'));
+    }
+
+    public function getLearnersAttribute()
+    {
+        return $this->users()->count();
+    }
+
+    public function getLessonsAttribute()
+    {
+        return $this->lessons()->count();
+    }
+
+    public function getTimesAttribute()
+    {
+        return $this->lessons()->sum('time');
+    }
+
+    public static function scopeSearch($query, $request)
+    {
+        if (isset($request["keyword"]) && !empty($request["keyword"])) {
+            $query->where('name', 'LIKE', "%{$request["keyword"]}%")->orWhere('description', 'LIKE', "%{$request["keyword"]}%");
+        }
+
+        if (isset($request["teachers"]) && !empty($request["teachers"])) {
+            $query->whereHas('users', function ($query) use ($request) {
+                $query->whereIn('user_id', $request['teachers']);
+            });
+        }
+
+        if (isset($request["total_lesson"]) && !empty($request["total_lesson"])) {
+            $query->withCount('lessons')->orderBy('lessons_count', $request['total_lesson']);
+        }
+
+        if (isset($request["learn_time"]) && !empty($request["learn_time"])) {
+            $query->withSum('lessons', 'time')->orderBy('lessons_sum_time', $request["learn_time"]);
+        }
+
+        if (isset($request["learners"]) && !empty($request["learners"])) {
+            $query->withCount('users')->orderBy('users_count', $request["learners"]);
+        }
+
+        if (isset($request["rate"]) && !empty($request["rate"])) {
+            $query->withCount('reviews')->orderBy('reviews_count', $request["rate"]);
+        }
+
+        if (isset($request["tags"]) && !empty($request["tags"])) {
+            $query->whereHas('tags', function ($query) use ($request) {
+                $query->whereIn('tag_id', $request['tags']);
+            });
+        }
+
+        if (isset($request["created_time"]) && !empty($request["created_time"])) {
+            $query->orderBy('courses.created_at', $request["created_time"]);
+        }
+
+        return $query;
     }
 }

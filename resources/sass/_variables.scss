@@ -24,6 +24,10 @@ $green2: #90ab26;
 $dark-blue: #11114e;
 $text: #505353;
 $gray-dark: #454545;
+$bg-c4: #c4c4c4;
+$bg-e5: #E5E6E7;
+$bg-f0: #F0F0F0;
+$bg-e5: #E5E5E5;
 
 @font-face {
   font-family: 'UTM BryantLG';
@@ -41,4 +45,6 @@ $gray-dark: #454545;
 
 main {
   min-height: 54vh;
+  background-color: $bg-e5;
+  padding: 40px 0;
 }
