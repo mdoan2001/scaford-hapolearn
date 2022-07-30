@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -49,7 +50,7 @@ class Course extends Model
 
     public function getLearnersAttribute()
     {
-        return $this->users()->count();
+        return $this->users()->where('role', '<>', config('users.teacher_role'))->count();
     }
 
     public function getLessonsAttribute()
@@ -61,6 +62,108 @@ class Course extends Model
     {
         return $this->lessons()->sum('time');
     }
+
+    public function getLessons($request)
+    {
+        if (isset($request['keyword']) && !empty($request['keyword'])) {
+            return $this->lessons()->where('name', 'LIKE', "%{$request["keyword"]}%")->orderBy('order', config('course.sort_ascending'));
+        }
+        return $this->lessons()->orderBy('order', config('course.sort_ascending'));
+    }
+
+    public function getTeachers()
+    {
+        return $this->users()->where('role', config('users.teacher_role'));
+    }
+
+    public function getReviews()
+    {
+        return $this->reviews()->orderBy('star', config('course.sort_descending'));
+    }
+
+    public function getZeroStarsAttribute()
+    {
+        return $this->reviews()->where('star', '0')->count();
+    }
+
+    public function getOneStarsAttribute()
+    {
+        return $this->reviews()->where('star', '1')->count();
+    }
+
+    public function getTwoStarsAttribute()
+    {
+        return $this->reviews()->where('star', '2')->count();
+    }
+
+    public function getThreeStarsAttribute()
+    {
+        return $this->reviews()->where('star', '3')->count();
+    }
+
+    public function getFourStarsAttribute()
+    {
+        return $this->reviews()->where('star', '4')->count();
+    }
+
+    public function getFiveStarsAttribute()
+    {
+        return $this->reviews()->where('star', '5')->count();
+    }
+
+    public function getJoinedAttribute()
+    {
+        if (Auth::check() && $this->users()->where('id', Auth::user()->id)->count() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getLeavedAttribute()
+    {
+        if (Auth::check() && CourseUser::withTrashed()->where('course_id', $this->id)->where('user_id', Auth::user()->id)->where('deleted_at', '<>', 'NULL')->count() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getAvgStarsAttribute()
+    {
+        $sum = 0;
+        $num = 0;
+
+        if ($this['zero_stars'] > 0) {
+            $num += $this['zero_stars'];
+        }
+
+        if ($this['one_stars'] > 0) {
+            $sum += $this['one_stars'];
+            $num += $this['one_stars'];
+        }
+
+        if ($this['two_stars'] > 0) {
+            $sum += $this['two_stars'] * 2;
+            $num += $this['two_stars'];
+        }
+
+        if ($this['three_stars'] > 0) {
+            $sum += $this['three_stars'] * 3;
+            $num += $this['three_stars'];
+        }
+
+        if ($this['four_stars'] > 0) {
+            $sum += $this['four_stars'] * 4;
+            $num += $this['four_stars'];
+        }
+
+        if ($this['five_stars'] > 0) {
+            $sum += $this['five_stars'] * 5;
+            $num += $this['five_stars'];
+        }
+
+        return round($sum / $num, 1);
+    }
+
 
     public static function scopeSearch($query, $request)
     {

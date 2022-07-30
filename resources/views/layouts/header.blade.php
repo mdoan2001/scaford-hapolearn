@@ -14,7 +14,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">All Courses</a>
+                    <a class="nav-link" href="{{ route('course.index') }}">All Courses</a>
                 </li>
                 @if (!Auth::check())
                     <li class="nav-item nav-item--login">

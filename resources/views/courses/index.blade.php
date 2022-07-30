@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="course-button">
-                            <button class="btn">More</button>
+                            <a href="{{ route('course.show', [$course->id]) }}" class="btn">More</a>
                         </div>
                         <div class="course-footer">
                             <div>

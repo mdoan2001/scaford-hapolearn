@@ -1,33 +1,26 @@
 $(document).ready(function () {
-    const lesson_detail = $('.lesson-detail');
-    if (lesson_detail != null) {
-        const descriptionBtn = $('#js-link-description');
-        const documentBtn = $('#js-link-document');
+  if ($('.lesson-detail') != null) {
+    $('#js-link-description').click(function () {
+      removeActive();
+      $('#js-description').addClass('active');
+      $(this).addClass('title-link--active');
+    });
 
-        const description = $('#js-description');
-        const document = $('#js-document');
+    $('#js-link-document').click(function () {
+      removeActive();
+      $('#js-document').addClass('active');
+      $(this).addClass('title-link--active');
+    });
 
-        descriptionBtn.click(function () {
-            removeActive();
-            description.addClass('active');
-            $(this).addClass('title-link--active');
-        });
+    function removeActive() {
+      $('.lesson-detail .group-item').each(function () {
+        $(this).removeClass('active');
+      });
 
-        documentBtn.click(function () {
-            removeActive();
-            document.addClass('active');
-            $(this).addClass('title-link--active');
-        });
-
-        function removeActive() {
-            $('.lesson-detail .group-item').each(function () {
-                $(this).removeClass('active');
-            });
-
-            $('.lesson-detail .title-link').each(function () {
-                $(this).removeClass('title-link--active');
-            });
-        }
+      $('.lesson-detail .title-link').each(function () {
+        $(this).removeClass('title-link--active');
+      });
     }
+  }
 });
 

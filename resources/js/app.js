@@ -7,7 +7,8 @@ require('./components/select2');
 require('./components/filter_course');
 require('./components/course_detail');
 require('./components/lesson_detail');
+require('./components/vote_star');
 
 const app = new Vue({
-    el: '#app',
+ el: '#app',
 });

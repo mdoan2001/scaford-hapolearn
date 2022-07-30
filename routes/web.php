@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,5 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
-Route::resource('course', CourseController::class)->only('index');
-Route::get('/test', function () {
-    return view('course_detail');
-});
-Route::get('/test2', function () {
-    return view('lesson_detail');
-});
+Route::resource('/course', CourseController::class)->only(['index', 'show']);
+Route::resource('/course-user', CourseUserController::class)->only(['store', 'destroy']);

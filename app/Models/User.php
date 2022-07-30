@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -69,5 +70,13 @@ class User extends Authenticatable
     public static function teachers()
     {
         return self::where('role', config('users.teacher_role'));
+    }
+
+    public function getIsTeacherAttribute()
+    {
+        if (Auth::check() && $this->role == config('users.teacher_role')) {
+            return true;
+        }
+        return false;
     }
 }
