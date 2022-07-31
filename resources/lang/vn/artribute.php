@@ -25,5 +25,7 @@ return [
     'create_new_account' => 'Tạo tài khoản',
     'sign_up_hapolearn' => 'Đăng ký tài khoản HapoLearn',
     'sign_in_hapolearn' => 'Đăng nhập tài khoản HapoLearn',
-    'take_this_course' => 'Đăng ký khóa học'
+    'take_this_course' => 'Đăng ký khóa học',
+    'vote' => 'sao',
+    'comment' => 'Bình luận',
 ];

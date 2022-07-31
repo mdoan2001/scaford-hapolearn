@@ -4,10 +4,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 import 'slick-carousel/slick/slick';
 require('./components/slider');
 require('./components/select2');
-require('./components/filter_course');
-require('./components/course_detail');
+require('./components/courses/filter_course');
+require('./components/courses/course_detail');
 require('./components/lesson_detail');
-require('./components/vote_star');
+require('./components/courses/vote_star');
+require('./components/courses/leave_review');
+require('./components/courses/show_comment');
 
 const app = new Vue({
  el: '#app',

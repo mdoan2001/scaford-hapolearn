@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -22,3 +24,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/course', CourseController::class)->only(['index', 'show']);
 Route::resource('/course-user', CourseUserController::class)->only(['store', 'destroy']);
+Route::resource('/review', ReviewController::class);
+Route::resource('/reply', ReplyController::class);

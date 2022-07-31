@@ -41,7 +41,7 @@ class CourseUserController extends Controller
      */
     public function destroy($id)
     {
-        CourseUser::where('course_id', $id)->where('user_id', Auth::user()->id)->forceDelete();
+        CourseUser::where('course_id', $id)->forceDelete();
         return redirect()->route('course.show', [$id]);
     }
 }

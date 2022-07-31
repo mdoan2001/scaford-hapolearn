@@ -28,6 +28,11 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -78,7 +83,7 @@ class Course extends Model
 
     public function getReviews()
     {
-        return $this->reviews()->orderBy('star', config('course.sort_descending'));
+        return $this->reviews()->orderBy('created_at', config('course.sort_descending'));
     }
 
     public function getZeroStarsAttribute()

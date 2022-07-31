@@ -22,7 +22,7 @@
                                     </div>
                                 </form>
 
-                                <form action="{{ route('course-user.store') }}" method="POST">
+                                <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
                                     @if ($course->joined)
                                         @if (Auth::user()->is_teacher)
@@ -127,56 +127,123 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="show-all">
+                            <div class="show-all" id="showAllComments">
                                 Show all reviews
-                                <i class="down-icon fa-solid fa-caret-down"></i>
+                                <i class="down-icon fa-solid fa-caret-right"></i>
                             </div>
                             <div class="comments">
 
                                 @foreach ($reviews as $review)
-                                    <div class="comment">
+                                    <form method="post" action="{{ route('review.destroy', [$review->id]) }}"
+                                        class="comment" id="form-{{ $review->id }}">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE" />
                                         <div class="comment-user">
-                                            <img src=" {{ $review->user->avatar }}" alt="" class="user-avatar">
-                                            <div class="user-name">
-                                                {{ $review->user->full_name }}
-                                                @if (Auth::check() && Auth::user()->id == $review->id)
-                                                    {{ '(You)' }}
+                                            <div class="left">
+                                                <img src=" {{ $review->user->avatar }}" alt=""
+                                                    class="user-avatar">
+                                                <div class="user-name">
+                                                    {{ $review->user->full_name }}
+                                                    @if (Auth::check() && Auth::user()->id == $review->user->id)
+                                                        {{ '(You)' }}
+                                                    @endif
+                                                </div>
+                                                <div class="user-stars">
+
+                                                    @for ($i = 0; $i < $review->star; $i++)
+                                                        <i class="star-icon active fa-solid fa-star"></i>
+                                                    @endfor
+
+                                                    @for ($i = 0; $i < 5 - $review->star; $i++)
+                                                        <i class="star-icon fa-solid fa-star"></i>
+                                                    @endfor
+
+                                                </div>
+                                                <div class="user-time">{{ $review->created_at }}</div>
+                                            </div>
+                                            <button type="submit" class="right">
+                                                @if (Auth::check() && Auth::user()->id == $review->user->id)
+                                                    <i class="fa-solid fa-xmark"></i>
                                                 @endif
-                                            </div>
-                                            <div class="user-stars">
-
-                                                @for ($i = 0; $i < $review->star; $i++)
-                                                    <i class="star-icon active fa-solid fa-star"></i>
-                                                @endfor
-
-                                                @for ($i = 0; $i < 5 - $review->star; $i++)
-                                                    <i class="star-icon fa-solid fa-star"></i>
-                                                @endfor
-
-                                            </div>
-                                            <div class="user-time">{{ $review->created_at }}</div>
+                                            </button>
                                         </div>
                                         <p class="comment-content">{{ $review->content }}</p>
-                                    </div>
+                                        <div class="replies">
+                                            {{-- @foreach ($replies::findByReviewId($review->id)->get() as $reply)
+                                                <form method="post" action="http://127.0.0.1:8000/review/30"
+                                                    class="reply" id="form-30">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <div class="comment-user">
+                                                        <div class="left">
+                                                            <img src=" {{ $reply->user()->image }}" alt=""
+                                                                class="user-avatar">
+                                                            <div class="user-name">
+                                                                {{ $reply->user()->full_name }}
+                                                            </div>
+                                                            <div class="user-time">{{ $reply->created_at }}</div>
+                                                        </div>
+                                                        <button type="submit" class="right">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </button>
+                                                    </div>
+                                                    <p class="comment-content">{{ $reply->content }}<< /p>
+                                                </form>
+                                            @endforeach --}}
+
+                                            <input type="text" class="reply-input" placeholder="Your comment...">
+                                        </div>
+                                    </form>
                                 @endforeach
 
-                                <form class="leave-review">
+                                <form id="js-leave-review" class="leave-review" action="{{ route('review.store') }}"
+                                    method="POST">
+                                    @csrf
                                     <div class="leave-title">Leave a Review</div>
                                     <label class="leave-label" for="">Message</label>
-                                    <textarea class="leave-input" name="message" id="" rows="5"></textarea>
+                                    <textarea class="leave-input @error('comment') is-invalid @enderror" name="comment" id="" rows="5">{{ old('comment') }}</textarea>
+                                    @error('comment')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div class="vote">
                                         <label for="" class="vote-label">Vote</label>
                                         <div class="vote-stars">
-                                            <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                            <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                            <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                            <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                            <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                            @if (!empty(old('vote')))
+                                                @php
+                                                    $vote = old('vote') > 5 ? 5 : old('vote');
+                                                    $vote = old('vote') < 1 ? 1 : old('vote');
+                                                @endphp
+
+                                                @for ($i = 0; $i < $vote; $i++)
+                                                    <i class="js-vote-star star-icon fa-solid fa-star active"></i>
+                                                @endfor
+
+                                                @for ($i = 0; $i < 5 - $vote; $i++)
+                                                    <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                                @endfor
+                                            @else
+                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
+                                            @endif
+
                                         </div>
-                                        <input type="hidden" name="vote" value="0" id="inputVote">
+                                        <input type="hidden" name="vote" value="{{ old('vote') }}" id="inputVote"
+                                            class="@error('vote') is-invalid @enderror">
                                         <p>(star)</p>
+                                        @error('vote')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    <button type="submit" class="btn">Send</button>
+                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                    <button type="submit" id="js-leave-review-btn"
+                                        class="btn @if (!$course->joined) {{ 'done' }} @endif">Send</button>
                                 </form>
                             </div>
                         </div>
@@ -268,7 +335,7 @@
                             @endforeach
 
                             <div class="other-course-row">
-                                <div class="btn view-all">View all ours courses</div>
+                                <a href="{{ route('course.index') }}" class="btn view-all">View all ours courses</a>
                             </div>
                         </div>
                     </div>

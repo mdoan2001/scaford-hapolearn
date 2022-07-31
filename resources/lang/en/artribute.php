@@ -26,4 +26,6 @@ return [
     'sign_up_hapolearn' => 'Sign up to HapoLearn',
     'sign_in_hapolearn' => 'Sign in to HapoLearn',
     'take_this_course' => 'Take this Course',
+    'vote' => 'Vote',
+    'comment' => 'Comment',
 ];

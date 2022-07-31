@@ -325,6 +325,19 @@
 
     .comment {
       border-bottom: 1px solid #F3F0F0;
+
+      .replies {
+        margin-left: 80px;
+        border-top: 1px solid #F3F0F0;
+        padding: 20px 0;
+      }
+
+      .replies .reply-input {
+        width: 100%;
+        border: 1px solid #E1E1E1;
+        border-radius: 8px;
+        padding: 4px 8px;
+      }
     }
 
     .comment+.comment {
@@ -334,7 +347,28 @@
     .comment-user {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .right {
+        padding-right: 40px;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+
+        i {
+          opacity: 0.6;
+        }
+
+        &:hover i {
+          color: red;
+        }
+      }
 
       .user-avatar {
         width: 40px;
@@ -374,6 +408,15 @@
     .leave-review {
       display: flex;
       flex-direction: column;
+
+      .invalid-feedback {
+        font-size: 16px;
+      }
+
+      .btn.done {
+        opacity: 0.6;
+        cursor: auto;
+      }
     }
 
     .leave-title {
@@ -403,6 +446,7 @@
       align-items: center;
       gap: 16px;
       margin-top: 18px;
+      flex-wrap: wrap;
 
       p {
         color: #747474;
@@ -559,7 +603,7 @@
       display: flex;
       gap: 10px;
       padding: 16px 0;
-      font-size: 16px;
+      font-size: 20px;
       line-height: 19px;
       align-items: flex-start;
       border-bottom: 1px solid #E2E0E0;
@@ -640,6 +684,21 @@
 }
 
 @media (max-width: 992px) {
+  .lessons-action {
+    flex-wrap: wrap;
+
+    form {
+      width: 100%;
+      position: relative;
+    }
+
+    .form-join {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   .course-detail .side-bar .course-description,
   .course-detail .side-bar .course-information {

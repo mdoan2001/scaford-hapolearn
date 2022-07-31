@@ -27,8 +27,18 @@ class Review extends Model
         return $this->belongsTo(Course::class);
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function scopeMain($query)
     {
         return $query->take(config('course.home_review_num'));
+    }
+
+    public function scopReplies($query)
+    {
+        return $query->review()->oderBy('created_at', config('course.sort_descending'));
     }
 }

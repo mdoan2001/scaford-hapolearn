@@ -29,7 +29,8 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="#" class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
+                            <a href="{{ route('course.show', [$course->id]) }}"
+                                class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +53,8 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="#" class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
+                            <a href="{{ route('course.show', [$course->id]) }}"
+                                class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
                 </div>

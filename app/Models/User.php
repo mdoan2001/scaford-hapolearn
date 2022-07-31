@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public static function teachers()
     {
         return self::where('role', config('users.teacher_role'));
