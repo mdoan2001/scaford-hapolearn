@@ -31,8 +31,4 @@ class Reply extends Model
     {
         return $this->belongsTo(Course::class);
     }
-
-    public static function findByReviewId($review_id) {
-        return self::with('review')->where('id', $review_id);
-    }
 }

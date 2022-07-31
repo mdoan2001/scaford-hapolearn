@@ -39,7 +39,6 @@ class CourseController extends Controller
         $teachers = $course->getTeachers()->get();
         $tags = $course->tags()->get();
         $reviews = $course->getReviews()->get();
-        $replies = Reply::class;
 
         return view('courses.show', compact(
             'course',
@@ -48,7 +47,6 @@ class CourseController extends Controller
             'tags',
             'others',
             'reviews',
-            'replies'
         ));
     }
 }

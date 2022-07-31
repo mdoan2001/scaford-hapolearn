@@ -24,5 +24,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/course', CourseController::class)->only(['index', 'show']);
 Route::resource('/course-user', CourseUserController::class)->only(['store', 'destroy']);
-Route::resource('/review', ReviewController::class);
-Route::resource('/reply', ReplyController::class);
+Route::resource('/review', ReviewController::class)->only(['store', 'destroy']);
+Route::resource('/reply', ReplyController::class)->only(['store', 'destroy']);

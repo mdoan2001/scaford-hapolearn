@@ -337,6 +337,23 @@
         border: 1px solid #E1E1E1;
         border-radius: 8px;
         padding: 4px 8px;
+
+        &:focus {
+          outline: none;
+          border: 1px solid $text;
+        }
+      }
+
+      .close {
+        padding: 0 40px;
+
+        i {
+          font-size: 18px;
+        }
+
+        &:hover i {
+          color: red;
+        }
       }
     }
 
@@ -356,18 +373,9 @@
       }
 
       .right {
-        padding-right: 40px;
-        border: 0;
-        background-color: transparent;
         cursor: pointer;
-
-        i {
-          opacity: 0.6;
-        }
-
-        &:hover i {
-          color: red;
-        }
+        display: flex;
+        align-items: center;
       }
 
       .user-avatar {

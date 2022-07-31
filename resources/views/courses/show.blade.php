@@ -134,10 +134,7 @@
                             <div class="comments">
 
                                 @foreach ($reviews as $review)
-                                    <form method="post" action="{{ route('review.destroy', [$review->id]) }}"
-                                        class="comment" id="form-{{ $review->id }}">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE" />
+                                    <div class="comment" id="form-{{ $review->id }}">
                                         <div class="comment-user">
                                             <div class="left">
                                                 <img src=" {{ $review->user->avatar }}" alt=""
@@ -161,39 +158,54 @@
                                                 </div>
                                                 <div class="user-time">{{ $review->created_at }}</div>
                                             </div>
-                                            <button type="submit" class="right">
+                                            <form class="right" method="POST" action="{{ route('review.destroy', [$review->id]) }}">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE" />
                                                 @if (Auth::check() && Auth::user()->id == $review->user->id)
-                                                    <i class="fa-solid fa-xmark"></i>
+                                                    <button type="submit" class="close">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </button>
                                                 @endif
-                                            </button>
+                                            </form>
                                         </div>
                                         <p class="comment-content">{{ $review->content }}</p>
                                         <div class="replies">
-                                            {{-- @foreach ($replies::findByReviewId($review->id)->get() as $reply)
-                                                <form method="post" action="http://127.0.0.1:8000/review/30"
-                                                    class="reply" id="form-30">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE">
+                                            @foreach ($review->replies as $reply)
+                                                <div class="reply" id="form-30">
+
                                                     <div class="comment-user">
                                                         <div class="left">
-                                                            <img src=" {{ $reply->user()->image }}" alt=""
+                                                            <img src="{{ $reply->user->avatar }}" alt=""
                                                                 class="user-avatar">
                                                             <div class="user-name">
-                                                                {{ $reply->user()->full_name }}
+                                                                {{ $reply->user->full_name }}
+                                                                @if (Auth::check() && Auth::user()->id == $reply->user->id)
+                                                                    {{ '(You)' }}
+                                                                @endif
                                                             </div>
                                                             <div class="user-time">{{ $reply->created_at }}</div>
                                                         </div>
-                                                        <button type="submit" class="right">
-                                                            <i class="fa-solid fa-xmark"></i>
-                                                        </button>
+                                                        <form class="right" method="POST" action="{{ route('reply.destroy', [$reply->id]) }}">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="DELETE" />
+                                                            @if (Auth::check() && Auth::user()->id == $reply->user->id)
+                                                                <button type="submit" class="close">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            @endif
+                                                        </form>
                                                     </div>
-                                                    <p class="comment-content">{{ $reply->content }}<< /p>
-                                                </form>
-                                            @endforeach --}}
-
-                                            <input type="text" class="reply-input" placeholder="Your comment...">
+                                                    <p class="comment-content">{{ $reply->content }} </p>
+                                                </div>
+                                            @endforeach
+                                            <form method="POST" action="{{ route('reply.store') }}">
+                                                @csrf
+                                                <input type="hidden" name="review_id" value="{{ $review->id }}">
+                                                <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                                <input type="text" name="content" class="reply-input" placeholder="Your comment..." required>
+                                            </form>
                                         </div>
-                                    </form>
+                                    </div>
                                 @endforeach
 
                                 <form id="js-leave-review" class="leave-review" action="{{ route('review.store') }}"
