@@ -107,37 +107,8 @@ class Course extends Model
 
     public function getAvgStarsAttribute()
     {
-        $sum = 0;
-        $num = 0;
-
-        if ($this['zero_stars'] > 0) {
-            $num += $this['zero_stars'];
-        }
-
-        if ($this['one_stars'] > 0) {
-            $sum += $this['one_stars'];
-            $num += $this['one_stars'];
-        }
-
-        if ($this['two_stars'] > 0) {
-            $sum += $this['two_stars'] * 2;
-            $num += $this['two_stars'];
-        }
-
-        if ($this['three_stars'] > 0) {
-            $sum += $this['three_stars'] * 3;
-            $num += $this['three_stars'];
-        }
-
-        if ($this['four_stars'] > 0) {
-            $sum += $this['four_stars'] * 4;
-            $num += $this['four_stars'];
-        }
-
-        if ($this['five_stars'] > 0) {
-            $sum += $this['five_stars'] * 5;
-            $num += $this['five_stars'];
-        }
+        $sum = $this['one_stars'] + $this['two_stars'] * 2 + $this['three_stars'] * 3 + $this['four_stars'] * 4 + $this['five_stars'] * 5;
+        $num = $this['zero_stars'] + $this['one_stars'] + $this['two_stars'] + $this['three_stars'] + $this['four_stars'] + $this['five_stars'];
 
         return $num == 0 ? 0 : round($sum / $num, 1);
     }

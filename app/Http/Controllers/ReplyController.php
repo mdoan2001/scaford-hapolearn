@@ -20,14 +20,13 @@ class ReplyController extends Controller
      */
     public function store(StoreReplyRequest $data)
     {
-        $reply = Reply::create([
+        Reply::create([
             'course_id' => $data['course_id'],
             'user_id' => auth()->user()->id,
             'review_id' => $data['review_id'],
             'content' => $data['content'],
         ]);
 
-        $reply->save();
         return redirect()->route('course.show', [$data['course_id']]);
     }
 

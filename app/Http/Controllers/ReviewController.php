@@ -20,14 +20,13 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $data)
     {
-        $review = Review::create([
+        Review::create([
             'course_id' => $data['course_id'],
             'user_id' => auth()->user()->id,
             'star' => $data['vote'],
             'content' => $data['comment'],
         ]);
 
-        $review->save();
         return redirect()->route('course.show', [$data['course_id']]);
     }
 
