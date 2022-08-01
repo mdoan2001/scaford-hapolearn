@@ -25,7 +25,7 @@
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
                                     @if ($course->joined)
-                                        @if (Auth::user()->is_teacher)
+                                        @if (auth()->user()->is_teacher)
                                             <div class="btn lessons-join active">Đang dạy</div>
                                         @else
                                             <div class="btn lessons-join active">Đang học</div>
@@ -61,7 +61,7 @@
                                         <div class="teacher-general">
                                             <div class="teacher-name">
                                                 {{ $teacher->full_name }}
-                                                @if (Auth::check() && Auth::user()->id == $teacher->id)
+                                                @if (auth()->check() && auth()->user()->id == $teacher->id)
                                                     {{ '(You)' }}
                                                 @endif
                                             </div>
@@ -87,11 +87,12 @@
                                 <div class="left">
                                     <div class="reviews-num">{{ $course->avg_stars }}</div>
                                     <div class="reviews-stars">
-                                        <i class="star-icon active fa-solid fa-star"></i>
-                                        <i class="star-icon active fa-solid fa-star"></i>
-                                        <i class="star-icon active fa-solid fa-star"></i>
-                                        <i class="star-icon active fa-solid fa-star"></i>
-                                        <i class="star-icon active fa-solid fa-star"></i>
+                                        @for ($i = 0; $i < $course->avg_stars; $i++)
+                                            <i class="star-icon active fa-solid fa-star"></i>
+                                        @endfor
+                                        @for ($i = 0; $i < 5 - $course->avg_stars; $i++)
+                                            <i class="star-icon fa-solid fa-star"></i>
+                                        @endfor
                                     </div>
                                     <div class="reviews-rattings">{{ $reviews->count() }} Ratings</div>
                                 </div>
@@ -143,7 +144,7 @@
                                                     class="user-avatar">
                                                 <div class="user-name">
                                                     {{ $review->user->full_name }}
-                                                    @if (Auth::check() && Auth::user()->id == $review->user->id)
+                                                    @if (auth()->check() && auth()->user()->id == $review->user->id)
                                                         {{ '(You)' }}
                                                     @endif
                                                 </div>
@@ -164,7 +165,7 @@
                                                 action="{{ route('review.destroy', [$review->id]) }}">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE" />
-                                                @if (Auth::check() && Auth::user()->id == $review->user->id)
+                                                @if (auth()->check() && auth()->user()->id == $review->user->id)
                                                     <button type="submit" class="close">
                                                         <i class="fa-solid fa-xmark"></i>
                                                     </button>
@@ -182,7 +183,7 @@
                                                                 class="user-avatar">
                                                             <div class="user-name">
                                                                 {{ $reply->user->full_name }}
-                                                                @if (Auth::check() && Auth::user()->id == $reply->user->id)
+                                                                @if (auth()->check() && auth()->user()->id == $reply->user->id)
                                                                     {{ '(You)' }}
                                                                 @endif
                                                             </div>
@@ -192,7 +193,7 @@
                                                             action="{{ route('reply.destroy', [$reply->id]) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE" />
-                                                            @if (Auth::check() && Auth::user()->id == $reply->user->id)
+                                                            @if (auth()->check() && auth()->user()->id == $reply->user->id)
                                                                 <button type="submit" class="close">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>

@@ -34,7 +34,7 @@ class CourseController extends Controller
         $data = $request->all();
         $others = Course::other()->get();
         $course = Course::find($id);
-        $lessons = $course->lessons()->getLessons($data)->paginate(config('lesson.pagination'));
+        $lessons = $course->lessons()->search($data)->paginate(config('lesson.pagination'));
         $teachers = $course->users()->getTeachers()->get();
         $tags = $course->tags()->get();
         $reviews = $course->reviews()->getReviews()->get();

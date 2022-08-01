@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -100,7 +99,7 @@ class Course extends Model
 
     public function getJoinedAttribute()
     {
-        if (Auth::check() && $this->users()->where('id', Auth::user()->id)->count() > 0) {
+        if (auth()->check() && $this->users()->where('id', auth()->user()->id)->count() > 0) {
             return true;
         }
         return false;

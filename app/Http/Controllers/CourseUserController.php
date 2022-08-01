@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use \App\Http\Requests\StoreCourseUserRequest;
-use Illuminate\Support\Facades\Auth;
 
 class CourseUserController extends Controller
 {
@@ -22,7 +21,7 @@ class CourseUserController extends Controller
     public function store(StoreCourseUserRequest $request)
     {
         $course = Course::find($request['course_id']);
-        $course->users()->attach(Auth::user()->id);
+        $course->users()->attach(auth()->user()->id);
         return redirect()->route('course.show', [$request['course_id']]);
     }
 

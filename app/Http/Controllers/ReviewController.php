@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreReviewRequest;
 
 class ReviewController extends Controller
@@ -21,11 +20,12 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        $review = new Review();
-        $review['course_id'] = $request['course_id'];
-        $review['user_id'] = Auth::user()->id;
-        $review['content'] = $request['comment'];
-        $review['star'] = $request['vote'];
+        $review = Review::create([
+            'course_id' => $request['course_id'],
+            'user_id' => auth()->user()->id,
+            'star' => $request['vote'],
+            'content' => $request['comment'],
+        ]);
 
         $review->save();
         return redirect()->route('course.show', [$request['course_id']]);
