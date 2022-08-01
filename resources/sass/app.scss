@@ -22,7 +22,7 @@
 @import './homepage/footer';
 @import './homepage/login';
 @import './homepage/register';
-@import './coursepage/filter';
-@import './coursepage/list-course';
-@import './course_detail/course_detail.scss';
-@import './lesson_detail/lesson_detail.scss';
+@import './coursepage/index/filter';
+@import './coursepage/index/list-course';
+@import './coursepage/show/course-detail';
+@import './lessonpage/index/lesson_detail';
