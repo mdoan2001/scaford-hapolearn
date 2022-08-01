@@ -124,14 +124,6 @@ class Course extends Model
         return false;
     }
 
-    public function getLeavedAttribute()
-    {
-        if (Auth::check() && CourseUser::withTrashed()->where('course_id', $this->id)->where('user_id', Auth::user()->id)->where('deleted_at', '<>', 'NULL')->count() > 0) {
-            return true;
-        }
-        return false;
-    }
-
     public function getAvgStarsAttribute()
     {
         $sum = 0;
@@ -168,7 +160,6 @@ class Course extends Model
 
         return round($sum / $num, 1);
     }
-
 
     public static function scopeSearch($query, $request)
     {
