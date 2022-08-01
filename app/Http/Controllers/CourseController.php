@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
-use App\Models\Reply;
 use App\Models\Tag;
 use App\Models\User;
 
@@ -35,7 +34,7 @@ class CourseController extends Controller
         $data = $request->all();
         $others = Course::other()->get();
         $course = Course::find($id);
-        $lessons = $course->getLessons($data)->get();
+        $lessons = $course->getLessons($data)->paginate(config('lesson.pagination'));
         $teachers = $course->getTeachers()->get();
         $tags = $course->tags()->get();
         $reviews = $course->getReviews()->get();

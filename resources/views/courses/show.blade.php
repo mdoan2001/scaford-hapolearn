@@ -47,6 +47,8 @@
                                 </div>
                             @endforeach
 
+                            {{ $lessons->appends(request()->query())->links() }}
+
                         </div>
 
                         <div class="teachers group-item" id="js-teacher">
@@ -158,7 +160,8 @@
                                                 </div>
                                                 <div class="user-time">{{ $review->created_at }}</div>
                                             </div>
-                                            <form class="right" method="POST" action="{{ route('review.destroy', [$review->id]) }}">
+                                            <form class="right" method="POST"
+                                                action="{{ route('review.destroy', [$review->id]) }}">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE" />
                                                 @if (Auth::check() && Auth::user()->id == $review->user->id)
@@ -185,7 +188,8 @@
                                                             </div>
                                                             <div class="user-time">{{ $reply->created_at }}</div>
                                                         </div>
-                                                        <form class="right" method="POST" action="{{ route('reply.destroy', [$reply->id]) }}">
+                                                        <form class="right" method="POST"
+                                                            action="{{ route('reply.destroy', [$reply->id]) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             @if (Auth::check() && Auth::user()->id == $reply->user->id)
@@ -202,7 +206,8 @@
                                                 @csrf
                                                 <input type="hidden" name="review_id" value="{{ $review->id }}">
                                                 <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                                <input type="text" name="content" class="reply-input" placeholder="Your comment..." required>
+                                                <input type="text" name="content" class="reply-input"
+                                                    placeholder="Your comment..." required>
                                             </form>
                                         </div>
                                     </div>

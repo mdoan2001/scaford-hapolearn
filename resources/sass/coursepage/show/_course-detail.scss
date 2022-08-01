@@ -81,6 +81,10 @@
   }
 
   .main .lessons {
+    .pagination {
+      margin-top: 16px;
+    }
+
     .lessons-action {
       display: flex;
       justify-content: space-between;
@@ -786,41 +790,51 @@
     margin-top: 30px;
   }
 
-  .course-detail .main .reviews .reviews-evaluate {
+  .course-detail .reviews-evaluate {
     flex-direction: column;
   }
 
-  .course-detail .main .reviews .comment-user {
-    flex-direction: column;
-    gap: 0;
+  .course-detail .comment-user {
+    .left {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .user-time {
+      display: none;
+    }
   }
 
-  .course-detail .side-bar .course-description,
-  .course-detail .side-bar .course-information {
+  .course-detail .comment .replies {
+    margin-left: 20px;
+  }
+
+  .course-detail .course-description,
+  .course-detail .course-information {
     max-height: max-content;
   }
 }
 
 @media (max-width: 380px) {
-  .course-detail .main .lessons .lessons-filter {
+  .course-detail .lessons .lessons-filter {
     .btn {
       padding: 5px;
     }
   }
 
-  .course-detail .main .teachers .teacher-about {
+  .course-detail .teachers .teacher-about {
     font-size: 16px;
   }
 
-  .course-detail .main .lessons .lessons-search {
+  .course-detail .lessons .lessons-search {
     flex-direction: column;
   }
 
-  .course-detail .main .group .group-title {
+  .course-detail .group .group-title {
     gap: 20px;
   }
 
-  .course-detail .main .lessons .lesson {
+  .course-detail .lessons .lesson {
     flex-direction: column;
 
     .lesson-btn {
@@ -828,7 +842,7 @@
     }
   }
 
-  .course-detail .main .lessons .lesson-content {
+  .course-detail .lessons .lesson-content {
     flex-direction: column;
 
     .lesson-num {
@@ -841,7 +855,12 @@
     }
   }
 
-  .course-detail .main .group .title-link {
+  .course-detail .group .title-link {
     font-size: 16px;
+  }
+
+  .course-detail .main .group .group-title {
+    display: flex;
+    flex-direction: column;
   }
 }
