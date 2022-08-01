@@ -16,16 +16,16 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('courses.index') }}">All Courses</a>
                 </li>
-                @if (!Auth::check())
+                @if (!auth()->check())
                     <li class="nav-item nav-item--login">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>/<a class="nav-link"
                             href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
 
-                @if (Auth::check())
+                @if (auth()->check())
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Profile</a>
+                        <a class="nav-link" href="{{ route('user.index') }}">Profile</a>
                     </li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
