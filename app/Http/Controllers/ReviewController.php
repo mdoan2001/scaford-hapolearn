@@ -18,17 +18,17 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReviewRequest $request)
+    public function store(StoreReviewRequest $data)
     {
         $review = Review::create([
-            'course_id' => $request['course_id'],
+            'course_id' => $data['course_id'],
             'user_id' => auth()->user()->id,
-            'star' => $request['vote'],
-            'content' => $request['comment'],
+            'star' => $data['vote'],
+            'content' => $data['comment'],
         ]);
 
         $review->save();
-        return redirect()->route('course.show', [$request['course_id']]);
+        return redirect()->route('course.show', [$data['course_id']]);
     }
 
     /**

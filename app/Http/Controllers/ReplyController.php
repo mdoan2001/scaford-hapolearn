@@ -18,17 +18,17 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReplyRequest $request)
+    public function store(StoreReplyRequest $data)
     {
         $reply = Reply::create([
-            'course_id' => $request['course_id'],
+            'course_id' => $data['course_id'],
             'user_id' => auth()->user()->id,
-            'review_id' => $request['review_id'],
-            'content' => $request['content'],
+            'review_id' => $data['review_id'],
+            'content' => $data['content'],
         ]);
 
         $reply->save();
-        return redirect()->route('course.show', [$request['course_id']]);
+        return redirect()->route('course.show', [$data['course_id']]);
     }
 
     /**
