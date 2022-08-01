@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseUser;
-use Illuminate\Http\Request;
+use App\Models\Course;
+use \App\Http\Requests\StoreCourseUserRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CourseUserController extends Controller
@@ -13,24 +13,17 @@ class CourseUserController extends Controller
         $this->middleware('auth')->only('store', 'destroy');
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCourseUserRequest $request)
     {
-        if (isset($request['course_id'])) {
-            $courseUser = new CourseUser();
-            $courseUser['course_id'] = $request['course_id'];
-            $courseUser['user_id'] = Auth::user()->id;
-            $courseUser['created_at'] = now();
-
-            $courseUser->save();
-            return redirect()->route('course.show', [$request['course_id']]);
-        }
+        $course = Course::find($request['course_id']);
+        $course->users()->attach(Auth::user()->id);
+        return redirect()->route('course.show', [$request['course_id']]);
     }
 
     /**
@@ -41,7 +34,8 @@ class CourseUserController extends Controller
      */
     public function destroy($id)
     {
-        CourseUser::where('course_id', $id)->forceDelete();
+        $course = Course::find($id);
+        $course->users()->detach($id);
         return redirect()->route('course.show', [$id]);
     }
 }

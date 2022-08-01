@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreReplyRequest;
 
 class ReplyController extends Controller
 {
@@ -19,14 +19,13 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReplyRequest $request)
     {
         $reply = new Reply();
         $reply['course_id'] = $request['course_id'];
         $reply['user_id'] = Auth::user()->id;
         $reply['review_id'] = $request['review_id'];
         $reply['content'] = $request['content'];
-        $reply['created_at'] = now();
 
         $reply->save();
         return redirect()->route('course.show', [$request['course_id']]);

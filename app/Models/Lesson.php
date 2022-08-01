@@ -33,4 +33,12 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function scopeGetLessons($query, $request)
+    {
+        if (isset($request['keyword']) && !empty($request['keyword'])) {
+            $query->where('name', 'LIKE', "%{$request['keyword']}%");
+        }
+        return $query->orderBy('order', config('course.sort_ascending'));
+    }
 }

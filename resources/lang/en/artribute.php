@@ -28,4 +28,6 @@ return [
     'take_this_course' => 'Take this Course',
     'vote' => 'Vote',
     'comment' => 'Comment',
+    'course_id' => 'Course ID',
+    'review_id' => 'Review ID',
 ];

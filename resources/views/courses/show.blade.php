@@ -329,13 +329,15 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="course-information-row">
-                            <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE" />
-                                <button class="btn leave-course">Kết thúc khóa học</button>
-                            </form>
-                        </div>
+                        @if ($course->joined)
+                            <div class="course-information-row">
+                                <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button class="btn leave-course">Kết thúc khóa học</button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="side-bar-item other-course" id="js-other-course">

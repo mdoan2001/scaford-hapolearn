@@ -28,4 +28,6 @@ return [
     'take_this_course' => 'Đăng ký khóa học',
     'vote' => 'sao',
     'comment' => 'Bình luận',
+    'course_id' => 'ID Khóa học',
+    'review_id' => 'Review ID',
 ];

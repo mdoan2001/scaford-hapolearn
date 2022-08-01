@@ -68,24 +68,6 @@ class Course extends Model
         return $this->lessons()->sum('time');
     }
 
-    public function getLessons($request)
-    {
-        if (isset($request['keyword']) && !empty($request['keyword'])) {
-            return $this->lessons()->where('name', 'LIKE', "%{$request["keyword"]}%")->orderBy('order', config('course.sort_ascending'));
-        }
-        return $this->lessons()->orderBy('order', config('course.sort_ascending'));
-    }
-
-    public function getTeachers()
-    {
-        return $this->users()->where('role', config('users.teacher_role'));
-    }
-
-    public function getReviews()
-    {
-        return $this->reviews()->orderBy('created_at', config('course.sort_descending'));
-    }
-
     public function getZeroStarsAttribute()
     {
         return $this->reviews()->where('star', '0')->count();
@@ -158,7 +140,7 @@ class Course extends Model
             $num += $this['five_stars'];
         }
 
-        return round($sum / $num, 1);
+        return $num == 0 ? 0 : round($sum / $num, 1);
     }
 
     public static function scopeSearch($query, $request)

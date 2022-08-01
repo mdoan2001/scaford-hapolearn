@@ -34,10 +34,10 @@ class CourseController extends Controller
         $data = $request->all();
         $others = Course::other()->get();
         $course = Course::find($id);
-        $lessons = $course->getLessons($data)->paginate(config('lesson.pagination'));
-        $teachers = $course->getTeachers()->get();
+        $lessons = $course->lessons()->getLessons($data)->paginate(config('lesson.pagination'));
+        $teachers = $course->users()->getTeachers()->get();
         $tags = $course->tags()->get();
-        $reviews = $course->getReviews()->get();
+        $reviews = $course->reviews()->getReviews()->get();
 
         return view('courses.show', compact(
             'course',

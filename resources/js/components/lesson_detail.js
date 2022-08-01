@@ -3,13 +3,13 @@ $(document).ready(function () {
     $('#js-link-description').click(function () {
       removeActive();
       $('#js-description').addClass('active');
-      $(this).addClass('title-link--active');
+      $(this).addClass('active');
     });
 
     $('#js-link-document').click(function () {
       removeActive();
       $('#js-document').addClass('active');
-      $(this).addClass('title-link--active');
+      $(this).addClass('active');
     });
 
     function removeActive() {
@@ -18,9 +18,8 @@ $(document).ready(function () {
       });
 
       $('.lesson-detail .title-link').each(function () {
-        $(this).removeClass('title-link--active');
+        $(this).removeClass('active');
       });
     }
   }
 });
-
