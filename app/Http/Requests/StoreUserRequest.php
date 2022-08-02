@@ -24,10 +24,13 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|regex:/[0-9]{9,}/',
-            'birthday' => 'required|date'
+            'name' => 'nullable|min:3',
+            'email' => 'nullable|email|unique:users',
+            'phone' => 'nullable|regex:/[0-9]{9,}/',
+            'birthday' => 'nullable|date',
+            'address' => 'nullable|string',
+            'about' => 'nullable|string',
+            'avatar' => 'nullable|image'
         ];
     }
 
@@ -36,7 +39,9 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => __('artribute.user_name'),
             'phone' => __('artribute.phone'),
-            'birthday' => __('artribute.birthday')
+            'birthday' => __('artribute.birthday'),
+            'address' => __('artribute.address'),
+            'about' => __('artribute.about'),
         ];
     }
 }

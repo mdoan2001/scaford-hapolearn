@@ -6,8 +6,8 @@
             <div class="col-lg-3">
                 <div class="contact">
                     <div class="contact-avatar">
-                        <img src="{{ $user->avatar }}" alt="" class="contact-img">
-                        <i class="fa-solid fa-camera"></i>
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="" class="contact-img">
+                        <i id="jsUploadBtn" class="fa-solid fa-camera"></i>
                     </div>
                     <div class="contact-name">
                         <div class="name">{{ $user->full_name }}</div>
@@ -50,7 +50,8 @@
                     </div>
 
                     <div class="title">Edit profile</div>
-                    <form action="{{ route('user.update', [auth()->user()->id]) }}" method="POST" class="form-profile">
+                    <form action="{{ route('user.update', [auth()->user()->id]) }}" method="POST" class="form-profile"
+                        enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="row">
@@ -129,9 +130,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <input type="file" name="avatar" id="photo" accept="image/*"
-                                        class="form-control-file @error('avatar') is-invalid @enderror"
-                                        enctype="multipart/form-data">
+                                    <input id="jsUploadInput" type="file" name="avatar" id="photo"
+                                        accept="image/*" class=" form-control-file @error('avatar') is-invalid @enderror">
                                     @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

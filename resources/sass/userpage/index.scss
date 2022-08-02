@@ -186,8 +186,11 @@
       cursor: pointer;
     }
   }
-}
 
+  #jsUploadInput {
+    display: none;
+  }
+}
 
 @media (max-width: 992px) {
   .profile-layout {
