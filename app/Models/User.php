@@ -91,4 +91,9 @@ class User extends Authenticatable
     {
         return auth()->check() && auth()->user()->id == $this->id;
     }
+
+    public function getDateAttribute()
+    {
+        return date('d/m/Y', strtotime($this->birthday));
+    }
 }

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.show');
+        $user = auth()->user();
+        $courses = $user->courses;
+        return view('users.index', compact('user', 'courses'));
     }
 
     /**
@@ -66,9 +74,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        if ($user->id == $id) {
+            $user->full_name = $request->name;
+            $user->email = $request->email;
+            $user->birthday = $request->birthday;
+            $user->telephone = $request->phone;
+
+            if (!empty($request->address)) {
+                $user->address = $request->address;
+            }
+            if (!empty($request->about)) {
+                $user->about = $request->about;
+            }
+            $user->save();
+
+            return redirect()->route('user.index');
+        }
     }
 
     /**

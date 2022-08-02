@@ -31,4 +31,8 @@ return [
     'course_id' => 'ID Khóa học',
     'review_id' => 'Review ID',
     'free' => 'Miễn phí',
+    'phone' => 'Số điện thoại',
+    'address' => 'Địa chỉ',
+    'birthday' => 'Ngày sinh',
+    'about' => 'Thông tin',
 ];

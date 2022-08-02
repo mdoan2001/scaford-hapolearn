@@ -4,6 +4,20 @@
   padding-bottom: 80px;
 
   .contact {
+    .contact-avatar {
+      position: relative;
+    }
+
+    .contact-avatar i {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 35px;
+      color: white;
+      cursor: pointer;
+    }
+
     .contact-img {
       width: 260px;
       height: 260px;
@@ -63,7 +77,7 @@
   }
 
   .edit-profile {
-    margin-left: 48px;
+    margin-left: 30px;
 
     .title {
       position: relative;
@@ -131,11 +145,16 @@
       display: flex;
       flex-direction: column;
       margin-top: 22px;
+
+      .invalid-feedback {
+        font-size: 16px;
+      }
     }
 
     .edit-profile-item label {
       font-weight: 700;
       font-size: 20px;
+      cursor: pointer;
     }
 
     .edit-profile-item input,
@@ -147,6 +166,24 @@
       background: white;
       border: 1px solid #D6D6D6;
       border-radius: 5px;
+    }
+  }
+
+  .profile-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .btn {
+      background-color: $green;
+      font-size: 18px;
+      font-weight: 700;
+      border: 0;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+      cursor: pointer;
     }
   }
 }

@@ -31,4 +31,8 @@ return [
     'course_id' => 'Course ID',
     'review_id' => 'Review ID',
     'free' => 'FREE',
+    'phone' => 'Telephone',
+    'address' => 'Address',
+    'birthday' => 'Birthday',
+    'about' => 'About',
 ];
