@@ -83,9 +83,4 @@ class User extends Authenticatable
         }
         return false;
     }
-
-    public function scopeGetTeachers($query)
-    {
-        return $query->where('role', config('users.teacher_role'));
-    }
 }

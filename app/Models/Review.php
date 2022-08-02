@@ -41,9 +41,4 @@ class Review extends Model
     {
         return $query->review()->oderBy('created_at', config('course.sort_descending'));
     }
-
-    public function scopeGetReviews($query)
-    {
-        return $query->orderBy('created_at', config('course.sort_descending'));
-    }
 }

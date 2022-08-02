@@ -35,9 +35,9 @@ class CourseController extends Controller
         $others = Course::other()->get();
         $course = Course::find($id);
         $lessons = $course->lessons()->search($data)->paginate(config('lesson.pagination'));
-        $teachers = $course->users()->getTeachers()->get();
+        $teachers = $course->teachers;
         $tags = $course->tags;
-        $reviews = $course->reviews()->getReviews()->get();
+        $reviews = $course->reviews()->orderBy('created_at', config('course.sort_descending'))->get();
 
         return view('courses.show', compact(
             'course',

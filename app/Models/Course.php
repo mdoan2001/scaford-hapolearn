@@ -37,6 +37,11 @@ class Course extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function teachers()
+    {
+        return $this->belongsToMany(User::class)->where('role', config('users.teacher_role'));
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
@@ -107,8 +112,12 @@ class Course extends Model
 
     public function getAvgStarsAttribute()
     {
-        $sum = $this['one_stars'] + $this['two_stars'] * 2 + $this['three_stars'] * 3 + $this['four_stars'] * 4 + $this['five_stars'] * 5;
-        $num = $this['zero_stars'] + $this['one_stars'] + $this['two_stars'] + $this['three_stars'] + $this['four_stars'] + $this['five_stars'];
+        $sum = 0;
+        $num = $this->reviews->count();
+
+        foreach ($this->reviews as $review) {
+            $sum += $review->star;
+        }
 
         return $num == 0 ? 0 : round($sum / $num, 1);
     }
