@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reply;
 use App\Http\Requests\StoreReplyRequest;
+use App\Http\Requests\UpdateReplyRequest;
 
 class ReplyController extends Controller
 {
@@ -24,6 +25,24 @@ class ReplyController extends Controller
         Reply::create($data);
         return redirect()->route('courses.show', [$request['course_id']]);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateReplyRequest $request, $id)
+    {
+        $reply = Reply::find($id);
+        if ($reply['course_id'] == $request['course_id'] && $reply['user_id'] == auth()->id()) {
+            $reply['content'] = $request['comment'];
+            $reply->save();
+        }
+        return redirect()->route('courses.show', [$request['course_id']]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

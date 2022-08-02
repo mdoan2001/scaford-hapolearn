@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -35,5 +36,22 @@ class ReviewController extends Controller
     {
         Review::find($id)->forceDelete();
         return redirect()->route('courses.index');
+    }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateReviewRequest $request, $id)
+    {
+        $reply = Review::find($id);
+        if ($reply['course_id'] == $request['course_id'] && $reply['user_id'] == auth()->id()) {
+            $reply['content'] = $request['comment'];
+            $reply->save();
+        }
+        return redirect()->route('courses.show', [$request['course_id']]);
     }
 }

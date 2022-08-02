@@ -8,12 +8,15 @@
                     <img src="{{ $course->image }}" alt="" class="course-img">
                     <div class="group" id="accordion">
                         <div class="group-title">
-                            <div id="jsLinkLesson" data-toggle="collapse" class="title-link active" data-target="#collapseLesson"
-                                aria-expanded="true" aria-controls="collapseLesson">Lessons</div>
-                            <div id="jsLinkTeacher" data-toggle="collapse" class="collapsed title-link" data-target="#collapseTeacher"
-                                aria-expanded="false" aria-controls="collapseTeacher">Teacher</div>
-                            <div id="jsLinkReview" data-toggle="collapse" class="collapsed title-link" data-target="#collapseReview"
-                                aria-expanded="false" aria-controls="collapseReview">Reviews</div>
+                            <div id="jsLinkLesson" data-toggle="collapse" class="title-link active"
+                                data-target="#collapseLesson" aria-expanded="true" aria-controls="collapseLesson">Lessons
+                            </div>
+                            <div id="jsLinkTeacher" data-toggle="collapse" class="collapsed title-link"
+                                data-target="#collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">Teacher
+                            </div>
+                            <div id="jsLinkReview" data-toggle="collapse" class="collapsed title-link"
+                                data-target="#collapseReview" aria-expanded="false" aria-controls="collapseReview">Reviews
+                            </div>
                         </div>
 
                         <div class="collapse show lessons group-item" data-parent="#accordion" id="collapseLesson">
@@ -119,7 +122,8 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->two_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">1 stars</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>
@@ -136,236 +140,17 @@
                                 Show all reviews
                                 <i class="down-icon fa-solid fa-caret-right"></i>
                             </div>
-                            <div class="comments">
 
-                                @foreach ($reviews as $review)
-                                    <div class="comment" id="form-{{ $review->id }}">
-                                        <div class="comment-user">
-                                            <div class="left">
-                                                <img src=" {{ $review->user->avatar }}" alt=""
-                                                    class="user-avatar">
-                                                <div class="user-name">
-                                                    {{ $review->user->full_name }}
-                                                    @if (auth()->check() && auth()->user()->id == $review->user->id)
-                                                        {{ '(You)' }}
-                                                    @endif
-                                                </div>
-                                                <div class="user-stars">
+                            @include('courses.review')
 
-                                                    @for ($i = 0; $i < $review->star; $i++)
-                                                        <i class="star-icon active fa-solid fa-star"></i>
-                                                    @endfor
-
-                                                    @for ($i = 0; $i < 5 - $review->star; $i++)
-                                                        <i class="star-icon fa-solid fa-star"></i>
-                                                    @endfor
-
-                                                </div>
-                                                <div class="user-time">{{ $review->created_at }}</div>
-                                            </div>
-                                            <form class="right" method="POST"
-                                                action="{{ route('reviews.destroy', [$review->id]) }}">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE" />
-                                                @if (auth()->check() && auth()->user()->id == $review->user->id)
-                                                    <button type="submit" class="close">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </button>
-                                                @endif
-                                            </form>
-                                        </div>
-                                        <p class="comment-content">{{ $review->content }}</p>
-                                        <div class="replies">
-                                            @foreach ($review->replies as $reply)
-                                                <div class="reply" id="form-30">
-
-                                                    <div class="comment-user">
-                                                        <div class="left">
-                                                            <img src="{{ $reply->user->avatar }}" alt=""
-                                                                class="user-avatar">
-                                                            <div class="user-name">
-                                                                {{ $reply->user->full_name }}
-                                                                @if (auth()->check() && auth()->user()->id == $reply->user->id)
-                                                                    {{ '(You)' }}
-                                                                @endif
-                                                            </div>
-                                                            <div class="user-time">{{ $reply->created_at }}</div>
-                                                        </div>
-                                                        <form class="right" method="POST"
-                                                            action="{{ route('replies.destroy', [$reply->id]) }}">
-                                                            @csrf
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            @if (auth()->check() && auth()->user()->id == $reply->user->id)
-                                                                <button type="submit" class="close">
-                                                                    <i class="fa-solid fa-xmark"></i>
-                                                                </button>
-                                                            @endif
-                                                        </form>
-                                                    </div>
-                                                    <p class="comment-content">{{ $reply->content }} </p>
-                                                </div>
-                                            @endforeach
-                                            <form method="POST" action="{{ route('replies.store') }}">
-                                                @csrf
-                                                <input type="hidden" name="review_id" value="{{ $review->id }}">
-                                                <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                                <input type="text" name="content" class="reply-input"
-                                                    placeholder="Your comment..." required>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                <form id="jsLeaveReview" class="leave-review" action="{{ route('reviews.store') }}"
-                                    method="POST">
-                                    @csrf
-                                    <div class="leave-title">Leave a Review</div>
-                                    <label class="leave-label" for="">Message</label>
-                                    <textarea class="leave-input @error('comment') is-invalid @enderror" name="comment" id="" rows="5">{{ old('comment') }}</textarea>
-                                    @error('comment')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="vote">
-                                        <label for="" class="vote-label">Vote</label>
-                                        <div class="vote-stars">
-                                            @if (!empty(old('vote')))
-                                                @php
-                                                    $vote = old('vote') > 5 ? 5 : old('vote');
-                                                    $vote = old('vote') < 1 ? 1 : old('vote');
-                                                @endphp
-
-                                                @for ($i = 0; $i < $vote; $i++)
-                                                    <i class="js-vote-star star-icon fa-solid fa-star active"></i>
-                                                @endfor
-
-                                                @for ($i = 0; $i < 5 - $vote; $i++)
-                                                    <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                                @endfor
-                                            @else
-                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                                <i class="js-vote-star star-icon fa-solid fa-star"></i>
-                                            @endif
-
-                                        </div>
-                                        <input type="hidden" name="vote" value="{{ old('vote') }}" id="inputVote"
-                                            class="@error('vote') is-invalid @enderror">
-                                        <p>(star)</p>
-                                        @error('vote')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                    <button type="submit" id="jsLeaveReviewBtn"
-                                        class="btn
-                                        @if (!$course->isJoined) {{ 'done' }} @endif">Send</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
 
                 </div>
-
                 <div class="side-bar col-md-4 col-12">
-                    <div class="side-bar-item course-description" id="jsDescriptionCourse">
-                        <div class="title">Descriptions course</div>
-                        <p class="content">{{ $course->description }}</p>
-                    </div>
-                    <div class="side-bar-item course-information" id="jsInfoCourse">
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                Leaners
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->learners }}
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-table-list"></i>
-                                Lessons
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->lessons }}
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-clock"></i>
-                                Times
-                            </div>
-                            <p class="content">:&nbsp
-                                @if (empty($course->times))
-                                    {{ '0' }}
-                                @else
-                                    {{ $course->times }}
-                                @endif
-                                (h)
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-tag"></i>
-                                Tags
-                            </div>
-                            <p class="content">:&nbsp
-                                @foreach ($tags as $tag)
-                                    <a href="#" class="tag-link">#{{ $tag->name }}</a>
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-money-bill-1"></i>
-                                Price
-                            </div>
-                            <p class="content">:&nbsp
-                                @if ($course->price == 0)
-                                    {{ 'FREE' }}
-                                @else
-                                    {{ number_format($course->price) }}
-                                @endif
-                            </p>
-                        </div>
-                        @if ($course->isJoined)
-                            <div class="course-information-row">
-                                <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    <button class="btn leave-course">Kết thúc khóa học</button>
-                                </form>
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="side-bar-item other-course" id="jsOtherCourse">
-                        <div class="title">Other Courses</div>
-                        <div class="content">
-
-                            @php $index = 1; @endphp
-                            @foreach ($others as $other)
-                                <div class="other-course-row">
-                                    <div class="num">{{ $index }}. </div>
-                                    <div class="name">{{ $other->name }}</div>
-                                </div>
-                                @php $index++; @endphp
-                            @endforeach
-
-                            <div class="other-course-row">
-                                <a href="{{ route('courses.index') }}" class="btn view-all">View all ours courses</a>
-                            </div>
-                        </div>
-                    </div>
+                    @include('components.suggestion_course_bar');
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

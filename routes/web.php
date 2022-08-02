@@ -24,5 +24,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/courses', CourseController::class)->only(['index', 'show']);
 Route::resource('/course-user', CourseUserController::class)->only(['store', 'destroy'])->middleware('auth', ['only' => ['store', 'destroy']]);
-Route::resource('/reviews', ReviewController::class)->only(['store', 'destroy'])->middleware('auth', ['only' => ['store', 'destroy']]);
-Route::resource('/replies', ReplyController::class)->only(['store', 'destroy'])->middleware('auth', ['only' => ['store', 'destroy']]);
+Route::resource('/reviews', ReviewController::class)->only(['store', 'destroy', 'update'])->middleware('auth', ['only' => ['store', 'destroy', 'update']]);
+Route::resource('/replies', ReplyController::class)->only(['store', 'destroy', 'update'])->middleware('auth', ['only' => ['store', 'destroy', 'update']]);

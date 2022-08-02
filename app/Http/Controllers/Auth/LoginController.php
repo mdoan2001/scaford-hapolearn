@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -35,7 +36,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['user_name', 'password']);
         if (Auth::attempt($credentials)) {
-            return redirect()->route('home');
+            return redirect(Redirect::intended()->getTargetUrl());
         }
         return redirect()->back()->with('error', __('message.login_error'));
     }

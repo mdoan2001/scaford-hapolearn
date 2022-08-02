@@ -104,7 +104,19 @@ class Course extends Model
 
     public function getIsJoinedAttribute()
     {
-        if (auth()->check() && $this->users()->where('id', auth()->user()->id)->count() > 0) {
+        if (auth()->check() && $this->users()->whereExists(function ($query) {
+            $query->where('users.id', auth()->id());
+        })->count()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getIsReviewedAttribute()
+    {
+        if (auth()->check() && $this->reviews()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
+        })->count()) {
             return true;
         }
         return false;
