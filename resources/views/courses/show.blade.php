@@ -6,16 +6,19 @@
             <div class="row">
                 <div class="main col-md-8 col-12">
                     <img src="{{ $course->image }}" alt="" class="course-img">
-                    <div class="group">
+                    <div class="group" id="accordion">
                         <div class="group-title">
-                            <div class="title-link title-link active" id="js-link-lessons">Lessons</div>
-                            <div class="title-link" id="js-link-teacher">Teacher</div>
-                            <div class="title-link" id="js-link-reviews">Reviews</div>
+                            <div id="jsLinkLesson" data-toggle="collapse" class="title-link active" data-target="#collapseLesson"
+                                aria-expanded="true" aria-controls="collapseLesson">Lessons</div>
+                            <div id="jsLinkTeacher" data-toggle="collapse" class="collapsed title-link" data-target="#collapseTeacher"
+                                aria-expanded="false" aria-controls="collapseTeacher">Teacher</div>
+                            <div id="jsLinkReview" data-toggle="collapse" class="collapsed title-link" data-target="#collapseReview"
+                                aria-expanded="false" aria-controls="collapseReview">Reviews</div>
                         </div>
 
-                        <div class="lessons group-item active" id="js-lesson">
+                        <div class="collapse show lessons group-item" data-parent="#accordion" id="collapseLesson">
                             <div class="lessons-action">
-                                <form action="{{ route('course.show', [$course->id]) }}" method="GET" class="">
+                                <form action="{{ route('courses.show', [$course->id]) }}" method="GET" class="">
                                     <div class="lessons-search">
                                         <input type="text" name="keyword" placeholder="Search...">
                                         <button type="submit" class="lessons-search-btn btn">Tìm kiếm</button>
@@ -24,12 +27,10 @@
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
-                                    @if ($course->isJoined)
-                                        @if (auth()->user()->is_teacher)
-                                            <div class="btn lessons-join active">Đang dạy</div>
-                                        @else
-                                            <div class="btn lessons-join active">Đang học</div>
-                                        @endif
+                                    @if ($course->isJoined && auth()->user()->is_teacher)
+                                        <div class="btn lessons-join active">Đang dạy</div>
+                                    @elseif($course->isJoined && !auth()->user()->is_teacher)
+                                        <div class="btn lessons-join active">Đang học</div>
                                     @else
                                         <input type="hidden" name="course_id" value="{{ $course->id }}">
                                         <button type="submit" class="btn lessons-join">Tham gia khóa học</button>
@@ -51,7 +52,7 @@
 
                         </div>
 
-                        <div class="teachers group-item" id="js-teacher">
+                        <div class="collapse teachers group-item" data-parent="#accordion" id="collapseTeacher">
                             <div class="teachers-title">Main teachers</div>
 
                             @foreach ($teachers as $teacher)
@@ -66,7 +67,7 @@
                                                 @endif
                                             </div>
                                             <div class="teacher-experience">
-                                                {{ date('Y') - date('Y', strtotime($teacher->created_at)) }} Years
+                                                {{ $teacher->experience }} Years
                                                 Teacher</div>
                                             <div class="teacher-socials">
                                                 <i class="teacher-social teacher-google fa-brands fa-google-plus-g"></i>
@@ -81,7 +82,7 @@
 
                         </div>
 
-                        <div class="reviews group-item" id="js-review">
+                        <div class="collapse reviews group-item" data-parent="#accordion" id="collapseReview">
                             <div class="reviews-total">{{ $reviews->count() }} Reviews</div>
                             <div class="reviews-evaluate">
                                 <div class="left">
@@ -123,7 +124,8 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->zero_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->zero_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">0 stars</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->zero_stars }}</div>
@@ -162,7 +164,7 @@
                                                 <div class="user-time">{{ $review->created_at }}</div>
                                             </div>
                                             <form class="right" method="POST"
-                                                action="{{ route('review.destroy', [$review->id]) }}">
+                                                action="{{ route('reviews.destroy', [$review->id]) }}">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE" />
                                                 @if (auth()->check() && auth()->user()->id == $review->user->id)
@@ -190,7 +192,7 @@
                                                             <div class="user-time">{{ $reply->created_at }}</div>
                                                         </div>
                                                         <form class="right" method="POST"
-                                                            action="{{ route('reply.destroy', [$reply->id]) }}">
+                                                            action="{{ route('replies.destroy', [$reply->id]) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             @if (auth()->check() && auth()->user()->id == $reply->user->id)
@@ -203,7 +205,7 @@
                                                     <p class="comment-content">{{ $reply->content }} </p>
                                                 </div>
                                             @endforeach
-                                            <form method="POST" action="{{ route('reply.store') }}">
+                                            <form method="POST" action="{{ route('replies.store') }}">
                                                 @csrf
                                                 <input type="hidden" name="review_id" value="{{ $review->id }}">
                                                 <input type="hidden" name="course_id" value="{{ $course->id }}">
@@ -214,7 +216,7 @@
                                     </div>
                                 @endforeach
 
-                                <form id="js-leave-review" class="leave-review" action="{{ route('review.store') }}"
+                                <form id="jsLeaveReview" class="leave-review" action="{{ route('reviews.store') }}"
                                     method="POST">
                                     @csrf
                                     <div class="leave-title">Leave a Review</div>
@@ -260,20 +262,22 @@
                                         @enderror
                                     </div>
                                     <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                    <button type="submit" id="js-leave-review-btn"
-                                        class="btn @if (!$course->isJoined) {{ 'done' }} @endif">Send</button>
+                                    <button type="submit" id="jsLeaveReviewBtn"
+                                        class="btn
+                                        @if (!$course->isJoined) {{ 'done' }} @endif">Send</button>
                                 </form>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="side-bar col-md-4 col-12">
-                    <div class="side-bar-item course-description" id="js-description-course">
+                    <div class="side-bar-item course-description" id="jsDescriptionCourse">
                         <div class="title">Descriptions course</div>
                         <p class="content">{{ $course->description }}</p>
                     </div>
-                    <div class="side-bar-item course-information" id="js-info-course">
+                    <div class="side-bar-item course-information" id="jsInfoCourse">
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-chalkboard-user"></i>
@@ -341,7 +345,7 @@
                         @endif
                     </div>
 
-                    <div class="side-bar-item other-course" id="js-other-course">
+                    <div class="side-bar-item other-course" id="jsOtherCourse">
                         <div class="title">Other Courses</div>
                         <div class="content">
 
@@ -355,7 +359,7 @@
                             @endforeach
 
                             <div class="other-course-row">
-                                <a href="{{ route('course.index') }}" class="btn view-all">View all ours courses</a>
+                                <a href="{{ route('courses.index') }}" class="btn view-all">View all ours courses</a>
                             </div>
                         </div>
                     </div>

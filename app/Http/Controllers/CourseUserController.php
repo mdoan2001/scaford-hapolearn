@@ -17,7 +17,7 @@ class CourseUserController extends Controller
     {
         $course = Course::find($request['course_id']);
         $course->users()->attach(auth()->user()->id);
-        return redirect()->route('course.show', [$request['course_id']]);
+        return redirect()->route('courses.show', [$request['course_id']]);
     }
 
     /**
@@ -30,6 +30,6 @@ class CourseUserController extends Controller
     {
         $course = Course::find($id);
         $course->users()->detach(auth()->user()->id);
-        return redirect()->route('course.show', [$id]);
+        return redirect()->route('courses.show', [$id]);
     }
 }

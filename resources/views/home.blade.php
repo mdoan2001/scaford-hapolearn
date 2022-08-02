@@ -29,7 +29,7 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="{{ route('course.show', [$course->id]) }}"
+                            <a href="{{ route('courses.show', [$course->id]) }}"
                                 class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             <p class="card-text">{{ $course->description }}</p>
                         </div>
                         <div class="card-bot">
-                            <a href="{{ route('course.show', [$course->id]) }}"
+                            <a href="{{ route('courses.show', [$course->id]) }}"
                                 class="btn btn-primary">{{ __('artribute.take_this_course') }}</a>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
             @endforeach
         </div>
         <div class="list-bot">
-            <a href="{{ route('course.index') }}" class="text">View All Our Courses<i
+            <a href="{{ route('courses.index') }}" class="text">View All Our Courses<i
                     class="fa-solid fa-arrow-right icon"></i></a>
         </div>
     </section>

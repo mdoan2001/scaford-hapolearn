@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="course-home container">
-        <form method="GET" action="{{ route('course.index') }}" class="course-filter">
+        <form method="GET" action="{{ route('courses.index') }}" class="course-filter">
             <div class="main">
                 <div class="btn btn-filter">
                     <i class="fa-solid fa-sliders icon-filter"></i>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="course-button">
-                            <a href="{{ route('course.show', [$course->id]) }}" class="btn">More</a>
+                            <a href="{{ route('courses.show', [$course->id]) }}" class="btn">More</a>
                         </div>
                         <div class="course-footer">
                             <div>

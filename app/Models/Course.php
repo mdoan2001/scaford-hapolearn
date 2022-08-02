@@ -39,7 +39,7 @@ class Course extends Model
 
     public function teachers()
     {
-        return $this->users()->where('role', config('users.teacher_role'));
+        return $this->users()->teachers();
     }
 
     public function tags()

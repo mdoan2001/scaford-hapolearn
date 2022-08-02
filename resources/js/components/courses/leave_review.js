@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  $('#js-leave-review-btn').on('click', function () {
+  $('#jsLeaveReviewBtn').on('click', function () {
     if ($(this).hasClass('done')) {
-      $('#js-leave-review').on('submit', function (e) {
+      $('#jsLeaveReview').on('submit', function (e) {
         e.preventDefault();
       });
     }
