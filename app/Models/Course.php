@@ -39,7 +39,7 @@ class Course extends Model
 
     public function teachers()
     {
-        return $this->belongsToMany(User::class)->where('role', config('users.teacher_role'));
+        return $this->users()->where('role', config('users.teacher_role'));
     }
 
     public function tags()
@@ -102,7 +102,7 @@ class Course extends Model
         return $this->reviews()->where('star', '5')->count();
     }
 
-    public function getJoinedAttribute()
+    public function getIsJoinedAttribute()
     {
         if (auth()->check() && $this->users()->where('id', auth()->user()->id)->count() > 0) {
             return true;
@@ -112,12 +112,8 @@ class Course extends Model
 
     public function getAvgStarsAttribute()
     {
-        $sum = 0;
+        $sum = $this->reviews->sum('star');
         $num = $this->reviews->count();
-
-        foreach ($this->reviews as $review) {
-            $sum += $review->star;
-        }
 
         return $num == 0 ? 0 : round($sum / $num, 1);
     }

@@ -7,27 +7,22 @@ use App\Http\Requests\StoreReviewRequest;
 
 class ReviewController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only('store', 'destroy');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReviewRequest $data)
+    public function store(StoreReviewRequest $request)
     {
-        Review::create([
-            'course_id' => $data['course_id'],
+        $data = [
+            'course_id' => $request['course_id'],
             'user_id' => auth()->user()->id,
-            'star' => $data['vote'],
-            'content' => $data['comment'],
-        ]);
-
-        return redirect()->route('course.show', [$data['course_id']]);
+            'star' => $request['vote'],
+            'content' => $request['comment'],
+        ];
+        Review::create($data);
+        return redirect()->route('course.show', [$request['course_id']]);
     }
 
     /**

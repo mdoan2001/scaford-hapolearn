@@ -7,27 +7,22 @@ use App\Http\Requests\StoreReplyRequest;
 
 class ReplyController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only('store', 'destroy');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReplyRequest $data)
+    public function store(StoreReplyRequest $request)
     {
-        Reply::create([
-            'course_id' => $data['course_id'],
+        $data = [
+            'course_id' => $request['course_id'],
             'user_id' => auth()->user()->id,
-            'review_id' => $data['review_id'],
-            'content' => $data['content'],
-        ]);
-
-        return redirect()->route('course.show', [$data['course_id']]);
+            'review_id' => $request['review_id'],
+            'content' => $request['content'],
+        ];
+        Reply::create($data);
+        return redirect()->route('course.show', [$request['course_id']]);
     }
 
     /**

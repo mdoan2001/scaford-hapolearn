@@ -7,11 +7,6 @@ use \App\Http\Requests\StoreCourseUserRequest;
 
 class CourseUserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only('store', 'destroy');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +29,7 @@ class CourseUserController extends Controller
     public function destroy($id)
     {
         $course = Course::find($id);
-        $course->users()->detach($id);
+        $course->users()->detach(auth()->user()->id);
         return redirect()->route('course.show', [$id]);
     }
 }

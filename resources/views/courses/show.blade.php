@@ -24,7 +24,7 @@
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
-                                    @if ($course->joined)
+                                    @if ($course->isJoined)
                                         @if (auth()->user()->is_teacher)
                                             <div class="btn lessons-join active">Đang dạy</div>
                                         @else
@@ -261,7 +261,7 @@
                                     </div>
                                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     <button type="submit" id="js-leave-review-btn"
-                                        class="btn @if (!$course->joined) {{ 'done' }} @endif">Send</button>
+                                        class="btn @if (!$course->isJoined) {{ 'done' }} @endif">Send</button>
                                 </form>
                             </div>
                         </div>
@@ -330,7 +330,7 @@
                                 @endif
                             </p>
                         </div>
-                        @if ($course->joined)
+                        @if ($course->isJoined)
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf

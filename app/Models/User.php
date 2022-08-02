@@ -71,9 +71,9 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
-    public static function teachers()
+    public function scopeTeachers($query)
     {
-        return self::where('role', config('users.teacher_role'));
+        return $query->where('role', config('users.teacher_role'));
     }
 
     public function getIsTeacherAttribute()
