@@ -1,12 +1,4 @@
 $(document).ready(function () {
-
-  $(document).click(function () {
-    var container = $("#comment");
-    if (!container.is(event.target) && !container.has(event.target).length) {
-      $('.edit-sub').hide();
-    }
-  });
-
   $('.js-btn-review').on('click', function (e) {
     $(this).closest('.comment').find(".reply-input").focus();;
   });
@@ -17,17 +9,21 @@ $(document).ready(function () {
 
   $('.js-btn-edit-review').on('click', function (e) {
     e.stopPropagation();
-    $(this).closest('.comment').find(".comment-content").toggle();
+    let commentContent = $(this).closest('.comment').find(".comment-content");
+    let editComment = $(this).closest('.comment').find(".edit-comment");
+    commentContent.toggle();
     $(this).closest('.comment').find(".form-edit-comment").toggle();
-    $(this).closest('.comment').find(".edit-comment").focus();
-    $(this).closest('.comment').find(".edit-comment").text($(this).closest('.comment').find(".comment-content").text());
+    editComment.focus();
+    editComment.text(commentContent.text());
   })
 
   $('.js-btn-edit-reply').on('click', function (e) {
     e.stopPropagation();
-    $(this).closest('.reply').find(".reply-content").toggle();
+    let replyContent = $(this).closest('.reply').find(".reply-content");
+    let editReply = $(this).closest('.reply').find(".edit-reply");
+    replyContent.toggle();
     $(this).closest('.reply').find(".form-edit-reply").toggle();
-    $(this).closest('.reply').find(".edit-reply").focus();
-    $(this).closest('.reply').find(".edit-reply").text($(this).closest('.reply').find(".reply-content").text());
+    editReply.focus();
+    editReply.text(replyContent.text());
   })
 });

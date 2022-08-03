@@ -27,6 +27,23 @@ class ReviewController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateReviewRequest $request, $id)
+    {
+        $review = Review::find($id);
+        if ($review['course_id'] == $request['course_id'] && $review['user_id'] == auth()->id()) {
+            $review['content'] = $request['comment'];
+            $review->save();
+        }
+        return redirect()->route('courses.show', [$request['course_id']]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -36,22 +53,5 @@ class ReviewController extends Controller
     {
         Review::find($id)->forceDelete();
         return redirect()->route('courses.index');
-    }
-
-        /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReviewRequest $request, $id)
-    {
-        $reply = Review::find($id);
-        if ($reply['course_id'] == $request['course_id'] && $reply['user_id'] == auth()->id()) {
-            $reply['content'] = $request['comment'];
-            $reply->save();
-        }
-        return redirect()->route('courses.show', [$request['course_id']]);
     }
 }
