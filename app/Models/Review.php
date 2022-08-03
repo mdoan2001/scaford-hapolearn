@@ -41,4 +41,12 @@ class Review extends Model
     {
         return $query->review()->oderBy('created_at', config('course.sort_descending'));
     }
+
+    public function canUpdateReview($request)
+    {
+        if ($this['course_id'] == $request['course_id'] && $this['user_id'] == auth()->id()) {
+            return true;
+        }
+        return false;
+    }
 }

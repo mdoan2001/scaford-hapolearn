@@ -31,4 +31,12 @@ class Reply extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function canUpdateReply($request)
+    {
+        if ($this['course_id'] == $request['course_id'] && $this['course_id'] == auth()->id() && $this['review_id'] == $request['review_id']) {
+            return true;
+        }
+        return false;
+    }
 }

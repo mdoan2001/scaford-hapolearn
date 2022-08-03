@@ -36,13 +36,12 @@ class ReplyController extends Controller
     public function update(UpdateReplyRequest $request, $id)
     {
         $reply = Reply::find($id);
-        if ($this->canUpdateReply($request, $reply['user_id'], $reply['course_id'], $reply['review_id'])) {
+        if ($reply->canUpdateReply($request)) {
             $reply['content'] = $request['comment'];
             $reply->save();
         }
         return redirect()->route('courses.show', [$request['course_id']]);
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -54,13 +53,5 @@ class ReplyController extends Controller
     {
         Reply::find($id)->forceDelete();
         return redirect()->route('courses.index');
-    }
-
-    private function canUpdateReply(UpdateReplyRequest $request, $courseId, $userId, $reviewId)
-    {
-        if ($courseId == $request['course_id'] && $userId == auth()->id() && $reviewId == $request['review_id']) {
-            return true;
-        }
-        return false;
     }
 }
