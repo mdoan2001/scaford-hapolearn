@@ -24,9 +24,8 @@ class UpdateReplyRequest extends FormRequest
     public function rules()
     {
         return [
-            'reply_id' => 'required',
-            'course_id' => 'required',
-            'comment' => 'required'
+            'comment' => 'required',
+            'course_id' => 'required'
         ];
     }
 }

@@ -34,7 +34,7 @@ class Reply extends Model
 
     public function canUpdateReply($request)
     {
-        return $this['course_id'] == $request['course_id'] && $this['user_id'] == auth()->id() && $this['review_id'] == $request['review_id'];
+        return $this['user_id'] == auth()->id();
     }
 
     public function isYourReply()

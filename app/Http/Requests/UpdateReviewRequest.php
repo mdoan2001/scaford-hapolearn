@@ -24,9 +24,8 @@ class UpdateReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'review_id' => 'required',
+            'comment' => 'required',
             'course_id' => 'required',
-            'comment' => 'required'
         ];
     }
 }
