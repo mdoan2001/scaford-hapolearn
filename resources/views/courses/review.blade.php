@@ -89,6 +89,7 @@
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="reply_id" value="{{ $reply->id }}">
                             <input type="hidden" name="course_id" value="{{ $course->id }}">
+                            <input type="hidden" name="review_id" value="{{ $review->id }}">
                             <textarea class="edit-reply" name="comment" id="" cols="30" rows="2"></textarea>
                             <button type="submit" class="edit-submit fa-solid fa-paper-plane"></button>
                         </form>

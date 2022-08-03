@@ -69,7 +69,12 @@ class Course extends Model
 
     public function getTimesAttribute()
     {
-        return $this->lessons()->sum('time');
+        return ($this->lessons()->sum('time') == 0) ? 0 : $this->lessons()->sum('time');
+    }
+
+    public function getPricesAttribute()
+    {
+        return ($this->price == 0) ? 'FREE' : $this->price;
     }
 
     public function getZeroStarsAttribute()

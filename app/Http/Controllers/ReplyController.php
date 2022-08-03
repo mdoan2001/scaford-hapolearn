@@ -36,7 +36,7 @@ class ReplyController extends Controller
     public function update(UpdateReplyRequest $request, $id)
     {
         $reply = Reply::find($id);
-        if ($reply['course_id'] == $request['course_id'] && $reply['user_id'] == auth()->id()) {
+        if ($this->isValid($request, $reply['user_id'], $reply['course_id'], $reply['review_id'])) {
             $reply['content'] = $request['comment'];
             $reply->save();
         }
@@ -54,5 +54,13 @@ class ReplyController extends Controller
     {
         Reply::find($id)->forceDelete();
         return redirect()->route('courses.index');
+    }
+
+    private function isValid(UpdateReplyRequest $request, $course_id, $user_id, $review_id)
+    {
+        if ($course_id == $request['course_id'] && $user_id == auth()->id() && $review_id == $request['review_id']) {
+            return true;
+        }
+        return false;
     }
 }

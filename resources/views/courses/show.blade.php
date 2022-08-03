@@ -148,6 +148,70 @@
 
                 </div>
                 <div class="side-bar col-md-4 col-12">
+                    <div class="side-bar-item course-description" id="jsDescriptionCourse">
+                        <div class="title">Descriptions course</div>
+                        <p class="content">{{ $course->description }}</p>
+                    </div>
+                    <div class="side-bar-item course-information" id="jsInfoCourse">
+                        <div class="course-information-row">
+                            <div class="title">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                Leaners
+                            </div>
+                            <p class="content">:&nbsp
+                                {{ $course->learners }}
+                            </p>
+                        </div>
+                        <div class="course-information-row">
+                            <div class="title">
+                                <i class="fa-solid fa-table-list"></i>
+                                Lessons
+                            </div>
+                            <p class="content">:&nbsp
+                                {{ $course->lessons }}
+                            </p>
+                        </div>
+                        <div class="course-information-row">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                Times
+                            </div>
+                            <p class="content">:&nbsp
+                                {{ $course->Times }}
+                                (hours)
+                            </p>
+                        </div>
+                        <div class="course-information-row">
+                            <div class="title">
+                                <i class="fa-solid fa-tag"></i>
+                                Tags
+                            </div>
+                            <p class="content">:&nbsp
+                                @foreach ($tags as $tag)
+                                    <a href="{{ route('courses.index', ['tags' => [$tag->id]]) }}"
+                                        class="tag-link">#{{ $tag->name }}</a>
+                                @endforeach
+                            </p>
+                        </div>
+                        <div class="course-information-row">
+                            <div class="title">
+                                <i class="fa-solid fa-money-bill-1"></i>
+                                Price
+                            </div>
+                            <p class="content">:&nbsp
+                                {{ $course->prices }}
+                            </p>
+                        </div>
+                        @if ($course->isJoined)
+                            <div class="course-information-row">
+                                <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button class="btn leave-course">Kết thúc khóa học</button>
+                                </form>
+                            </div>
+                        @endif
+                    </div>
                     @include('components.suggestion_course_bar');
                 </div>
             </div>

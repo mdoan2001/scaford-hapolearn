@@ -36,7 +36,7 @@ class ReviewController extends Controller
     public function update(UpdateReviewRequest $request, $id)
     {
         $review = Review::find($id);
-        if ($review['course_id'] == $request['course_id'] && $review['user_id'] == auth()->id()) {
+        if ($this->isValid($request, $review['user_id'], $review['course_id'])) {
             $review['content'] = $request['comment'];
             $review->save();
         }
@@ -53,5 +53,13 @@ class ReviewController extends Controller
     {
         Review::find($id)->forceDelete();
         return redirect()->route('courses.index');
+    }
+
+    private function isValid(UpdateReviewRequest $request, $course_id, $user_id)
+    {
+        if ($course_id == $request['course_id'] && $user_id == auth()->id()) {
+            return true;
+        }
+        return false;
     }
 }

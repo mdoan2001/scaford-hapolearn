@@ -87,6 +87,6 @@ class User extends Authenticatable
 
     public function getExperienceAttribute()
     {
-        return Carbon::parse($this['created_at'])->diff(\Carbon\Carbon::now())->format('%y');
+        return Carbon::parse($this['created_at'])->diff(Carbon::now())->format('%y');
     }
 }
