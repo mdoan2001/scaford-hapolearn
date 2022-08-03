@@ -121,6 +121,13 @@ class Course extends Model
         })->count();
     }
 
+    public function getIsFinishedAttribute()
+    {
+        return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id())->where('course_user.deleted_at', '<>', 'null');
+        })->exists();
+    }
+
     public function getAvgStarsAttribute()
     {
         $sum = $this->reviews->sum('star');

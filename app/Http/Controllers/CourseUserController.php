@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use \App\Http\Requests\StoreCourseUserRequest;
+use App\Models\CourseUser;
+use Illuminate\Http\Request;
 
 class CourseUserController extends Controller
 {
@@ -21,6 +23,20 @@ class CourseUserController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $course = Course::find($id);
+        $course->users()->updateExistingPivot(auth()->id(), ['deleted_at' => null]);
+        return redirect()->route('courses.show', [$id]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -28,8 +44,7 @@ class CourseUserController extends Controller
      */
     public function destroy($id)
     {
-        $course = Course::find($id);
-        $course->users()->detach(auth()->user()->id);
+        CourseUser::where('course_id', $id)->where('user_id', auth()->id())->delete();
         return redirect()->route('courses.show', [$id]);
     }
 }

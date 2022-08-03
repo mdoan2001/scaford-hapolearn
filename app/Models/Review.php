@@ -37,12 +37,7 @@ class Review extends Model
         return $query->take(config('course.home_review_num'));
     }
 
-    public function scopReplies($query)
-    {
-        return $query->review()->oderBy('created_at', config('course.sort_descending'));
-    }
-
-    public function canUpdateReview($request)
+    public function canUpdateReview()
     {
         return $this['user_id'] == auth()->id();
     }

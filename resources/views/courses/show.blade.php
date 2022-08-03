@@ -30,14 +30,19 @@
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
-                                    @if ($course->isJoined && auth()->user()->is_teacher)
-                                        <div class="btn lessons-join active">Đang dạy</div>
-                                    @elseif($course->isJoined && !auth()->user()->is_teacher)
-                                        <div class="btn lessons-join active">Đang học</div>
+                                    @if ($course->isFinished)
+                                        <div class="btn lessons-join active">Đã hoàn thành</div>
                                     @else
-                                        <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                        <button type="submit" class="btn lessons-join">Tham gia khóa học</button>
+                                        @if ($course->isJoined && auth()->user()->is_teacher)
+                                            <div class="btn lessons-join active">Đang dạy</div>
+                                        @elseif($course->isJoined && !auth()->user()->is_teacher)
+                                            <div class="btn lessons-join active">Đang học</div>
+                                        @else
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <button type="submit" class="btn lessons-join">Tham gia khóa học</button>
+                                        @endif
                                     @endif
+
                                 </form>
                             </div>
 
@@ -202,12 +207,20 @@
                                 {{ $course->prices }}
                             </p>
                         </div>
-                        @if ($course->isJoined)
+                        @if ($course->isJoined && !$course->isFinished)
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE" />
                                     <button class="btn leave-course">Kết thúc khóa học</button>
+                                </form>
+                            </div>
+                        @elseif ($course->isFinished)
+                            <div class="course-information-row">
+                                <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button class="btn leave-course">Tham gia lại</button>
                                 </form>
                             </div>
                         @endif
