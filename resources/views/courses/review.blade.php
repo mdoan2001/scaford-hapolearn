@@ -7,7 +7,7 @@
                     <img src=" {{ $review->user->avatar }}" alt="" class="user-avatar">
                     <div class="user-name">
                         {{ $review->user->full_name }}
-                        @if (auth()->check() && auth()->id() == $review->user->id)
+                        @if ($review->isYourReview())
                             {{ '(You)' }}
                         @endif
                     </div>
@@ -28,7 +28,7 @@
                     <div class="edit-select-item">
                         <button class="edit-select-item fa-solid fa-reply-all js-btn-review"></button>
                     </div>
-                    @if (auth()->check() && auth()->id() == $review->user->id)
+                    @if ($review->isYourReview())
                         <div class="edit-select-item">
                             <button class="edit-select-item fa-solid fa-marker js-btn-edit-review"></button>
                         </div>
@@ -59,7 +59,7 @@
                                 <img src="{{ $reply->user->avatar }}" alt="" class="user-avatar">
                                 <div class="user-name">
                                     {{ $reply->user->full_name }}
-                                    @if (auth()->check() && auth()->id() == $reply->user->id)
+                                    @if ($reply->isYourReply())
                                         {{ '(You)' }}
                                     @endif
                                 </div>
@@ -69,7 +69,7 @@
                                 <div class="edit-select-item">
                                     <button class="edit-select-item fa-solid fa-reply-all js-btn-review"></button>
                                 </div>
-                                @if (auth()->check() && auth()->id() == $reply->user->id)
+                                @if ($reply->isYourReply())
                                     <div class="edit-select-item">
                                         <button class="edit-select-item fa-solid fa-marker js-btn-edit-reply"></button>
                                     </div>

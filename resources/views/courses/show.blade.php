@@ -65,7 +65,7 @@
                                         <div class="teacher-general">
                                             <div class="teacher-name">
                                                 {{ $teacher->full_name }}
-                                                @if (auth()->check() && auth()->user()->id == $teacher->id)
+                                                @if ($teacher->isYou())
                                                     {{ '(You)' }}
                                                 @endif
                                             </div>
@@ -177,7 +177,7 @@
                                 Times
                             </div>
                             <p class="content">:&nbsp
-                                {{ $course->Times }}
+                                {{ $course->times }}
                                 (hours)
                             </p>
                         </div>

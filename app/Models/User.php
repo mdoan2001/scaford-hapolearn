@@ -86,4 +86,9 @@ class User extends Authenticatable
     {
         return Carbon::parse($this['created_at'])->diff(Carbon::now())->format('%y');
     }
+
+    public function isYou()
+    {
+        return auth()->check() && auth()->user()->id == $this->id;
+    }
 }

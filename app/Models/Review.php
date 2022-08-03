@@ -44,9 +44,11 @@ class Review extends Model
 
     public function canUpdateReview($request)
     {
-        if ($this['course_id'] == $request['course_id'] && $this['user_id'] == auth()->id()) {
-            return true;
-        }
-        return false;
+        return $this['course_id'] == $request['course_id'] && $this['user_id'] == auth()->id();
+    }
+
+    public function isYourReview()
+    {
+        return auth()->check() && auth()->id() == $this->user->id;
     }
 }
