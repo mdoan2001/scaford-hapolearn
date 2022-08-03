@@ -136,6 +136,11 @@ class Course extends Model
         return $num == 0 ? 0 : round($sum / $num, 1);
     }
 
+    public function getTitleAttribute()
+    {
+        return explode(" ", $this->name)[0];
+    }
+
     public static function scopeSearch($query, $request)
     {
         if (isset($request["keyword"]) && !empty($request["keyword"])) {

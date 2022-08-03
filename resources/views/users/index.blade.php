@@ -37,7 +37,7 @@
                         @foreach ($courses as $course)
                             <a href="" class="course">
                                 <img src="{{ $course->image }}" alt="" class="course-img">
-                                <div class="course-name">HTML</div>
+                                <div class="course-name">{{ $course->title }}</div>
                             </a>
                         @endforeach
 
