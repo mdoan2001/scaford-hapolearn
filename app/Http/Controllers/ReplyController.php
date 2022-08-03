@@ -36,7 +36,7 @@ class ReplyController extends Controller
     public function update(UpdateReplyRequest $request, $id)
     {
         $reply = Reply::find($id);
-        if ($this->isValid($request, $reply['user_id'], $reply['course_id'], $reply['review_id'])) {
+        if ($this->canUpdateReply($request, $reply['user_id'], $reply['course_id'], $reply['review_id'])) {
             $reply['content'] = $request['comment'];
             $reply->save();
         }
@@ -56,9 +56,9 @@ class ReplyController extends Controller
         return redirect()->route('courses.index');
     }
 
-    private function isValid(UpdateReplyRequest $request, $course_id, $user_id, $review_id)
+    private function canUpdateReply(UpdateReplyRequest $request, $courseId, $userId, $reviewId)
     {
-        if ($course_id == $request['course_id'] && $user_id == auth()->id() && $review_id == $request['review_id']) {
+        if ($courseId == $request['course_id'] && $userId == auth()->id() && $reviewId == $request['review_id']) {
             return true;
         }
         return false;
