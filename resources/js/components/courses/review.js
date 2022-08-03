@@ -8,7 +8,6 @@ $(document).ready(function () {
   });
 
   $('.js-btn-edit-review').on('click', function (e) {
-    e.stopPropagation();
     let commentContent = $(this).closest('.comment').find(".comment-content");
     let editComment = $(this).closest('.comment').find(".edit-comment");
     commentContent.toggle();
@@ -18,7 +17,6 @@ $(document).ready(function () {
   })
 
   $('.js-btn-edit-reply').on('click', function (e) {
-    e.stopPropagation();
     let replyContent = $(this).closest('.reply').find(".reply-content");
     let editReply = $(this).closest('.reply').find(".edit-reply");
     replyContent.toggle();
