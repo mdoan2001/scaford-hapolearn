@@ -2,13 +2,11 @@
     <div class="title">Other Courses</div>
     <div class="content">
 
-        @php $index = 1; @endphp
-        @foreach ($others as $other)
+        @foreach ($others as $key => $other)
             <a href="{{ route('courses.show', [$other->id]) }}" class="other-course-row">
-                <div class="num">{{ $index }}. </div>
+                <div class="num">{{ $key + 1 }}. </div>
                 <div class="name">{{ $other->name }}</div>
             </a>
-            @php $index++; @endphp
         @endforeach
 
         <div class="other-course-row">

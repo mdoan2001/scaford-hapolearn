@@ -79,10 +79,7 @@ class User extends Authenticatable
 
     public function getIsTeacherAttribute()
     {
-        if ($this->role == config('users.teacher_role')) {
-            return true;
-        }
-        return false;
+        return $this->role == config('users.teacher_role');
     }
 
     public function getExperienceAttribute()

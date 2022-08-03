@@ -74,7 +74,7 @@ class Course extends Model
 
     public function getPricesAttribute()
     {
-        return ($this->price == 0) ? 'FREE' : $this->price;
+        return ($this->price == 0) ? __('artribute.free') : $this->price;
     }
 
     public function getZeroStarsAttribute()

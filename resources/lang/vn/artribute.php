@@ -30,4 +30,5 @@ return [
     'comment' => 'Bình luận',
     'course_id' => 'ID Khóa học',
     'review_id' => 'Review ID',
+    'free' => 'Miễn phí',
 ];
