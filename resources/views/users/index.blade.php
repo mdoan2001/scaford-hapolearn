@@ -50,10 +50,9 @@
                     </div>
 
                     <div class="title">Edit profile</div>
-                    <form action="{{ route('user.update', [auth()->user()->id]) }}" method="POST" class="form-profile"
+                    <form action="{{ route('profile.update') }}" method="POST" class="form-profile"
                         enctype="multipart/form-data">
                         @csrf
-                        {{ method_field('PUT') }}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
@@ -130,8 +129,9 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <input id="jsUploadInput" class="upload-avatar" type="file" name="avatar" id="photo"
-                                        accept="image/*" class=" form-control-file @error('avatar') is-invalid @enderror">
+                                    <input id="jsUploadInput" class="upload-avatar" type="file" name="avatar"
+                                        id="photo" accept="image/*"
+                                        class=" form-control-file @error('avatar') is-invalid @enderror">
                                     @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
