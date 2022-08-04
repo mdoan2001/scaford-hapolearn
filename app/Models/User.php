@@ -96,4 +96,38 @@ class User extends Authenticatable
     {
         return date('d/m/Y', strtotime($this->birthday));
     }
+
+    public function edit($data)
+    {
+        if (!empty($data['name'])) {
+            $this['full_name'] = $data['name'];
+        }
+
+        if (!empty($data['email'])) {
+            $this['email'] = $data['email'];
+        }
+
+        if (!empty($data['birthday'])) {
+            $this['birthday'] = $data['birthday'];
+        }
+
+        if (!empty($data['phone'])) {
+            $this['telephone'] = $data['phone'];
+        }
+
+        if (!empty($data['address'])) {
+            $this['address'] = $data['address'];
+        }
+
+        if (!empty($data['about'])) {
+            $this['about'] = $data['about'];
+        }
+
+        if (!empty($data['avatar'])) {
+            $path = $data->file('avatar')->store('public/profile');
+            $this['avatar'] = substr($path, strlen('public/'));
+        }
+
+        $this->save();
+    }
 }

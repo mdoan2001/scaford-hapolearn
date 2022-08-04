@@ -130,7 +130,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <input id="jsUploadInput" type="file" name="avatar" id="photo"
+                                    <input id="jsUploadInput" class="upload-avatar" type="file" name="avatar" id="photo"
                                         accept="image/*" class=" form-control-file @error('avatar') is-invalid @enderror">
                                     @error('avatar')
                                         <span class="invalid-feedback" role="alert">

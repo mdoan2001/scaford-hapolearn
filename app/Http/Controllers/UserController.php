@@ -29,36 +29,7 @@ class UserController extends Controller
     public function update(StoreUserRequest $request, $id)
     {
         $user = User::find($id);
-        if (!empty($request['name'])) {
-            $user['full_name'] = $request['name'];
-        }
-
-        if (!empty($request['email'])) {
-            $user['email'] = $request['email'];
-        }
-
-        if (!empty($request['birthday'])) {
-            $user['birthday'] = $request['birthday'];
-        }
-
-        if (!empty($request['phone'])) {
-            $user['telephone'] = $request['phone'];
-        }
-
-        if (!empty($request['address'])) {
-            $user['address'] = $request['address'];
-        }
-
-        if (!empty($request['about'])) {
-            $user['about'] = $request['about'];
-        }
-
-        if (!empty($request['avatar'])) {
-            $path = $request->file('avatar')->store('public/profile');
-            $user['avatar'] = substr($path, strlen('public/'));
-        }
-
-        $user->save();
+        $user->edit($request);
 
         return redirect()->route('user.index');
     }
