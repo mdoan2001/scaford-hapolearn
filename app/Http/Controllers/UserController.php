@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 
@@ -19,7 +18,6 @@ class UserController extends Controller
         $courses = $user->courses;
         return view('users.index', compact('user', 'courses'));
     }
-
 
     /**
      * Update the specified resource in storage.
