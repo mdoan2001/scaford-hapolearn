@@ -30,5 +30,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/reviews', ReviewController::class)->only(['store'])->middleware('canReview');
     Route::resource('/reviews', ReviewController::class)->only(['destroy', 'update']);
     Route::resource('/replies', ReplyController::class)->only(['store', 'destroy', 'update']);
-    Route::resource('/user', UserController::class);
+    Route::resource('/user', UserController::class)->only(['index', 'update']);
 });
