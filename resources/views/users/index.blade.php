@@ -35,13 +35,13 @@
                     <div class="title">My courses</div>
                     <div class="courses">
                         @foreach ($courses as $course)
-                            <a href="" class="course">
+                            <a href="{{ route('courses.show', [$course->id]) }}" class="course">
                                 <img src="{{ $course->image }}" alt="" class="course-img">
                                 <div class="course-name">{{ $course->title }}</div>
                             </a>
                         @endforeach
 
-                        <a href="{{ route('course.index') }}" class="course add-course">
+                        <a href="{{ route('courses.index') }}" class="course add-course">
                             <div class="course-img">
                                 <i class="fa-solid fa-plus"></i>
                             </div>

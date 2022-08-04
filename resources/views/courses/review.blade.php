@@ -4,7 +4,7 @@
         <div class="comment" id="form-{{ $review->id }}">
             <div class="comment-user">
                 <div class="left">
-                    <img src=" {{ $review->user->avatar }}" alt="" class="user-avatar">
+                    <img src=" {{ asset('storage/' . $review->user->avatar) }}" alt="" class="user-avatar">
                     <div class="user-name">
                         {{ $review->user->full_name }}
                         @if ($review->isYourReview())
@@ -55,7 +55,8 @@
 
                         <div class="comment-user">
                             <div class="left">
-                                <img src="{{ $reply->user->avatar }}" alt="" class="user-avatar">
+                                <img src="{{ asset('storage/' . $reply->user->avatar) }}" alt=""
+                                    class="user-avatar">
                                 <div class="user-name">
                                     {{ $reply->user->full_name }}
                                     @if ($reply->isYourReply())

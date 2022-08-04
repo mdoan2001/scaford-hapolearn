@@ -9,7 +9,6 @@ require('./components/courses/course_detail');
 require('./components/courses/vote_star');
 require('./components/courses/show_comment');
 require('./components/courses/review');
-require('./components/filter_course');
 require('./components/profile/upload');
 
 const app = new Vue({
