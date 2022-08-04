@@ -27,9 +27,19 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function teachers()
+    {
+        return $this->users()->teachers();
     }
 
     public function tags()
@@ -49,7 +59,7 @@ class Course extends Model
 
     public function getLearnersAttribute()
     {
-        return $this->users()->count();
+        return $this->users()->where('role', '<>', config('users.teacher_role'))->count();
     }
 
     public function getLessonsAttribute()
@@ -59,7 +69,71 @@ class Course extends Model
 
     public function getTimesAttribute()
     {
-        return $this->lessons()->sum('time');
+        return ($this->lessons()->sum('time') == 0) ? 0 : $this->lessons()->sum('time');
+    }
+
+    public function getPricesAttribute()
+    {
+        return ($this->price == 0) ? __('artribute.free') : $this->price;
+    }
+
+    public function getZeroStarsAttribute()
+    {
+        return $this->reviews()->where('star', '0')->count();
+    }
+
+    public function getOneStarsAttribute()
+    {
+        return $this->reviews()->where('star', '1')->count();
+    }
+
+    public function getTwoStarsAttribute()
+    {
+        return $this->reviews()->where('star', '2')->count();
+    }
+
+    public function getThreeStarsAttribute()
+    {
+        return $this->reviews()->where('star', '3')->count();
+    }
+
+    public function getFourStarsAttribute()
+    {
+        return $this->reviews()->where('star', '4')->count();
+    }
+
+    public function getFiveStarsAttribute()
+    {
+        return $this->reviews()->where('star', '5')->count();
+    }
+
+    public function getIsJoinedAttribute()
+    {
+        return auth()->check() && $this->users()->whereExists(function ($query) {
+            $query->where('users.id', auth()->id());
+        })->count();
+    }
+
+    public function getIsReviewedAttribute()
+    {
+        return auth()->check() && $this->reviews()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
+        })->count();
+    }
+
+    public function getIsFinishedAttribute()
+    {
+        return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id())->where('course_user.deleted_at', '<>', 'null');
+        })->exists();
+    }
+
+    public function getAvgStarsAttribute()
+    {
+        $sum = $this->reviews->sum('star');
+        $num = $this->reviews->count();
+
+        return $num == 0 ? 0 : round($sum / $num, 1);
     }
 
     public static function scopeSearch($query, $request)

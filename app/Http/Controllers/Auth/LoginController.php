@@ -35,7 +35,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['user_name', 'password']);
         if (Auth::attempt($credentials)) {
-            return redirect()->route('home');
+            return redirect()->intended($this->redirectPath());
         }
         return redirect()->back()->with('error', __('message.login_error'));
     }

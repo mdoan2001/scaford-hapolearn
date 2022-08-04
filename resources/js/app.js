@@ -4,8 +4,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 import 'slick-carousel/slick/slick';
 require('./components/slider');
 require('./components/select2');
-require('./components/filter_course');
+require('./components/courses/filter_course');
+require('./components/courses/course_detail');
+require('./components/courses/vote_star');
+require('./components/courses/show_comment');
+require('./components/courses/review');
 
 const app = new Vue({
-    el: '#app',
+ el: '#app',
 });

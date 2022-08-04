@@ -23,4 +23,7 @@ return [
     'regex' => ':attribute có ký tự không hợp lệ',
     'not_regex' => 'attribute có ký tự không hợp lệ',
     'unique' => ':attribute đã tồn tại',
+    'between' => [
+        'numeric' => ':attribute phải từ :min đến :max.',
+    ],
 ];

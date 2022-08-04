@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -66,8 +67,28 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
-    public static function teachers()
+    public function replies()
     {
-        return self::where('role', config('users.teacher_role'));
+        return $this->hasMany(Reply::class);
+    }
+
+    public function scopeTeachers($query)
+    {
+        return $query->where('role', config('users.teacher_role'));
+    }
+
+    public function getIsTeacherAttribute()
+    {
+        return $this->role == config('users.teacher_role');
+    }
+
+    public function getExperienceAttribute()
+    {
+        return Carbon::parse($this['created_at'])->diff(Carbon::now())->format('%y');
+    }
+
+    public function isYou()
+    {
+        return auth()->check() && auth()->user()->id == $this->id;
     }
 }
