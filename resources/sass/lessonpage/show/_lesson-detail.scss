@@ -1,0 +1,134 @@
+.lesson-detail {
+    font-family: 'UTM BryantLG';
+
+    .descriptions {
+        .title {
+            font-size: 25px;
+            font-weight: 700;
+            padding: 20px 0;
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+            color: #949292;
+            text-align: justify;
+        }
+
+
+    }
+
+    .description-bottom {
+        display: flex;
+        align-items: center;
+        padding: 40px 0;
+
+        .tags-label {
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .tags {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 2px 6px;
+            background: $bg-f2;
+            border: 1px solid #E4E4E4;
+            border-radius: 3px;
+            color: #949292;
+        }
+    }
+
+    .programs {
+        .title {
+            font-size: 25px;
+            font-weight: 700;
+            padding: 30px 0;
+            border-bottom: 1px solid #F3F0F0;
+        }
+
+        .program {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px;
+            border-bottom: 1px solid #F3F0F0;
+
+        }
+
+        .program-content {
+            display: flex;
+            gap: 24px;
+        }
+
+        .program-category {
+            display: flex;
+            gap: 14px;
+            min-width: 80px;
+
+            .program-icon {
+                font-size: 20px;
+                color: $green;
+            }
+
+            .program-title {
+                font-weight: 400;
+                font-size: 14px;
+                color: $text;
+            }
+        }
+
+        .program-name {
+            font-weight: 700;
+            font-size: 18px;
+
+            &:hover {
+                cursor: pointer;
+                color: $green;
+            }
+        }
+
+    }
+}
+
+
+@media (max-width: 768px) {
+    .lesson-detail {
+        .program {
+            flex-direction: column;
+
+            .program-content {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .program-btn {
+                margin-top: 10px;
+            }
+
+            .program-btn button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .lesson-detail {
+        .title {
+            font-size: 20px;
+        }
+
+        .main .group .group-title {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+    }
+}

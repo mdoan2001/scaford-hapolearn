@@ -46,14 +46,18 @@
                                 </form>
                             </div>
 
+                            {{-- - Nếu đã user đã học lesson rồi thì hiện ReLearn
+                                - Chưa thì hiện như bthg
+                                - chưa đăng ký khóa học thì k dc ấn
+                                -submit form xong thì route('lessons.show', [$lesson->id]) --}}
                             @foreach ($lessons as $lesson)
-                                <div class="lesson">
+                                <form action="" method="" class="lesson">
                                     <div class="lesson-content">
                                         <div class="lesson-num">{{ $lesson->order }} .</div>
-                                        <div class="lesson-name">{{ $lesson->name }}</div>
+                                        <div class="lesson-name js-lesson-name">{{ $lesson->name }}</div>
                                     </div>
-                                    <div class="btn lesson-btn">Learn</div>
-                                </div>
+                                    <button type="submit" class="btn lesson-btn js-lesson-btn">Learn</button>
+                                </form>
                             @endforeach
 
                             {{ $lessons->appends(request()->query())->links() }}
@@ -122,7 +126,8 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->three_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->two_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->two_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">2 stars</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->two_stars }}</div>

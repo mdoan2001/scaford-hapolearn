@@ -4,7 +4,11 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReplyController;
+<<<<<<< HEAD
 use App\Http\Controllers\ProfileController;
+=======
+use App\Http\Controllers\LessonController;
+>>>>>>> af53526 ([#32] design lesson detail)
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -32,3 +36,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/replies', ReplyController::class)->only(['store', 'destroy', 'update']);
     Route::resource('/profile', ProfileController::class)->only(['index', 'update']);
 });
+Route::resource('/lessons', LessonController::class);

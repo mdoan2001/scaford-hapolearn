@@ -10,6 +10,10 @@
     box-shadow: inset 0px 1.5px 2px #6F8710;
     border: 0;
     color: white;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .lessons-join {
@@ -123,6 +127,16 @@
       font-weight: 700;
       font-size: 18px;
       align-items: flex-start;
+    }
+
+    .lesson-content .lesson-name {
+      text-decoration: none;
+      color: $text;
+
+      &:hover {
+        cursor: pointer;
+        color: $green;
+      }
     }
 
     .lesson-num {
