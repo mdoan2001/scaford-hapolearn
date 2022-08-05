@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use App\Services\UserService;
 
 class User extends Authenticatable
 {
@@ -124,7 +125,7 @@ class User extends Authenticatable
         }
 
         if (!empty($data['avatar'])) {
-            $path = $data->file('avatar')->store('public/profile');
+            $path = UserService::handleUploadedImage($data->file('avatar'));
             $this['avatar'] = substr($path, strlen('public/'));
         }
 
