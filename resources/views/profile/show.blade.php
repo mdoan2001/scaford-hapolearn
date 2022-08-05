@@ -6,28 +6,28 @@
             <div class="col-lg-3">
                 <div class="contact">
                     <div class="contact-avatar">
-                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="" class="contact-img">
+                        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="" class="contact-img">
                         <i id="jsUploadBtn" class="fa-solid fa-camera"></i>
                     </div>
                     <div class="contact-name">
-                        <div class="name">{{ $user->full_name }}</div>
-                        <div class="gmail">{{ $user->email }}</div>
+                        <div class="name">{{ auth()->user()->full_name }}</div>
+                        <div class="gmail">{{ auth()->user()->email }}</div>
                     </div>
                     <div class="contact-user">
                         <div class="item">
                             <i class="icon icon-birthday fa-solid fa-cake-candles"></i>
-                            <div class="item-content">{{ $user->date }}</div>
+                            <div class="item-content">{{ auth()->user()->date }}</div>
                         </div>
                         <div class="item">
                             <i class="icon icon-phone fa-solid fa-phone"></i>
-                            <div class="item-content">{{ $user->telephone }}</div>
+                            <div class="item-content">{{ auth()->user()->telephone }}</div>
                         </div>
                         <div class="item">
                             <i class="icon icon-address fa-solid fa-house"></i>
-                            <div class="item-content">{{ $user->address }}</div>
+                            <div class="item-content">{{ auth()->user()->address }}</div>
                         </div>
                     </div>
-                    <div class="contact-about">{{ $user->about }}</div>
+                    <div class="contact-about">{{ auth()->user()->about }}</div>
                 </div>
             </div>
             <div class="col-lg-9">

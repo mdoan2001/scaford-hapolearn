@@ -95,7 +95,7 @@ class User extends Authenticatable
 
     public function getDateAttribute()
     {
-        return date('d/m/Y', strtotime($this->birthday));
+        return date(config('users.date_format'), strtotime($this->birthday));
     }
 
     public function edit($data)
