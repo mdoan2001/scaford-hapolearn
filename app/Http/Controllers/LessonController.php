@@ -16,7 +16,6 @@ class LessonController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $data = $request->all();
         $others = Course::other()->get();
         $lesson = Lesson::find($id);
         $course = $lesson->course;
