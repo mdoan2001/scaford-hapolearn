@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProgramUserRequest;
 
 class ProgramUserController extends Controller
 {
@@ -13,7 +13,7 @@ class ProgramUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProgramUserRequest $request)
     {
         $program = Program::find($request['program_id']);
         $program->users()->attach(auth()->id());
