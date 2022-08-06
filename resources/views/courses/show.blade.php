@@ -46,17 +46,23 @@
                                 </form>
                             </div>
 
-                            {{-- - Nếu đã user đã học lesson rồi thì hiện ReLearn
-                                - Chưa thì hiện như bthg
-                                - chưa đăng ký khóa học thì k dc ấn
-                                -submit form xong thì route('lessons.show', [$lesson->id]) --}}
                             @foreach ($lessons as $lesson)
-                                <form action="" method="" class="lesson">
+                                <form action="{{ route('lesson-user.store') }}" method="POST"
+                                    class="js-lesson lesson @if ($course->isjoined && !$course->isFinished) {{ 'is-joined' }} @endif">
+                                    @csrf
                                     <div class="lesson-content">
                                         <div class="lesson-num">{{ $lesson->order }} .</div>
-                                        <div class="lesson-name js-lesson-name">{{ $lesson->name }}</div>
+                                        <div
+                                            class="lesson-name js-lesson-name @if ($lesson->isLearned) {{ 'learned' }} @endif">
+                                            {{ $lesson->name }}</div>
                                     </div>
-                                    <button type="submit" class="btn lesson-btn js-lesson-btn">Learn</button>
+                                    <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                    @if ($lesson->isLearned)
+                                        <button type="submit" class="btn lesson-btn js-lesson-btn learned">ReLearn</button>
+                                    @else
+                                        <button type="submit" class="btn lesson-btn js-lesson-btn">Learn</button>
+                                    @endif
                                 </form>
                             @endforeach
 
@@ -116,12 +122,14 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->five_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->four_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->four_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">4 stars</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->four_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->three_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->three_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">3 stars</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->three_stars }}</div>

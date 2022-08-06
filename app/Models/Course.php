@@ -27,11 +27,6 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function replies()
-    {
-        return $this->hasMany(Reply::class);
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);

@@ -26,4 +26,26 @@ class Program extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getIsLearnedAttribute()
+    {
+        return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id());
+        })->exists();
+    }
+
+    public function scopeCodes($query)
+    {
+        return $query->where('type', config('programs.type_source_code'));
+    }
+
+    public function scopeSlides($query)
+    {
+        return $query->where('type', config('programs.type_slide'));
+    }
+
+    public function scopeVideos($query)
+    {
+        return $query->where('type', config('programs.type_video'));
+    }
 }

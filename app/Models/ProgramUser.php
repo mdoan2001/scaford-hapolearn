@@ -15,6 +15,5 @@ class ProgramUser extends Model
     protected $fillable = [
         'user_id',
         'program_id',
-        'study_date',
     ];
 }

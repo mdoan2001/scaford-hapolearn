@@ -7,6 +7,11 @@
                 <div class="main col-lg-8 col-12">
                     <img src="{{ $lesson->image }}" alt="" class="course-img">
                     <div class="group" id="accordion">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $lesson->progress }}%;"
+                                aria-valuenow="{{ $lesson->progress }}" aria-valuemin="0" aria-valuemax="100">
+                                {{ $lesson->progress }}%</div>
+                        </div>
                         <div class="group-title">
                             <div id="jsLinkDescription" data-toggle="collapse" class="collapsed title-link active"
                                 data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
@@ -39,45 +44,74 @@
                         <div class="collapse programs group-item" data-parent="#accordion" id="collapseProgram">
                             <div class="title">Program</div>
                             <div class="program-group">
-                                <form action="" method="" class="program">
-                                    <div class="program-content">
-                                        <div class="program-category">
-                                            <i class="program-icon fa-solid fa-file-word"></i>
-                                            <div class="program-title">Lesson</div>
+                                @foreach ($lesson->codes as $code)
+                                    <form action="{{ route('program-user.store') }}" method="POST"
+                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
+                                        @csrf
+                                        <div class="program-content">
+                                            <div class="program-category">
+                                                <i class="program-icon fa-solid fa-file-word"></i>
+                                                <div class="program-title">Lesson</div>
+                                            </div>
+                                            <div
+                                                class="program-name js-program-name @if ($code->isLearned) {{ 'learned' }} @endif">
+                                                {{ $code->name }}</div>
                                         </div>
-                                        <div class="program-name js-program-name">Program learn HTML/CSS</div>
-                                    </div>
-                                    <div class="program-btn">
-                                        <button type="submit"
-                                            class="btn program-preview js-program-preview">Preview</button>
-                                    </div>
-                                </form>
-                                <form action="" method="" class="program">
-                                    <div class="program-content">
-                                        <div class="program-category">
-                                            <i class="program-icon fa-solid fa-file-pdf"></i>
-                                            <div class="program-title">PDF</div>
+                                        <div class="program-btn">
+                                            <input type="hidden" name="program_id" value="{{ $code->id }}">
+                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <button type="submit"
+                                                class="btn program-preview js-program-preview @if ($code->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
-                                        <div class="program-name js-program-name">Download course slides</div>
-                                    </div>
-                                    <div class="program-btn">
-                                        <button type="submit"
-                                            class="btn program-preview js-program-preview">Preview</button>
-                                    </div>
-                                </form>
-                                <form action="" method="" class="program">
-                                    <div class="program-content">
-                                        <div class="program-category">
-                                            <i class="program-icon fa-solid fa-file-audio"></i>
-                                            <div class="program-title">Video</div>
+                                    </form>
+                                @endforeach
+
+                                @foreach ($lesson->slides as $slide)
+                                    <form action="{{ route('program-user.store') }}" method="POST"
+                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
+                                        @csrf
+                                        <div class="program-content">
+                                            <div class="program-category">
+                                                <i class="program-icon fa-solid fa-file-pdf"></i>
+                                                <div class="program-title">PDF</div>
+                                            </div>
+                                            <div
+                                                class="program-name js-program-name @if ($slide->isLearned) {{ 'learned' }} @endif">
+                                                {{ $slide->name }}</div>
                                         </div>
-                                        <div class="program-name js-program-name">Download course videos</div>
-                                    </div>
-                                    <div class="program-btn">
-                                        <button type="submit"
-                                            class="btn program-preview js-program-preview">Preview</button>
-                                    </div>
-                                </form>
+                                        <div class="program-btn">
+                                            <input type="hidden" name="program_id" value="{{ $slide->id }}">
+                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <button type="submit"
+                                                class="btn program-preview js-program-preview @if ($slide->isLearned) {{ 'learned' }} @endif">Preview</button>
+                                        </div>
+                                    </form>
+                                @endforeach
+
+                                @foreach ($lesson->videos as $video)
+                                    <form action="{{ route('program-user.store') }}" method="POST"
+                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
+                                        @csrf
+                                        <div class="program-content">
+                                            <div class="program-category">
+                                                <i class="program-icon fa-solid fa-file-audio"></i>
+                                                <div class="program-title">Video</div>
+                                            </div>
+                                            <div
+                                                class="program-name js-program-name @if ($video->isLearned) {{ 'learned' }} @endif ">
+                                                {{ $video->name }}</div>
+                                        </div>
+                                        <div class="program-btn">
+                                            <input type="hidden" name="program_id" value="{{ $video->id }}">
+                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <button type="submit"
+                                                class="btn program-preview js-program-preview @if ($video->isLearned) {{ 'learned' }} @endif">Preview</button>
+                                        </div>
+                                    </form>
+                                @endforeach
                             </div>
                         </div>
                     </div>

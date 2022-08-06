@@ -38,7 +38,7 @@
 
     .group {
       margin-top: 30px;
-      padding: 18px;
+      padding: 1px 18px 18px 18px;
       background-color: white;
       border-radius: 10px;
     }
@@ -129,7 +129,7 @@
       align-items: flex-start;
     }
 
-    .lesson-content .lesson-name {
+    .lesson.is-joined .lesson-name {
       text-decoration: none;
       color: $text;
 
@@ -137,6 +137,33 @@
         cursor: pointer;
         color: $green;
       }
+    }
+
+    .lesson:not(.is-joined) .lesson-btn {
+      opacity: 0.8;
+
+      &:hover {
+        cursor: auto;
+        opacity: 0.8;
+      }
+    }
+
+    .lesson .lesson-btn {
+      min-width: 145px;
+    }
+
+    .lesson .lesson-name.learned {
+      color: #563d7c;
+
+      &:hover {
+        color: #563d7c;
+        opacity: 0.8;
+      }
+    }
+
+    .lesson .lesson-btn.learned {
+      background-color: #563d7c;
+      box-shadow: inset 0px 1.5px 2px #433558;
     }
 
     .lesson-num {
