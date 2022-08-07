@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\Course;
 
-class IsLearnedProgram
+class CanLearnProgram
 {
     /**
      * Handle an incoming request.
