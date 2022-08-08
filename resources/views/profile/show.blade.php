@@ -50,9 +50,10 @@
                     </div>
 
                     <div class="title">Edit profile</div>
-                    <form action="{{ route('profile.update') }}" method="POST" class="form-profile"
+                    <form action="{{ route('profile.update', [auth()->id()]) }}" method="POST" class="form-profile"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">

@@ -30,6 +30,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/reviews', ReviewController::class)->only(['store'])->middleware('canReview');
     Route::resource('/reviews', ReviewController::class)->only(['destroy', 'update']);
     Route::resource('/replies', ReplyController::class)->only(['store', 'destroy', 'update']);
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::resource('/profile', ProfileController::class)->only(['index', 'update']);
 });

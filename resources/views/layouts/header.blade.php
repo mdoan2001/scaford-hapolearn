@@ -25,7 +25,7 @@
 
                 @if (auth()->check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile.show') }}">Profile</a>
+                        <a class="nav-link" href="{{ route('profile.index') }}">Profile</a>
                     </li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

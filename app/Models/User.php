@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-use App\Services\UserService;
 
 class User extends Authenticatable
 {
@@ -26,7 +25,9 @@ class User extends Authenticatable
         'full_name',
         'birthday',
         'telephone',
-        'about'
+        'about',
+        'address',
+        'avatar'
     ];
 
     /**
@@ -96,39 +97,5 @@ class User extends Authenticatable
     public function getDateAttribute()
     {
         return date(config('users.date_format'), strtotime($this->birthday));
-    }
-
-    public function edit($data)
-    {
-        if (!empty($data['name'])) {
-            $this['full_name'] = $data['name'];
-        }
-
-        if (!empty($data['email'])) {
-            $this['email'] = $data['email'];
-        }
-
-        if (!empty($data['birthday'])) {
-            $this['birthday'] = $data['birthday'];
-        }
-
-        if (!empty($data['phone'])) {
-            $this['telephone'] = $data['phone'];
-        }
-
-        if (!empty($data['address'])) {
-            $this['address'] = $data['address'];
-        }
-
-        if (!empty($data['about'])) {
-            $this['about'] = $data['about'];
-        }
-
-        if (!empty($data['avatar'])) {
-            $path = UserService::handleUploadedImage($data->file('avatar'));
-            $this['avatar'] = substr($path, strlen('public/'));
-        }
-
-        $this->save();
     }
 }
