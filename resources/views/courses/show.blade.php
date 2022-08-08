@@ -66,8 +66,7 @@
                             @foreach ($teachers as $teacher)
                                 <div class="teacher">
                                     <div class="teacher-information">
-                                        <img src="{{ asset('storage/' . $teacher->avatar) }}" alt=""
-                                            class="teacher-avatar">
+                                        <img src="{{ asset($teacher->avatar) }}" alt="" class="teacher-avatar">
                                         <div class="teacher-general">
                                             <div class="teacher-name">
                                                 {{ $teacher->full_name }}

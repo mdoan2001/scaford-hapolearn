@@ -117,7 +117,7 @@
                             </p>
                         </div>
                         <div class="slider-user">
-                            <img src="{{ asset('storage/' . $review->user->avatar) }}" alt="anh" class="user-avatar">
+                            <img src="{{ asset($review->user->avatar) }}" alt="anh" class="user-avatar">
                             <div class="user-info">
                                 <div class="user-name">{{ $review->user->full_name }}</div>
                                 <div class="user-language">{{ $review->course->name }}</div>
