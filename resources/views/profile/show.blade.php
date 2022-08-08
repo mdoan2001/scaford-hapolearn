@@ -6,7 +6,7 @@
             <div class="col-lg-3">
                 <div class="contact">
                     <div class="contact-avatar">
-                        <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="" class="contact-img">
+                        <img src="{{ asset(auth()->user()->avatar) }}" alt="" class="contact-img">
                         <i id="jsUploadBtn" class="fa-solid fa-camera"></i>
                     </div>
                     <div class="contact-name">
@@ -32,7 +32,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="edit-profile">
-                    <div class="title">My courses</div>
+                    <div class="title">{{ __('artribute.my_course') }}</div>
                     <div class="courses">
                         @foreach ($courses as $course)
                             <a href="{{ route('courses.show', [$course->id]) }}" class="course">
@@ -49,7 +49,7 @@
                         </a>
                     </div>
 
-                    <div class="title">Edit profile</div>
+                    <div class="title">{{ __('artribute.edit_profile') }}</div>
                     <form action="{{ route('profile.update', [auth()->id()]) }}" method="POST" class="form-profile"
                         enctype="multipart/form-data">
                         @csrf
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="name">Name: </label>
+                                    <label for="name">{{ __('artribute.full_name') }}: </label>
                                     <input id="name" class="@error('full_name') is-invalid @enderror" name="full_name"
                                         type="text" placeholder="Your name..." value="{{ old('full_name') }}">
                                     @error('full_name')
@@ -82,7 +82,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="birthday">Date of birthday: </label>
+                                    <label for="birthday">{{ __('artribute.birthday') }}: </label>
                                     <input id="birthday" class="@error('birthday') is-invalid @enderror" name="birthday"
                                         type="date" placeholder="dd/mm/yyyy" value={{ old('birthday') }}>
                                     @error('birthday')
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="phone">Phone: </label>
+                                    <label for="phone">{{ __('artribute.phone') }}: </label>
                                     <input id="phone" class="@error('phone') is-invalid @enderror" name="phone"
                                         type="text" placeholder="Your phone..." value={{ old('phone') }}>
                                     @error('phone')
@@ -106,7 +106,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="address">Address: </label>
+                                    <label for="address">{{ __('artribute.address') }}: </label>
                                     <input id="address" class="@error('address') is-invalid @enderror" name="address"
                                         type="text" placeholder="Your address..." value={{ old('address') }}>
                                     @error('address')
@@ -118,7 +118,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="about">About me: </label>
+                                    <label for="about">{{ __('artribute.about') }}: </label>
                                     <textarea id="about" class="@error('about') is-invalid @enderror" name="about" id="" cols="30"
                                         rows="6" placeholder="About you...">{{ old('about') }}</textarea>
                                     @error('about')
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="col-lg-12 profile-submit">
-                                <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                                <button type="submit" class="btn btn-primary">{{ __('artribute.save') }}</button>
                             </div>
                         </div>
                     </form>

@@ -35,4 +35,8 @@ return [
     'address' => 'Địa chỉ',
     'birthday' => 'Ngày sinh',
     'about' => 'Thông tin',
+    'my_course' => 'Khóa học của tôi',
+    'edit_profile' => 'Chỉnh sửa thông tin',
+    'save' => 'Lưu thông tin',
+    'full_name' => 'Họ tên',
 ];
