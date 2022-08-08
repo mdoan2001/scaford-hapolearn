@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function update(StoreUserRequest $request, $id)
     {
         if (!empty($request['image'])) {
-            $request['avatar'] = UserService::handleUploadedImage($request->file('image'));
+            $request['avatar'] = UserService::handleUploadImage($request->file('image'));
         }
 
         auth()->user()->update(array_filter($request->all()));
