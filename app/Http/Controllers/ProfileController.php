@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Http\Requests\StoreUserRequest;
 
 class ProfileController extends Controller
 {
@@ -25,39 +25,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserRequest $request, $id)
     {
-        $data = [];
-        if (!empty($request['name'])) {
-            $data['full_name'] = $request['name'];
+        if (!empty($request['image'])) {
+            $request['avatar'] = UserService::handleUploadedImage($request->file('image'));
         }
 
-        if (!empty($request['email'])) {
-            $data['email'] = $request['email'];
-        }
-
-        if (!empty($request['birthday'])) {
-            $data['birthday'] = $request['birthday'];
-        }
-
-        if (!empty($request['phone'])) {
-            $data['telephone'] = $request['phone'];
-        }
-
-        if (!empty($request['address'])) {
-            $data['address'] = $request['address'];
-        }
-
-        if (!empty($request['about'])) {
-            $data['about'] = $request['about'];
-        }
-
-        if (!empty($request['avatar'])) {
-            $path = UserService::handleUploadedImage($request->file('avatar'));
-            $data['avatar'] = substr($path, strlen('public/'));
-        }
-
-        auth()->user()->update($data);
+        auth()->user()->update(array_filter($request->all()));
         return redirect()->route('profile.index');
     }
 }

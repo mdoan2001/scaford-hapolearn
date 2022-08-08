@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'birthday' => 'nullable|date',
             'address' => 'nullable|string',
             'about' => 'nullable|string',
-            'avatar' => 'nullable|image'
+            'image' => 'nullable|image'
         ];
     }
 

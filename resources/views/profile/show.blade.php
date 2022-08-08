@@ -58,9 +58,9 @@
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
                                     <label for="name">Name: </label>
-                                    <input id="name" class="@error('name') is-invalid @enderror" name="name"
-                                        type="text" placeholder="Your name..." value="{{ old('name') }}">
-                                    @error('name')
+                                    <input id="name" class="@error('full_name') is-invalid @enderror" name="full_name"
+                                        type="text" placeholder="Your name..." value="{{ old('full_name') }}">
+                                    @error('full_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -130,10 +130,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <input id="jsUploadInput" class="upload-avatar" type="file" name="avatar"
+                                    <input id="jsUploadInput" class="upload-avatar" type="file" name="image"
                                         id="photo" accept="image/*"
-                                        class=" form-control-file @error('avatar') is-invalid @enderror">
-                                    @error('avatar')
+                                        class=" form-control-file @error('image') is-invalid @enderror">
+                                    @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
