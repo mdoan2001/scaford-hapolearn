@@ -25,7 +25,9 @@ class User extends Authenticatable
         'full_name',
         'birthday',
         'telephone',
-        'about'
+        'about',
+        'address',
+        'avatar'
     ];
 
     /**
@@ -90,5 +92,10 @@ class User extends Authenticatable
     public function isYou()
     {
         return auth()->check() && auth()->user()->id == $this->id;
+    }
+
+    public function getDateAttribute()
+    {
+        return date(config('users.date_format'), strtotime($this->birthday));
     }
 }

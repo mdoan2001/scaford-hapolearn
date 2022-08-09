@@ -31,4 +31,12 @@ return [
     'course_id' => 'Course ID',
     'review_id' => 'Review ID',
     'free' => 'FREE',
+    'phone' => 'Telephone',
+    'address' => 'Address',
+    'birthday' => 'Birthday',
+    'about' => 'About',
+    'my_course' => 'My Course',
+    'edit_profile' => 'Edit Profile',
+    'save' => 'Save',
+    'full_name' => 'Full Name',
 ];
