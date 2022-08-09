@@ -6,7 +6,7 @@ class UserService
 {
     public static function handleUploadImage($image)
     {
-        if (!is_null($image)) {
+        if (isset($image)) {
             $path = $image->store(config('users.avatar_path'));
             return config('users.storage_path') . substr($path, strlen(config('users.public_path')));
         }
