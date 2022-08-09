@@ -15,22 +15,22 @@
                         <div class="group-title">
                             <div id="jsLinkDescription" data-toggle="collapse" class="collapsed title-link active"
                                 data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
-                                Descriptions
+                                {{ __('artribute.description') }}
                             </div>
                             <div id="jsLinkProgram" data-toggle="collapse" class="collapsed title-link"
                                 data-target="#collapseProgram" aria-expanded="false" aria-controls="collapseProgram">
-                                Program
+                                {{ __('artribute.program') }}
                             </div>
                         </div>
 
                         <div class="collapse show descriptions group-item" data-parent="#accordion"
                             id="collapseDescription">
-                            <div class="title">Descriptions lesson</div>
+                            <div class="title">{{ __('artribute.description_lesson') }}</div>
                             <div class="content">{{ $lesson->description }}</div>
-                            <div class="title">Requirements</div>
+                            <div class="title">{{ __('artribute.requirement') }}</div>
                             <div class="content">{{ $lesson->requirement }}</div>
                             <div class="description-bottom">
-                                <div class="tags-label">Tag:</div>
+                                <div class="tags-label">{{ __('artribute.tag') }}:</div>
                                 <div class="tags">
 
                                     @foreach ($tags as $tag)
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="collapse programs group-item" data-parent="#accordion" id="collapseProgram">
-                            <div class="title">Program</div>
+                            <div class="title">{{ __('artribute.program') }}</div>
                             <div class="program-group">
                                 @foreach ($lesson->codes as $code)
                                     <form action="{{ route('program-user.store') }}" method="POST"
