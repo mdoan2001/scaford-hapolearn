@@ -59,8 +59,6 @@
                                         </div>
                                         <div class="program-btn">
                                             <input type="hidden" name="program_id" value="{{ $code->id }}">
-                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
-                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <button type="submit"
                                                 class="btn program-preview js-program-preview @if ($code->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
@@ -82,8 +80,6 @@
                                         </div>
                                         <div class="program-btn">
                                             <input type="hidden" name="program_id" value="{{ $slide->id }}">
-                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
-                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <button type="submit"
                                                 class="btn program-preview js-program-preview @if ($slide->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
@@ -105,8 +101,6 @@
                                         </div>
                                         <div class="program-btn">
                                             <input type="hidden" name="program_id" value="{{ $video->id }}">
-                                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
-                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <button type="submit"
                                                 class="btn program-preview js-program-preview @if ($video->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
@@ -186,7 +180,7 @@
                             </div>
                         @endif
                     </div>
-                    @include('components.suggestion_course_bar');
+                    @include('components.suggestion-course-bar');
                 </div>
             </div>
         </div>

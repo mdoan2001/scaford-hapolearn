@@ -62,7 +62,6 @@
                                             {{ $lesson->name }}</div>
                                     </div>
                                     <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
-                                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                                     @if ($lesson->isLearned)
                                         <button type="submit"
                                             class="btn lesson-btn js-lesson-btn learned">{{ __('artribute.relearn') }}</button>
@@ -242,7 +241,7 @@
                             </div>
                         @endif
                     </div>
-                    @include('components.suggestion_course_bar');
+                    @include('components.suggestion-course-bar');
                 </div>
             </div>
         </div>

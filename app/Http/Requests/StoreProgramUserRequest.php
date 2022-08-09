@@ -25,8 +25,6 @@ class StoreProgramUserRequest extends FormRequest
     {
         return [
             'program_id' => 'required|integer',
-            'lesson_id' => 'required|integer',
-            'course_id' => 'required|integer',
         ];
     }
 }

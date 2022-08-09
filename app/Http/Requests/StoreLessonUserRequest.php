@@ -24,7 +24,6 @@ class StoreLessonUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'course_id' => 'required|integer',
             'lesson_id' => 'required|integer',
         ];
     }
