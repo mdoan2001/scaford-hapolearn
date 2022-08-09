@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/reviews', ReviewController::class)->only(['store'])->middleware('canReview');
     Route::resource('/reviews', ReviewController::class)->only(['destroy', 'update']);
     Route::resource('/replies', ReplyController::class)->only(['store', 'destroy', 'update']);
-    Route::resource('/lesson-user', LessonUserController::class)->only('store')->middleware('IsLearnedLesson');
-    Route::resource('/program-user', ProgramUserController::class)->only('store')->middleware('IsLearnedProgram');
+    Route::resource('/lesson-user', LessonUserController::class)->only('store')->middleware('canLearnLesson');
+    Route::resource('/program-user', ProgramUserController::class)->only('store')->middleware('canLearnProgram');
     Route::resource('/profile', ProfileController::class)->only(['index', 'update']);
 });

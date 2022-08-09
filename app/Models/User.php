@@ -98,4 +98,9 @@ class User extends Authenticatable
     {
         return date(config('users.date_format'), strtotime($this->birthday));
     }
+
+    public function getNameAttribute()
+    {
+        return ($this->isYou()) ? $this['full_name'] . ' (You)' : $this['full_name'];
+    }
 }

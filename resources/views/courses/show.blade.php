@@ -79,10 +79,7 @@
                                         <img src="{{ asset($teacher->avatar) }}" alt="" class="teacher-avatar">
                                         <div class="teacher-general">
                                             <div class="teacher-name">
-                                                {{ $teacher->full_name }}
-                                                @if ($teacher->isYou())
-                                                    {{ '(You)' }}
-                                                @endif
+                                                {{ $teacher->name }}
                                             </div>
                                             <div class="teacher-experience">
                                                 {{ $teacher->experience }} Years
