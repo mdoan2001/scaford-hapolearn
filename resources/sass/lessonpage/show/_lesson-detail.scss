@@ -22,7 +22,7 @@
       font-size: 18px;
       line-height: 26px;
       font-weight: 400;
-      color: #949292;
+      color: $gray;
       text-align: justify;
     }
   }
@@ -67,7 +67,6 @@
       justify-content: space-between;
       padding: 18px;
       border-bottom: 1px solid #F3F0F0;
-
     }
 
     .program-content {
