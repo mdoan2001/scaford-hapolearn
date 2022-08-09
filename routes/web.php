@@ -29,7 +29,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('/courses', CourseController::class)->only(['index', 'show']);
 Route::resource('/lessons', LessonController::class)->only('show');
-Route::resource('/programs', ProgramController::class)->only('show');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/course-user', CourseUserController::class)->only(['store'])->middleware('canJoin');
     Route::resource('/course-user', CourseUserController::class)->only(['destroy', 'update']);
@@ -39,4 +38,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/lesson-user', LessonUserController::class)->only('store')->middleware('canLearnLesson');
     Route::resource('/program-user', ProgramUserController::class)->only('store')->middleware('canLearnProgram');
     Route::resource('/profile', ProfileController::class)->only(['index', 'update']);
+    Route::resource('/programs', ProgramController::class)->only('show');
 });
