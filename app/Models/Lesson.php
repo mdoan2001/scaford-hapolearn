@@ -29,14 +29,14 @@ class Lesson extends Model
         return $this->hasMany(Program::class);
     }
 
-    public function codes()
+    public function documents()
     {
-        return $this->programs()->codes();
+        return $this->programs()->documents();
     }
 
-    public function slides()
+    public function pdfs()
     {
-        return $this->programs()->slides();
+        return $this->programs()->pdfs();
     }
 
     public function videos()
@@ -66,12 +66,12 @@ class Lesson extends Model
 
     public function getProgressAttribute()
     {
-        $programNum = Program::whereHas('users', function ($query) {
+        $countProgramsLearned = Program::whereHas('users', function ($query) {
             $query->where('users.id', auth()->id())->where('programs.lesson_id', $this->id);
         })->count();
 
-        $programTotal = $this->programs->count();
+        $countTotalPrograms = $this->programs->count();
 
-        return $programTotal == 0 ? 0 : round(($programNum / $programTotal) * 100, 2);
+        return $countTotalPrograms == 0 ? 0 : round(($countProgramsLearned / $countTotalPrograms) * 100, 2);
     }
 }

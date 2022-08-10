@@ -44,7 +44,7 @@
                         <div class="collapse programs group-item" data-parent="#accordion" id="collapseProgram">
                             <div class="title">{{ __('artribute.program') }}</div>
                             <div class="program-group">
-                                @foreach ($lesson->codes as $code)
+                                @foreach ($lesson->documents as $document)
                                     <form action="{{ route('program-user.store') }}" method="POST"
                                         class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
                                         @csrf
@@ -54,18 +54,18 @@
                                                 <div class="program-title">Lesson</div>
                                             </div>
                                             <div
-                                                class="program-name js-program-name @if ($code->isLearned) {{ 'learned' }} @endif">
-                                                {{ $code->name }}</div>
+                                                class="program-name js-program-name @if ($document->isLearned) {{ 'learned' }} @endif">
+                                                {{ $document->name }}</div>
                                         </div>
                                         <div class="program-btn">
-                                            <input type="hidden" name="program_id" value="{{ $code->id }}">
+                                            <input type="hidden" name="program_id" value="{{ $document->id }}">
                                             <button type="submit"
-                                                class="btn program-preview js-program-preview @if ($code->isLearned) {{ 'learned' }} @endif">Preview</button>
+                                                class="btn program-preview js-program-preview @if ($document->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
                                     </form>
                                 @endforeach
 
-                                @foreach ($lesson->slides as $slide)
+                                @foreach ($lesson->pdfs as $pdf)
                                     <form action="{{ route('program-user.store') }}" method="POST"
                                         class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
                                         @csrf
@@ -75,13 +75,13 @@
                                                 <div class="program-title">PDF</div>
                                             </div>
                                             <div
-                                                class="program-name js-program-name @if ($slide->isLearned) {{ 'learned' }} @endif">
-                                                {{ $slide->name }}</div>
+                                                class="program-name js-program-name @if ($pdf->isLearned) {{ 'learned' }} @endif">
+                                                {{ $pdf->name }}</div>
                                         </div>
                                         <div class="program-btn">
-                                            <input type="hidden" name="program_id" value="{{ $slide->id }}">
+                                            <input type="hidden" name="program_id" value="{{ $pdf->id }}">
                                             <button type="submit"
-                                                class="btn program-preview js-program-preview @if ($slide->isLearned) {{ 'learned' }} @endif">Preview</button>
+                                                class="btn program-preview js-program-preview @if ($pdf->isLearned) {{ 'learned' }} @endif">Preview</button>
                                         </div>
                                     </form>
                                 @endforeach

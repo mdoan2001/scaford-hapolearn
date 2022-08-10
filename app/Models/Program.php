@@ -34,14 +34,14 @@ class Program extends Model
         })->exists();
     }
 
-    public function scopeCodes($query)
+    public function scopeDocuments($query)
     {
-        return $query->where('type', config('programs.type_source_code'));
+        return $query->where('type', config('programs.type_document'));
     }
 
-    public function scopeSlides($query)
+    public function scopePdfs($query)
     {
-        return $query->where('type', config('programs.type_slide'));
+        return $query->where('type', config('programs.type_pdf'));
     }
 
     public function scopeVideos($query)
