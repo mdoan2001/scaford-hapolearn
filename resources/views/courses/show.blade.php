@@ -53,7 +53,7 @@
                                 </form>
                             </div>
 
-                            @include('courses/lessons')
+                            @include('courses.lessons')
 
                         </div>
 

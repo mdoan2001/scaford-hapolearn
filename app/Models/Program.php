@@ -57,7 +57,7 @@ class Program extends Model
         $result = '';
         switch ($type) {
             case config('programs.type_document'):
-                $result = 'Document';
+                $result = 'Doc';
                 break;
             case config('programs.type_pdf'):
                 $result = 'PDF';
