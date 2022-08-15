@@ -44,68 +44,27 @@
                         <div class="collapse programs group-item" data-parent="#accordion" id="collapseProgram">
                             <div class="title">{{ __('artribute.program') }}</div>
                             <div class="program-group">
-                                @foreach ($lesson->documents as $document)
+                                @foreach ($lesson->programs as $program)
                                     <form action="{{ route('program-user.store') }}" method="POST"
-                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
+                                        class="js-program program @if ($lesson->isLearned()) {{ 'is-joined' }} @endif">
                                         @csrf
                                         <div class="program-content">
                                             <div class="program-category">
-                                                <i class="program-icon fa-solid fa-file-word"></i>
-                                                <div class="program-title">Lesson</div>
+                                                <i class="program-icon fa-solid {{ $program->classOfIcon }}"></i>
+                                                <div class="program-title">{{ $program->category }}</div>
                                             </div>
                                             <div
-                                                class="program-name js-program-name @if ($document->isLearned) {{ 'learned' }} @endif">
-                                                {{ $document->name }}</div>
+                                                class="program-name js-program-name @if ($program->isLearned()) {{ 'learned' }} @endif">
+                                                {{ $program->name }}</div>
                                         </div>
                                         <div class="program-btn">
-                                            <input type="hidden" name="program_id" value="{{ $document->id }}">
+                                            <input type="hidden" name="program_id" value="{{ $program->id }}">
                                             <button type="submit"
-                                                class="btn program-preview js-program-preview @if ($document->isLearned) {{ 'learned' }} @endif">Preview</button>
+                                                class="btn program-preview js-program-preview @if ($program->isLearned()) {{ 'learned' }} @endif">Preview</button>
                                         </div>
                                     </form>
                                 @endforeach
 
-                                @foreach ($lesson->pdfs as $pdf)
-                                    <form action="{{ route('program-user.store') }}" method="POST"
-                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
-                                        @csrf
-                                        <div class="program-content">
-                                            <div class="program-category">
-                                                <i class="program-icon fa-solid fa-file-pdf"></i>
-                                                <div class="program-title">PDF</div>
-                                            </div>
-                                            <div
-                                                class="program-name js-program-name @if ($pdf->isLearned) {{ 'learned' }} @endif">
-                                                {{ $pdf->name }}</div>
-                                        </div>
-                                        <div class="program-btn">
-                                            <input type="hidden" name="program_id" value="{{ $pdf->id }}">
-                                            <button type="submit"
-                                                class="btn program-preview js-program-preview @if ($pdf->isLearned) {{ 'learned' }} @endif">Preview</button>
-                                        </div>
-                                    </form>
-                                @endforeach
-
-                                @foreach ($lesson->videos as $video)
-                                    <form action="{{ route('program-user.store') }}" method="POST"
-                                        class="js-program program @if ($lesson->isjoined) {{ 'is-joined' }} @endif">
-                                        @csrf
-                                        <div class="program-content">
-                                            <div class="program-category">
-                                                <i class="program-icon fa-solid fa-file-audio"></i>
-                                                <div class="program-title">Video</div>
-                                            </div>
-                                            <div
-                                                class="program-name js-program-name @if ($video->isLearned) {{ 'learned' }} @endif ">
-                                                {{ $video->name }}</div>
-                                        </div>
-                                        <div class="program-btn">
-                                            <input type="hidden" name="program_id" value="{{ $video->id }}">
-                                            <button type="submit"
-                                                class="btn program-preview js-program-preview @if ($video->isLearned) {{ 'learned' }} @endif">Preview</button>
-                                        </div>
-                                    </form>
-                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -162,7 +121,7 @@
                                 {{ $course->prices }}
                             </p>
                         </div>
-                        @if ($course->isJoined && !$course->isFinished)
+                        @if ($course->isJoined() && !$course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf
@@ -170,7 +129,7 @@
                                     <button class="btn leave-course">Kết thúc khóa học</button>
                                 </form>
                             </div>
-                        @elseif ($course->isFinished)
+                        @elseif ($course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
                                     @csrf

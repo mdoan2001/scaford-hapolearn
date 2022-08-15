@@ -34,12 +34,14 @@
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
-                                    @if ($course->isFinished)
+                                    @if ($course->isFinished())
                                         <div class="btn lessons-join active">{{ __('artribute.done') }}</div>
                                     @else
-                                        @if ($course->isJoined && auth()->user()->is_teacher)
+                                        @if ($course->isJoined() &&
+                                            auth()->user()->isTeacher())
                                             <div class="btn lessons-join active">{{ __('artribute.teaching') }}</div>
-                                        @elseif($course->isJoined && !auth()->user()->is_teacher)
+                                        @elseif($course->isJoined() &&
+                                            !auth()->user()->isTeacher())
                                             <div class="btn lessons-join active">{{ __('artribute.learning') }}</div>
                                         @else
                                             <input type="hidden" name="course_id" value="{{ $course->id }}">
@@ -51,28 +53,7 @@
                                 </form>
                             </div>
 
-                            @foreach ($lessons as $lesson)
-                                <form action="{{ route('lesson-user.store') }}" method="POST"
-                                    class="js-lesson lesson @if ($course->isjoined && !$course->isFinished) {{ 'is-joined' }} @endif">
-                                    @csrf
-                                    <div class="lesson-content">
-                                        <div class="lesson-num">{{ $lesson->order }} .</div>
-                                        <div
-                                            class="lesson-name js-lesson-name @if ($lesson->isLearned) {{ 'learned' }} @endif">
-                                            {{ $lesson->name }}</div>
-                                    </div>
-                                    <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
-                                    @if ($lesson->isLearned)
-                                        <button type="submit"
-                                            class="btn lesson-btn js-lesson-btn learned">{{ __('artribute.relearn') }}</button>
-                                    @else
-                                        <button type="submit"
-                                            class="btn lesson-btn js-lesson-btn">{{ __('artribute.learn') }}</button>
-                                    @endif
-                                </form>
-                            @endforeach
-
-                            {{ $lessons->appends(request()->query())->links() }}
+                            @include('courses/lessons')
 
                         </div>
 
@@ -125,26 +106,22 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->five_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->four_stars > 0) {{ 'active' }} @endif">
+                                    <div class="reviews-item @if ($course->four_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">4 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->four_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->three_stars > 0) {{ 'active' }} @endif">
+                                    <div class="reviews-item @if ($course->three_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">3 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->three_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->two_stars > 0) {{ 'active' }} @endif">
+                                    <div class="reviews-item @if ($course->two_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">2 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->two_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
+                                    <div class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">1 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>
@@ -223,7 +200,7 @@
                                 {{ $course->prices }}
                             </p>
                         </div>
-                        @if ($course->isJoined && !$course->isFinished)
+                        @if ($course->isJoined() && !$course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf
@@ -231,7 +208,7 @@
                                     <button class="btn leave-course">{{ __('artribute.finish') }}</button>
                                 </form>
                             </div>
-                        @elseif ($course->isFinished)
+                        @elseif ($course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
                                     @csrf

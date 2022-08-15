@@ -18,7 +18,7 @@ class CanReview
     public function handle(Request $request, Closure $next)
     {
         $course = Course::find($request['course_id']);
-        if (!$course->isJoined || ($course->isReviewed && $course->isJoined)) {
+        if (!$course->isJoined() || ($course->isReviewed() && $course->isJoined())) {
             return redirect('home');
         }
         return $next($request);

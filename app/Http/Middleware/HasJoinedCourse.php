@@ -20,7 +20,7 @@ class HasJoinedCourse
         $lesson = Lesson::find($request['lesson_id']);
         $course = $lesson->course;
 
-        if (!$course->isJoined || $course->isFinished) {
+        if (!$course->isJoined() || $course->isFinished()) {
             return redirect()->route('courses.show', $course->id);
         }
 

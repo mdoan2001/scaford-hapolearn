@@ -79,7 +79,7 @@ class User extends Authenticatable
         return $query->where('role', config('users.teacher_role'));
     }
 
-    public function getIsTeacherAttribute()
+    public function isTeacher()
     {
         return $this->role == config('users.teacher_role');
     }

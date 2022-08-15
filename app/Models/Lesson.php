@@ -29,21 +29,6 @@ class Lesson extends Model
         return $this->hasMany(Program::class);
     }
 
-    public function documents()
-    {
-        return $this->programs()->documents();
-    }
-
-    public function pdfs()
-    {
-        return $this->programs()->pdfs();
-    }
-
-    public function videos()
-    {
-        return $this->programs()->videos();
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -57,7 +42,7 @@ class Lesson extends Model
         return $query->orderBy('order', config('course.sort_ascending'));
     }
 
-    public function getIsLearnedAttribute()
+    public function isLearned()
     {
         return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
             $query->where('users.id', auth()->id());

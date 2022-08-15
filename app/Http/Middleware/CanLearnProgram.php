@@ -19,7 +19,7 @@ class CanLearnProgram
     {
         $program = Program::find($request['program_id']);
 
-        if ($program->isLearned) {
+        if ($program->isLearned()) {
             return redirect()->route('programs.show', [$request['program_id']]);
         }
 

@@ -27,25 +27,45 @@ class Program extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function getIsLearnedAttribute()
+    public function isLearned()
     {
         return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
             $query->where('users.id', auth()->id());
         })->exists();
     }
 
-    public function scopeDocuments($query)
+    public function getClassOfIconAttribute()
     {
-        return $query->where('type', config('programs.type_document'));
+        $result = '';
+        switch ($this->type) {
+            case config('programs.type_document'):
+                $result = 'fa-file-word';
+                break;
+            case config('programs.type_pdf'):
+                $result = 'fa-file-pdf';
+                break;
+            default:
+                $result = 'fa-file-audio';
+                break;
+        }
+        return $result;
     }
 
-    public function scopePdfs($query)
+    public function getCategoryAttribute()
     {
-        return $query->where('type', config('programs.type_pdf'));
-    }
-
-    public function scopeVideos($query)
-    {
-        return $query->where('type', config('programs.type_video'));
+        $type = $this->type;
+        $result = '';
+        switch ($type) {
+            case config('programs.type_document'):
+                $result = 'Document';
+                break;
+            case config('programs.type_pdf'):
+                $result = 'PDF';
+                break;
+            default:
+                $result = 'Video';
+                break;
+        }
+        return $result;
     }
 }

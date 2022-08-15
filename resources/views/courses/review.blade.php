@@ -98,7 +98,7 @@
             </div>
         </div>
     @endforeach
-    @if ($course->isJoined && !$course->isReviewed)
+    @if ($course->isJoined() && !$course->isReviewed())
         <form id="jsLeaveReview" class="leave-review" action="{{ route('reviews.store') }}" method="POST">
             @csrf
             <div class="leave-title">Leave a Review</div>

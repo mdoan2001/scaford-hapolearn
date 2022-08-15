@@ -19,7 +19,7 @@ class CanLearnLesson
     {
         $lesson = Lesson::find($request['lesson_id']);
 
-        if ($lesson->isLearned) {
+        if ($lesson->isLearned()) {
             return redirect()->route('lessons.show', [$request['lesson_id']]);
         }
 
