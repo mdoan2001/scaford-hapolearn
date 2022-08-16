@@ -32,6 +32,7 @@ class ProfileController extends Controller
         }
 
         auth()->user()->update(array_filter($request->all()));
+        toastr()->info('Cập nhật thành công!', ['timeOut' => 1000]);
         return redirect()->route('profile.index');
     }
 }

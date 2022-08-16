@@ -19,6 +19,7 @@ class CourseUserController extends Controller
     {
         $course = Course::find($request['course_id']);
         $course->users()->attach(auth()->user()->id);
+        toastr()->info('Đăng ký khóa học thành công!', ['timeOut' => 1000]);
         return redirect()->route('courses.show', [$request['course_id']]);
     }
 
@@ -33,6 +34,7 @@ class CourseUserController extends Controller
     {
         $course = Course::find($id);
         $course->users()->updateExistingPivot(auth()->id(), ['deleted_at' => null]);
+        toastr()->info('Tham gia lại thành công!', ['timeOut' => 1000]);
         return redirect()->route('courses.show', [$id]);
     }
 
@@ -45,6 +47,7 @@ class CourseUserController extends Controller
     public function destroy($id)
     {
         CourseUser::where('course_id', $id)->where('user_id', auth()->id())->delete();
+        toastr()->warning('Kết thúc khóa học!', ['timeOut' => 1000]);
         return redirect()->route('courses.show', [$id]);
     }
 }

@@ -92,6 +92,7 @@ class RegisterController extends Controller
     {
         if ($user = $this->activationService->activateUser($token)) {
             auth()->login($user);
+            toastr()->success('Xác thực thành công!', ['timeOut' => 1000]);
             return redirect('/login');
         }
         abort(404);

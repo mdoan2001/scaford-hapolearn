@@ -11,9 +11,9 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            @if (session('error'))
+                            @if (session('status'))
                                 <div class="alert alert-danger" role="alert">
-                                    {{ session('error') }}
+                                    {{ session('status') }}
                                 </div>
                             @endif
 

@@ -19,28 +19,30 @@ class ActivationService
 
     public function sendActivationMail($user)
     {
-        if ($user->activated || !$this->shouldSend($user)) return;
-        $token = $this->userActivation->createActivation($user);
-        $user->activation_link = route('user.activate', $token);
-        $mailable = new UserActivationEmail($user);
-        Mail::to($user->email)->send($mailable);
+        if (!($user->activated || !$this->shouldSend($user))) {
+            $token = $this->userActivation->createActivation($user);
+            $user['activation_link'] = route('user.activate', $token);
+            $mailable = new UserActivationEmail($user);
+            Mail::to($user->email)->send($mailable);
+        }
     }
 
     public function activateUser($token)
     {
         $activation = $this->userActivation->getActivationByToken($token);
-        if ($activation === null) return null;
-        $user = User::find($activation->user_id);
-        $user->active = true;
-        $user->save();
-        $this->userActivation->deleteActivation($token);
+        if ($activation !== null) {
+            $user = User::find($activation['user_id']);
+            $user->active = true;
+            $user->save();
+            $this->userActivation->deleteActivation($token);
 
-        return $user;
+            return $user;
+        }
     }
 
     private function shouldSend($user)
     {
         $activation = $this->userActivation->getActivation($user);
-        return $activation === null || strtotime($activation->created_at) + 60 * 60 * $this->resendAfter < time();
+        return $activation === null || strtotime($activation['created_at']) + 60 * 60 * $this->resendAfter < time();
     }
 }
