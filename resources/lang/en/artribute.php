@@ -61,5 +61,6 @@ return [
     'program' => 'Program',
     'description_lesson' => 'Description Lesson',
     'requirement' => 'Requirements',
-    'tag' => 'Tags'
+    'tag' => 'Tags',
+    'change_password' => 'Change Password',
 ];

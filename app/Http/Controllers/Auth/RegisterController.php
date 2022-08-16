@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use App\Classes\ActivationService;
 
 class RegisterController extends Controller
 {
@@ -32,15 +34,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected $activationService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
         $this->middleware('guest');
+        $this->activationService = $activationService;
     }
 
     /**
@@ -78,11 +82,18 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $user = $this->create($request->all());
+        event(new Registered($user));
 
-        if ($user) {
-            Auth::login($user);
-            return redirect()->route('home');
+        $this->activationService->sendActivationMail($user);
+        return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+    }
+
+    public function activateUser($token)
+    {
+        if ($user = $this->activationService->activateUser($token)) {
+            auth()->login($user);
+            return redirect('/login');
         }
-        return redirect()->back()->with('error', __('message.register_error'));
+        abort(404);
     }
 }

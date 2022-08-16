@@ -11,6 +11,7 @@ use App\Http\Controllers\LessonUserController;
 use App\Http\Controllers\ProgramUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -40,3 +41,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/profile', ProfileController::class)->only(['index', 'update']);
     Route::resource('/programs', ProgramController::class)->only('show');
 });
+Route::get('user/activation/{token}', [RegisterController::class, 'activateUser'])->name('user.activate');

@@ -61,5 +61,6 @@ return [
     'program' => 'Tài liệu',
     'description_lesson' => 'Mô tả bài học',
     'requirement' => 'Yêu cầu',
-    'tag' => 'Thẻ'
+    'tag' => 'Thẻ',
+    'change_password' => 'Thay đổi mật khẩu',
 ];
