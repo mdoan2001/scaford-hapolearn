@@ -36,36 +36,11 @@ class Program extends Model
 
     public function getClassOfIconAttribute()
     {
-        $result = '';
-        switch ($this->type) {
-            case config('programs.type_document'):
-                $result = 'fa-file-word';
-                break;
-            case config('programs.type_pdf'):
-                $result = 'fa-file-pdf';
-                break;
-            default:
-                $result = 'fa-file-audio';
-                break;
-        }
-        return $result;
+        return config('programs')[$this->type]['icon'];
     }
 
     public function getCategoryAttribute()
     {
-        $type = $this->type;
-        $result = '';
-        switch ($type) {
-            case config('programs.type_document'):
-                $result = 'Doc';
-                break;
-            case config('programs.type_pdf'):
-                $result = 'PDF';
-                break;
-            default:
-                $result = 'Video';
-                break;
-        }
-        return $result;
+        return config('programs')[$this->type]['name'];
     }
 }

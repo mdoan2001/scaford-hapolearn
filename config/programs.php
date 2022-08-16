@@ -1,7 +1,16 @@
 <?php
 
 return [
-    'type_document' => 0,
-    'type_pdf' => 1,
-    'type_video' => 2,
+    0 => [
+        'icon' => 'fa-file-word',
+        'name' => 'Doc',
+    ],
+    1 => [
+        'icon' => 'fa-file-pdf',
+        'name' => 'PDF',
+    ],
+    2 => [
+        'icon' => 'fa-file-audio',
+        'name' => 'Video',
+    ],
 ];
