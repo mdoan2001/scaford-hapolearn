@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container login">
+    <div class="container login pd-40">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card">
@@ -66,14 +66,14 @@
                             </div>
                             <div class="login-footer">
                                 <div class="text-hr">
-                                    <p>Sign in with</p>
+                                    <p>{{ __('artribute.sign_in_with') }}</p>
                                 </div>
                                 <a href="" class="btn btn-block login-btn login-google">
                                     <i class="fa-brands fa-google-plus-g"></i>
                                     Google
                                 </a>
                                 <div class="text-hr">
-                                    <p>or New to Hapolearn</p>
+                                    <p>{{ __('artribute.or_new_to_hapolearn') }}</p>
                                 </div>
                                 <a href="" class="btn btn-block login-btn login-create">
                                     {{ __('artribute.create_new_account') }}

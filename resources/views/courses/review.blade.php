@@ -4,7 +4,7 @@
         <div class="comment" id="form-{{ $review->id }}">
             <div class="comment-user">
                 <div class="left">
-                    <img src=" {{ asset($review->user->avatar) }}" alt="" class="user-avatar">
+                    <img src=" {{ asset($review->user->picture) }}" alt="" class="user-avatar">
                     <div class="user-name">
                         {{ $review->user->name }}
                     </div>
@@ -52,7 +52,7 @@
 
                         <div class="comment-user">
                             <div class="left">
-                                <img src="{{ asset($reply->user->avatar) }}" alt="" class="user-avatar">
+                                <img src="{{ asset($reply->user->picture) }}" alt="" class="user-avatar">
                                 <div class="user-name">
                                     {{ $reply->user->name }}
                                 </div>

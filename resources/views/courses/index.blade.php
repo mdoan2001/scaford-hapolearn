@@ -110,19 +110,20 @@
                             </div>
                         </div>
                         <div class="course-button">
-                            <a href="{{ route('courses.show', [$course->id]) }}" class="btn">More</a>
+                            <a href="{{ route('courses.show', [$course->id]) }}"
+                                class="btn">{{ __('artribute.more') }}</a>
                         </div>
                         <div class="course-footer">
                             <div>
-                                <div class="title">Learners</div>
+                                <div class="title">{{ __('artribute.learners') }}</div>
                                 <div class="number">{{ $course->learners }}</div>
                             </div>
                             <div>
-                                <div class="title">Lessons</div>
+                                <div class="title">{{ __('artribute.lessons') }}</div>
                                 <div class="number">{{ $course->lessons }}</div>
                             </div>
                             <div>
-                                <div class="title">Times</div>
+                                <div class="title">{{ __('artribute.times') }}</div>
                                 <div class="number">
                                     @if (empty($course->times))
                                         {{ '0' }}

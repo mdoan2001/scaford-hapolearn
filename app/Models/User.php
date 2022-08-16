@@ -103,4 +103,8 @@ class User extends Authenticatable
     {
         return ($this->isYou()) ? $this['full_name'] . ' (You)' : $this['full_name'];
     }
+
+    public function getPictureAttribute() {
+        return ($this->avatar) ? $this->avatar : config('users.default_avatar');
+    }
 }

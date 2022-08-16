@@ -63,7 +63,7 @@
                             @foreach ($teachers as $teacher)
                                 <div class="teacher">
                                     <div class="teacher-information">
-                                        <img src="{{ asset($teacher->avatar) }}" alt="" class="teacher-avatar">
+                                        <img src="{{ asset($teacher->picture) }}" alt="" class="teacher-avatar">
                                         <div class="teacher-general">
                                             <div class="teacher-name">
                                                 {{ $teacher->name }}
@@ -90,10 +90,10 @@
                                 <div class="left">
                                     <div class="reviews-num">{{ $course->avg_stars }}</div>
                                     <div class="reviews-stars">
-                                        @for ($i = 0; $i < $course->avg_stars; $i++)
+                                        @for ($i = 0; $i < floor($course->avg_stars); $i++)
                                             <i class="star-icon active fa-solid fa-star"></i>
                                         @endfor
-                                        @for ($i = 0; $i < 5 - $course->avg_stars; $i++)
+                                        @for ($i = 0; $i < 5 - floor($course->avg_stars); $i++)
                                             <i class="star-icon fa-solid fa-star"></i>
                                         @endfor
                                     </div>

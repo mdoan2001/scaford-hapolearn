@@ -37,6 +37,10 @@
       font-size: 2.083vw;
       border: 0;
       padding: 1.18vw 3.89vw;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

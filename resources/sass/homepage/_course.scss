@@ -11,7 +11,7 @@
 }
 
 .container {
-  padding: 0 5px;
+  padding: 10px 5px;
 }
 
 .list-top {
@@ -114,6 +114,8 @@
   }
 
   .card-bot {
+    margin-top: 10px;
+
     .btn {
       background-color: $green;
       border: 0;
@@ -123,6 +125,11 @@
       font-weight: 700;
       padding: 8px 30px;
       margin-top: auto;
+      min-width: 190px;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

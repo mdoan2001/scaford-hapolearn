@@ -14,23 +14,23 @@
                     <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('courses.index') }}">All Courses</a>
+                    <a class="nav-link" href="{{ route('courses.index') }}">{{ __('artribute.all_courses') }}</a>
                 </li>
                 @if (!auth()->check())
                     <li class="nav-item nav-item--login">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>/<a class="nav-link"
-                            href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('artribute.login') }}</a>/<a
+                            class="nav-link" href="{{ route('register') }}">{{ __('artribute.register') }}</a>
                     </li>
                 @endif
 
                 @if (auth()->check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile.index') }}">Profile</a>
+                        <a class="nav-link" href="{{ route('profile.index') }}">{{ __('artribute.profile') }}</a>
                     </li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <li class="nav-item nav-item--login">
-                            <button type="submit" class="btn btn-danger">LOGOUT</button>
+                            <button type="submit" class="btn btn-danger">{{ __('artribute.logout') }}</button>
                         </li>
                     </form>
                 @endif

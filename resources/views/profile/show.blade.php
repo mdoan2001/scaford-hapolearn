@@ -6,7 +6,7 @@
             <div class="col-lg-3">
                 <div class="contact">
                     <div class="contact-avatar">
-                        <img src="{{ asset(auth()->user()->avatar) }}" alt="" class="contact-img">
+                        <img src="{{ asset(auth()->user()->picture) }}" alt="" class="contact-img">
                         <i id="jsUploadBtn" class="fa-solid fa-camera"></i>
                     </div>
                     <div class="contact-name">
