@@ -91,7 +91,8 @@
                     <input type="hidden" name="review_id" value="{{ $review->id }}">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div>
-                        <input type="text" name="content" class="reply-input" placeholder="Your comment..." required>
+                        <input type="text" name="content" class="reply-input"
+                            placeholder="{{ __('artribute.your_comment') }}..." required>
                         <button type="submit" class="reply-submit fa-solid fa-paper-plane"></button>
                     </div>
                 </form>

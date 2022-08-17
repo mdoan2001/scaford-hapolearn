@@ -14,6 +14,7 @@ require('./components/courses/learn_lesson');
 require('./components/lessons/lesson_detail');
 require('./components/lessons/preview');
 require('./components/lessons/learn-lesson');
+require('./components/header/change-language');
 
 const app = new Vue({
  el: '#app',

@@ -48,7 +48,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['user_name', 'password']);
         if (Auth::attempt($credentials)) {
-            toastr()->success('Đăng nhập thành công!', ['timeOut' => 1000]);
+            toastr()->success(__('message.login_success'), ['timeOut' => 1000]);
             return $this->sendLoginResponse($request);
         }
         return redirect()->back()->with('error', __('message.login_error'));
@@ -58,7 +58,7 @@ class LoginController extends Controller
     {
         Session::flush();
         Auth::logout();
-        toastr()->success('Đăng xuất thành công!', ['timeOut' => 1000]);
+        toastr()->success(__('message.logout_success'), ['timeOut' => 1000]);
         return redirect('home');
     }
 

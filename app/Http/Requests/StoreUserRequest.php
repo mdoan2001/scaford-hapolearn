@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'nullable|min:3',
             'email' => 'nullable|email|unique:users',
-            'phone' => 'nullable|regex:/[0-9]{9,}/',
+            'telephone' => 'nullable|regex:/[0-9]{9,}/',
             'birthday' => 'nullable|date',
             'address' => 'nullable|string',
             'about' => 'nullable|string',
@@ -38,7 +38,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => __('artribute.user_name'),
-            'phone' => __('artribute.phone'),
+            'telephone' => __('artribute.phone'),
             'birthday' => __('artribute.birthday'),
             'address' => __('artribute.address'),
             'about' => __('artribute.about'),

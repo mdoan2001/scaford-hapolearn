@@ -26,7 +26,7 @@
                             <div class="lessons-action">
                                 <form action="{{ route('courses.show', [$course->id]) }}" method="GET" class="">
                                     <div class="lessons-search">
-                                        <input type="text" name="keyword" placeholder="Search...">
+                                        <input type="text" name="keyword" placeholder="{{ __('artribute.search') }}...">
                                         <button type="submit"
                                             class="lessons-search-btn btn">{{ __('artribute.search') }}</button>
                                     </div>
@@ -69,8 +69,7 @@
                                                 {{ $teacher->name }}
                                             </div>
                                             <div class="teacher-experience">
-                                                {{ $teacher->experience }} Years
-                                                Teacher</div>
+                                                {{ $teacher->experience }}</div>
                                             <div class="teacher-socials">
                                                 <i class="teacher-social teacher-google fa-brands fa-google-plus-g"></i>
                                                 <i class="teacher-social teacher-facebook fa-brands fa-facebook-f"></i>
@@ -97,7 +96,8 @@
                                             <i class="star-icon fa-solid fa-star"></i>
                                         @endfor
                                     </div>
-                                    <div class="reviews-rattings">{{ $reviews->count() }} Ratings</div>
+                                    <div class="reviews-rattings">{{ $reviews->count() }} {{ __('artribute.review') }}
+                                    </div>
                                 </div>
 
                                 <div class="right">
@@ -154,7 +154,7 @@
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-chalkboard-user"></i>
-                                Leaners
+                                {{ __('artribute.learners') }}
                             </div>
                             <p class="content">:&nbsp
                                 {{ $course->learners }}
@@ -163,7 +163,7 @@
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-table-list"></i>
-                                Lessons
+                                {{ __('artribute.lessons') }}
                             </div>
                             <p class="content">:&nbsp
                                 {{ $course->lessons }}
@@ -172,7 +172,7 @@
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-clock"></i>
-                                Times
+                                {{ __('artribute.times') }}
                             </div>
                             <p class="content">:&nbsp
                                 {{ $course->times }}
@@ -182,7 +182,7 @@
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-tag"></i>
-                                Tags
+                                {{ __('artribute.tag') }}
                             </div>
                             <p class="content">:&nbsp
                                 @foreach ($tags as $tag)
@@ -194,7 +194,7 @@
                         <div class="course-information-row">
                             <div class="title">
                                 <i class="fa-solid fa-money-bill-1"></i>
-                                Price
+                                {{ __('artribute.price') }}
                             </div>
                             <p class="content">:&nbsp
                                 {{ $course->prices }}
@@ -205,7 +205,36 @@
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE" />
-                                    <button class="btn leave-course">{{ __('artribute.finish') }}</button>
+                                    <button type="button" class="btn btn-primary leave-course" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        {{ __('artribute.finish') }}
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                        {{ __('message.notification') }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{ __('message.end_course') }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary bg-danger"
+                                                        data-dismiss="modal">{{ __('artribute.close') }}</button>
+                                                    <button type="submit"
+                                                        class="btn btn-primary">{{ __('artribute.agree') }}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         @elseif ($course->isFinished())

@@ -85,14 +85,14 @@ class RegisterController extends Controller
         event(new Registered($user));
 
         $this->activationService->sendActivationMail($user);
-        return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+        return redirect('/login')->with('status', __('message.check_mail'));
     }
 
     public function activateUser($token)
     {
         if ($user = $this->activationService->activateUser($token)) {
             auth()->login($user);
-            toastr()->success('Xác thực thành công!', ['timeOut' => 1000]);
+            toastr()->success(((__('message.authentication_success'))), ['timeOut' => 1000]);
             return redirect('/login');
         }
         abort(404);

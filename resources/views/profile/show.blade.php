@@ -6,7 +6,7 @@
             <div class="col-lg-3">
                 <div class="contact">
                     <div class="contact-avatar">
-                        <img src="{{ asset(auth()->user()->picture) }}" alt="" class="contact-img">
+                        <img id="userAvatar" src="{{ asset(auth()->user()->picture) }}" alt="" class="contact-img">
                         <i id="jsUploadBtn" class="fa-solid fa-camera"></i>
                     </div>
                     <div class="contact-name">
@@ -45,7 +45,7 @@
                             <div class="course-img">
                                 <i class="fa-solid fa-plus"></i>
                             </div>
-                            <div class="course-name">Add course</div>
+                            <div class="course-name">{{ __('artribute.add_course') }}</div>
                         </a>
                     </div>
 
@@ -59,7 +59,8 @@
                                 <div class="edit-profile-item">
                                     <label for="name">{{ __('artribute.full_name') }}: </label>
                                     <input id="name" class="@error('full_name') is-invalid @enderror" name="full_name"
-                                        type="text" placeholder="Your name..." value="{{ old('full_name') }}">
+                                        type="text" placeholder="{{ __('artribute.your_name') }}..."
+                                        value="{{ old('full_name') }}">
                                     @error('full_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -72,7 +73,8 @@
                                 <div class="edit-profile-item">
                                     <label for="email">Email: </label>
                                     <input id="email" class="@error('email') is-invalid @enderror" name="email"
-                                        type="email" placeholder="Your email..." value="{{ old('email') }}">
+                                        type="email" placeholder="{{ __('artribute.your_email') }}..."
+                                        value="{{ old('email') }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -94,10 +96,11 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="edit-profile-item">
-                                    <label for="phone">{{ __('artribute.phone') }}: </label>
-                                    <input id="phone" class="@error('phone') is-invalid @enderror" name="phone"
-                                        type="text" placeholder="Your phone..." value={{ old('phone') }}>
-                                    @error('phone')
+                                    <label for="telephone">{{ __('artribute.phone') }}: </label>
+                                    <input id="telephone" class="@error('telephone') is-invalid @enderror" name="telephone"
+                                        type="text" placeholder="{{ __('artribute.your_phone') }}..."
+                                        value={{ old('telephone') }}>
+                                    @error('telephone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -108,7 +111,8 @@
                                 <div class="edit-profile-item">
                                     <label for="address">{{ __('artribute.address') }}: </label>
                                     <input id="address" class="@error('address') is-invalid @enderror" name="address"
-                                        type="text" placeholder="Your address..." value={{ old('address') }}>
+                                        type="text" placeholder="{{ __('artribute.your_address') }}..."
+                                        value={{ old('address') }}>
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -120,7 +124,7 @@
                                 <div class="edit-profile-item">
                                     <label for="about">{{ __('artribute.about') }}: </label>
                                     <textarea id="about" class="@error('about') is-invalid @enderror" name="about" id="" cols="30"
-                                        rows="6" placeholder="About you...">{{ old('about') }}</textarea>
+                                        rows="6" placeholder="{{ __('artribute.your_about') }}...">{{ old('about') }}</textarea>
                                     @error('about')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -142,7 +146,36 @@
                             </div>
 
                             <div class="col-lg-12 profile-submit">
-                                <button type="submit" class="btn btn-primary">{{ __('artribute.save') }}</button>
+                                <button type="button" class="btn btn-primary leave-course" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    {{ __('artribute.save') }}
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                    {{ __('message.notification') }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ __('message.change_content') }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary bg-danger"
+                                                    data-dismiss="modal">{{ __('artribute.close') }}</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary">{{ __('artribute.agree') }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>

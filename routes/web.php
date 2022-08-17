@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/programs', ProgramController::class)->only('show');
 });
 Route::get('user/activation/{token}', [RegisterController::class, 'activateUser'])->name('user.activate');
+Route::post('language', [LanguageController::class, 'change'])->name('change-language');

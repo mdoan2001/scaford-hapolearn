@@ -5,13 +5,13 @@
         <div class="bg-banner"></div>
         <div class="content">
             <div class="tittle">
-                Learn AnyTime, Anywhere <br> <span>at HapoLearn <img src="{{ asset('images/icon.png') }}" alt=""
-                        class="tittle-img"> !</span>
+                {{ __('artribute.banner_content_1') }} <br> <span>{{ __('artribute.banner_content_2') }} <img
+                        src="{{ asset('images/icon.png') }}" alt="" class="tittle-img"> !</span>
             </div>
             <div class="text">
                 Interactive, "on-the-go" <br> practice, peer suport.
             </div>
-            <button class="button">{{ __('artribute.start_learning') }}</button>
+            <a href="{{ route('courses.index') }}" class="button">{{ __('artribute.start_learning') }}</a>
         </div>
     </section>
 
@@ -74,11 +74,11 @@
     <section class="why-hapolearn">
         <img src="{{ asset('images/why-laptop-mobile.png') }}" alt="laptop" class="laptop-mobile">
         <div class="row">
-            <div class="col-12 title title">Why Hapolearn?</div>
+            <div class="col-12 title title">{{ __('artribute.why_hapo') }}?</div>
         </div>
         <div class="row">
             <div class="col-8 col-sm-7 col-12 why-description">
-                <div class="why-title">Why Hapolearn?</div>
+                <div class="why-title">{{ __('artribute.why_hapo') }}?</div>
                 <div class="why-item">
                     <i class="icon-check fa-solid fa-circle-check"></i>
                     <p class="why-text">Interactive lessons, "on-the-go" practice, peer support.</p>
@@ -150,7 +150,8 @@
 
     <section class="become">
         <div class="become-group">
-            <div class="become-title">Become a member of our <br /> growing community!</div>
+            <div class="become-title">{{ __('artribute.become_content_1') }} <br />
+                {{ __('artribute.become_content_2') }}!</div>
             <button class="become-btn">{{ __('artribute.start_learning') }}</button>
         </div>
     </section>

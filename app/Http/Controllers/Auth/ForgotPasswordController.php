@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
             $message->subject('Reset Password Notification');
         });
 
-        toastr()->success('Chúng tôi đã gửi mail cho bạn!', ['timeOut' => 3000]);
-        return view('auth.login')->with('status', 'We have e-mailed your password reset link!');
+        toastr()->success(__('message.email_sent'), ['timeOut' => 3000]);
+        return view('auth.login');
     }
 }
