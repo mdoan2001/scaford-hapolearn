@@ -152,7 +152,7 @@
         <div class="become-group">
             <div class="become-title">{{ __('artribute.become_content_1') }} <br />
                 {{ __('artribute.become_content_2') }}!</div>
-            <button class="become-btn">{{ __('artribute.start_learning') }}</button>
+            <a href="{{ route('courses.index') }}" class="become-btn">{{ __('artribute.start_learning') }}</a>
         </div>
     </section>
 

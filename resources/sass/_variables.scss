@@ -54,6 +54,27 @@ main {
   background-color: $bg-e5;
 }
 
+body {
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg-f2;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid white;
+    background: #4e4d4d;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #757272;
+  }
+}
+
 .pd-40 {
   padding: 40px 0 !important;
 }

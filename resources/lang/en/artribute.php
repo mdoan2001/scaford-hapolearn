@@ -112,4 +112,5 @@ return [
     'you' => 'You',
     'agree' => 'Agree',
     'close' => 'Close',
+    'hours' => 'hours',
 ];

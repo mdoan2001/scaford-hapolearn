@@ -111,4 +111,5 @@ return [
     'you' => 'Bạn',
     'agree' => 'Đồng ý',
     'close' => 'Đóng',
+    'hours' => 'tiếng',
 ];

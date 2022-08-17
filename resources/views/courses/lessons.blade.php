@@ -9,9 +9,9 @@
         </div>
         <input type="hidden" name="lesson_id" value="{{ $lesson->id }}">
         @if ($lesson->isLearned())
-            <button type="submit" class="btn lesson-btn js-lesson-btn learned">{{ __('artribute.relearn') }}</button>
+            <button type="submit" class="button lesson-btn js-lesson-btn learned">{{ __('artribute.relearn') }}</button>
         @else
-            <button type="submit" class="btn lesson-btn js-lesson-btn">{{ __('artribute.learn') }}</button>
+            <button type="submit" class="button lesson-btn js-lesson-btn">{{ __('artribute.learn') }}</button>
         @endif
     </form>
 @endforeach

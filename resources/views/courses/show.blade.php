@@ -28,25 +28,25 @@
                                     <div class="lessons-search">
                                         <input type="text" name="keyword" placeholder="{{ __('artribute.search') }}...">
                                         <button type="submit"
-                                            class="lessons-search-btn btn">{{ __('artribute.search') }}</button>
+                                            class="lessons-search-btn button">{{ __('artribute.search') }}</button>
                                     </div>
                                 </form>
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
                                     @if ($course->isFinished())
-                                        <div class="btn lessons-join active">{{ __('artribute.done') }}</div>
+                                        <div class="button lessons-join active">{{ __('artribute.done') }}</div>
                                     @else
                                         @if ($course->isJoined() &&
                                             auth()->user()->isTeacher())
-                                            <div class="btn lessons-join active">{{ __('artribute.teaching') }}</div>
+                                            <div class="button lessons-join active">{{ __('artribute.teaching') }}</div>
                                         @elseif($course->isJoined() &&
                                             !auth()->user()->isTeacher())
-                                            <div class="btn lessons-join active">{{ __('artribute.learning') }}</div>
+                                            <div class="button lessons-join active">{{ __('artribute.learning') }}</div>
                                         @else
                                             <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <button type="submit"
-                                                class="btn lessons-join">{{ __('artribute.joinCourse') }}</button>
+                                                class="button lessons-join">{{ __('artribute.joinCourse') }}</button>
                                         @endif
                                     @endif
 
@@ -150,103 +150,7 @@
                         <div class="title">{{ __('artribute.course_description') }}</div>
                         <p class="content">{{ $course->description }}</p>
                     </div>
-                    <div class="side-bar-item course-information" id="jsInfoCourse">
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                {{ __('artribute.learners') }}
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->learners }}
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-table-list"></i>
-                                {{ __('artribute.lessons') }}
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->lessons }}
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-clock"></i>
-                                {{ __('artribute.times') }}
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->times }}
-                                (hours)
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-tag"></i>
-                                {{ __('artribute.tag') }}
-                            </div>
-                            <p class="content">:&nbsp
-                                @foreach ($tags as $tag)
-                                    <a href="{{ route('courses.index', ['tags' => [$tag->id]]) }}"
-                                        class="tag-link">#{{ $tag->name }}</a>
-                                @endforeach
-                            </p>
-                        </div>
-                        <div class="course-information-row">
-                            <div class="title">
-                                <i class="fa-solid fa-money-bill-1"></i>
-                                {{ __('artribute.price') }}
-                            </div>
-                            <p class="content">:&nbsp
-                                {{ $course->prices }}
-                            </p>
-                        </div>
-                        @if ($course->isJoined() && !$course->isFinished())
-                            <div class="course-information-row">
-                                <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="button" class="btn btn-primary leave-course" data-toggle="modal"
-                                        data-target="#exampleModal">
-                                        {{ __('artribute.finish') }}
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-danger" id="exampleModalLabel">
-                                                        {{ __('message.notification') }}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    {{ __('message.end_course') }}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary bg-danger"
-                                                        data-dismiss="modal">{{ __('artribute.close') }}</button>
-                                                    <button type="submit"
-                                                        class="btn btn-primary">{{ __('artribute.agree') }}</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        @elseif ($course->isFinished())
-                            <div class="course-information-row">
-                                <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="PUT" />
-                                    <button class="btn leave-course">{{ __('artribute.reJoin') }}</button>
-                                </form>
-                            </div>
-                        @endif
-                    </div>
+                    @include('components.course-information');
                     @include('components.suggestion-course-bar');
                 </div>
             </div>

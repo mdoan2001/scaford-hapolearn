@@ -76,6 +76,11 @@
     border-radius: 22px;
     color: white;
     border: 0;
+
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
   }
 }
 

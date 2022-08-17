@@ -143,6 +143,10 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding-left: 30px;
+  }
+
   .navbar-brand {
     padding-left: 11px;
   }
@@ -162,6 +166,10 @@
       .btn {
         width: 100%;
       }
+    }
+
+    .nav-item--logout {
+      margin-left: 0;
     }
   }
 
