@@ -5,7 +5,11 @@
         <div class="container">
             <div class="row">
                 <div class="main col-md-8 col-12">
-                    <img src="{{ $course->image }}" alt="" class="course-img">
+                    <img id="myImg" src="{{ $course->image }}" alt="Snow" class="course-img my-img">
+                    <!-- The Modal -->
+                    <div id="myModal" class="my-modal">
+                        <img class="my-modal-content" id="myModalImg">
+                    </div>
                     <div class="group" id="accordion">
                         <div class="group-title">
                             <div id="jsLinkLesson" data-toggle="collapse" class="title-link active"
@@ -121,7 +125,8 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->two_stars }}</div>
                                     </div>
-                                    <div class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
+                                    <div
+                                        class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
                                         <div class="reviews-item-label">1 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>

@@ -1,0 +1,63 @@
+.my-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.my-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+
+.my-modal-content {
+  display: block;
+  width: 70vw;
+  height: 70vh;
+  border-radius: 10px;
+}
+
+.my-modal-content {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .my-modal-content {
+    width: 80%;
+    height: 40vh;
+  }
+}

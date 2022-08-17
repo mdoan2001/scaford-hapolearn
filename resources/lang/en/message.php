@@ -24,5 +24,6 @@ return [
     'end_course' => 'You definitely want to finish this course?',
     'email_sent' => 'We have emailed you!',
     'check_mail' => 'Please check your email and verify according to the instructions.',
-    'change_content' => 'You definitely want to change this information?'
+    'change_content' => 'You definitely want to change this information?',
+    'update_success' => 'Update successful!',
 ];

@@ -24,5 +24,6 @@ return [
     'resetpass_success' => 'Bạn đã đổi mật khẩu thành công!',
     'email_sent' => 'Chúng tôi đã gửi mail cho bạn!',
     'check_mail' => 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.',
-    'change_content' => 'Bạn chắc chắn muốn thay đổi thông tin này?'
+    'change_content' => 'Bạn chắc chắn muốn thay đổi thông tin này?',
+    'update_success' => 'Cập nhật thành công!',
 ];

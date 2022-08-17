@@ -5,7 +5,11 @@
         <div class="container">
             <div class="row">
                 <div class="main col-lg-8 col-12">
-                    <img src="{{ $lesson->image }}" alt="" class="course-img">
+                    <img id="myImg" src="{{ $lesson->image }}" alt="Snow" class="course-img my-img">
+                    <!-- The Modal -->
+                    <div id="myModal" class="my-modal">
+                        <img class="my-modal-content" id="myModalImg">
+                    </div>
                     <div class="group" id="accordion">
                         <div class="progress">
                             <div class="progress-bar bg-success" role="progressbar" style="width: {{ $lesson->progress }}%;"
