@@ -9,13 +9,16 @@
                     <div class="group" id="accordion">
                         <div class="group-title">
                             <div id="jsLinkLesson" data-toggle="collapse" class="title-link active"
-                                data-target="#collapseLesson" aria-expanded="true" aria-controls="collapseLesson">Lessons
+                                data-target="#collapseLesson" aria-expanded="true" aria-controls="collapseLesson">
+                                {{ __('artribute.lesson') }}
                             </div>
                             <div id="jsLinkTeacher" data-toggle="collapse" class="collapsed title-link"
-                                data-target="#collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">Teacher
+                                data-target="#collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">
+                                {{ __('artribute.teacher') }}
                             </div>
                             <div id="jsLinkReview" data-toggle="collapse" class="collapsed title-link"
-                                data-target="#collapseReview" aria-expanded="false" aria-controls="collapseReview">Reviews
+                                data-target="#collapseReview" aria-expanded="false" aria-controls="collapseReview">
+                                {{ __('artribute.review') }}
                             </div>
                         </div>
 
@@ -24,44 +27,38 @@
                                 <form action="{{ route('courses.show', [$course->id]) }}" method="GET" class="">
                                     <div class="lessons-search">
                                         <input type="text" name="keyword" placeholder="Search...">
-                                        <button type="submit" class="lessons-search-btn btn">Tìm kiếm</button>
+                                        <button type="submit"
+                                            class="lessons-search-btn btn">{{ __('artribute.search') }}</button>
                                     </div>
                                 </form>
 
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
-                                    @if ($course->isFinished)
-                                        <div class="btn lessons-join active">Đã hoàn thành</div>
+                                    @if ($course->isFinished())
+                                        <div class="btn lessons-join active">{{ __('artribute.done') }}</div>
                                     @else
-                                        @if ($course->isJoined && auth()->user()->is_teacher)
-                                            <div class="btn lessons-join active">Đang dạy</div>
-                                        @elseif($course->isJoined && !auth()->user()->is_teacher)
-                                            <div class="btn lessons-join active">Đang học</div>
+                                        @if ($course->isJoined() &&
+                                            auth()->user()->isTeacher())
+                                            <div class="btn lessons-join active">{{ __('artribute.teaching') }}</div>
+                                        @elseif($course->isJoined() &&
+                                            !auth()->user()->isTeacher())
+                                            <div class="btn lessons-join active">{{ __('artribute.learning') }}</div>
                                         @else
                                             <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                            <button type="submit" class="btn lessons-join">Tham gia khóa học</button>
+                                            <button type="submit"
+                                                class="btn lessons-join">{{ __('artribute.joinCourse') }}</button>
                                         @endif
                                     @endif
 
                                 </form>
                             </div>
 
-                            @foreach ($lessons as $lesson)
-                                <div class="lesson">
-                                    <div class="lesson-content">
-                                        <div class="lesson-num">{{ $lesson->order }} .</div>
-                                        <div class="lesson-name">{{ $lesson->name }}</div>
-                                    </div>
-                                    <div class="btn lesson-btn">Learn</div>
-                                </div>
-                            @endforeach
-
-                            {{ $lessons->appends(request()->query())->links() }}
+                            @include('courses.lessons')
 
                         </div>
 
                         <div class="collapse teachers group-item" data-parent="#accordion" id="collapseTeacher">
-                            <div class="teachers-title">Main teachers</div>
+                            <div class="teachers-title">{{ __('artribute.main_teacher') }}</div>
 
                             @foreach ($teachers as $teacher)
                                 <div class="teacher">
@@ -69,10 +66,7 @@
                                         <img src="{{ asset($teacher->avatar) }}" alt="" class="teacher-avatar">
                                         <div class="teacher-general">
                                             <div class="teacher-name">
-                                                {{ $teacher->full_name }}
-                                                @if ($teacher->isYou())
-                                                    {{ '(You)' }}
-                                                @endif
+                                                {{ $teacher->name }}
                                             </div>
                                             <div class="teacher-experience">
                                                 {{ $teacher->experience }} Years
@@ -91,7 +85,7 @@
                         </div>
 
                         <div class="collapse reviews group-item" data-parent="#accordion" id="collapseReview">
-                            <div class="reviews-total">{{ $reviews->count() }} Reviews</div>
+                            <div class="reviews-total">{{ $reviews->count() }} {{ __('artribute.review') }}</div>
                             <div class="reviews-evaluate">
                                 <div class="left">
                                     <div class="reviews-num">{{ $course->avg_stars }}</div>
@@ -108,41 +102,40 @@
 
                                 <div class="right">
                                     <div class="reviews-item @if ($course->five_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">5 stars</div>
+                                        <div class="reviews-item-label">5 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->five_stars }}</div>
                                     </div>
                                     <div class="reviews-item @if ($course->four_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">4 stars</div>
+                                        <div class="reviews-item-label">4 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->four_stars }}</div>
                                     </div>
                                     <div class="reviews-item @if ($course->three_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">3 stars</div>
+                                        <div class="reviews-item-label">3 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->three_stars }}</div>
                                     </div>
                                     <div class="reviews-item @if ($course->two_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">2 stars</div>
+                                        <div class="reviews-item-label">2 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->two_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">1 stars</div>
+                                    <div class="reviews-item @if ($course->one_stars > 0) {{ 'active' }} @endif">
+                                        <div class="reviews-item-label">1 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>
                                     </div>
                                     <div
                                         class="reviews-item @if ($course->zero_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">0 stars</div>
+                                        <div class="reviews-item-label">0 {{ __('artribute.star') }}</div>
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->zero_stars }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="show-all" id="showAllComments">
-                                Show all reviews
+                                {{ __('artribute.show_all_review') }}
                                 <i class="down-icon fa-solid fa-caret-right"></i>
                             </div>
 
@@ -154,7 +147,7 @@
                 </div>
                 <div class="side-bar col-md-4 col-12">
                     <div class="side-bar-item course-description" id="jsDescriptionCourse">
-                        <div class="title">Descriptions course</div>
+                        <div class="title">{{ __('artribute.course_description') }}</div>
                         <p class="content">{{ $course->description }}</p>
                     </div>
                     <div class="side-bar-item course-information" id="jsInfoCourse">
@@ -207,25 +200,25 @@
                                 {{ $course->prices }}
                             </p>
                         </div>
-                        @if ($course->isJoined && !$course->isFinished)
+                        @if ($course->isJoined() && !$course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE" />
-                                    <button class="btn leave-course">Kết thúc khóa học</button>
+                                    <button class="btn leave-course">{{ __('artribute.finish') }}</button>
                                 </form>
                             </div>
-                        @elseif ($course->isFinished)
+                        @elseif ($course->isFinished())
                             <div class="course-information-row">
                                 <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="PUT" />
-                                    <button class="btn leave-course">Tham gia lại</button>
+                                    <button class="btn leave-course">{{ __('artribute.reJoin') }}</button>
                                 </form>
                             </div>
                         @endif
                     </div>
-                    @include('components.suggestion_course_bar');
+                    @include('components.suggestion-course-bar');
                 </div>
             </div>
         </div>

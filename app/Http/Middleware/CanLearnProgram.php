@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Course;
+use App\Models\Program;
 
-class CanReview
+class CanLearnProgram
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,12 @@ class CanReview
      */
     public function handle(Request $request, Closure $next)
     {
-        $course = Course::find($request['course_id']);
-        if (!$course->isJoined() || ($course->isReviewed() && $course->isJoined())) {
-            return redirect('home');
+        $program = Program::find($request['program_id']);
+
+        if ($program->isLearned()) {
+            return redirect()->route('programs.show', [$request['program_id']]);
         }
+
         return $next($request);
     }
 }

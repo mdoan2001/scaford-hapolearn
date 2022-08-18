@@ -1,5 +1,5 @@
 <div class="side-bar-item other-course" id="jsOtherCourse">
-    <div class="title">Other Courses</div>
+    <div class="title">{{ __('artribute.other_course') }}</div>
     <div class="content">
 
         @foreach ($others as $key => $other)
@@ -10,7 +10,7 @@
         @endforeach
 
         <div class="other-course-row">
-            <a href="{{ route('courses.index') }}" class="btn view-all">View all ours courses</a>
+            <a href="{{ route('courses.index') }}" class="btn view-all">{{ __('artribute.view_all_course') }}</a>
         </div>
     </div>
 </div>

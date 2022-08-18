@@ -79,7 +79,7 @@ class User extends Authenticatable
         return $query->where('role', config('users.teacher_role'));
     }
 
-    public function getIsTeacherAttribute()
+    public function isTeacher()
     {
         return $this->role == config('users.teacher_role');
     }
@@ -97,5 +97,10 @@ class User extends Authenticatable
     public function getDateAttribute()
     {
         return date(config('users.date_format'), strtotime($this->birthday));
+    }
+
+    public function getNameAttribute()
+    {
+        return ($this->isYou()) ? $this['full_name'] . ' (You)' : $this['full_name'];
     }
 }

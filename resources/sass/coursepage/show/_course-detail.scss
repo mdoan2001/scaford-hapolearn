@@ -10,6 +10,10 @@
     box-shadow: inset 0px 1.5px 2px #6F8710;
     border: 0;
     color: white;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .lessons-join {
@@ -123,6 +127,43 @@
       font-weight: 700;
       font-size: 18px;
       align-items: flex-start;
+    }
+
+    .lesson.is-joined .lesson-name {
+      text-decoration: none;
+      color: $text;
+
+      &:hover {
+        cursor: pointer;
+        color: $green;
+      }
+    }
+
+    .lesson:not(.is-joined) .lesson-btn {
+      opacity: 0.8;
+
+      &:hover {
+        cursor: auto;
+        opacity: 0.8;
+      }
+    }
+
+    .lesson .lesson-btn {
+      min-width: 145px;
+    }
+
+    .lesson .lesson-name.learned {
+      color: #563d7c;
+
+      &:hover {
+        color: #563d7c;
+        opacity: 0.8;
+      }
+    }
+
+    .lesson .lesson-btn.learned {
+      background-color: #563d7c;
+      box-shadow: inset 0px 1.5px 2px #433558;
     }
 
     .lesson-num {

@@ -27,11 +27,6 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function replies()
-    {
-        return $this->hasMany(Reply::class);
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -107,21 +102,21 @@ class Course extends Model
         return $this->reviews()->where('star', '5')->count();
     }
 
-    public function getIsJoinedAttribute()
+    public function isJoined()
     {
         return auth()->check() && $this->users()->whereExists(function ($query) {
             $query->where('users.id', auth()->id());
         })->count();
     }
 
-    public function getIsReviewedAttribute()
+    public function isReviewed()
     {
         return auth()->check() && $this->reviews()->whereExists(function ($query) {
             $query->where('user_id', auth()->id());
         })->count();
     }
 
-    public function getIsFinishedAttribute()
+    public function isFinished()
     {
         return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
             $query->where('users.id', auth()->id())->where('course_user.deleted_at', '<>', 'null');

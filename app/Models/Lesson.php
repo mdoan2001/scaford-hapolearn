@@ -41,4 +41,22 @@ class Lesson extends Model
         }
         return $query->orderBy('order', config('course.sort_ascending'));
     }
+
+    public function isLearned()
+    {
+        return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id());
+        })->exists();
+    }
+
+    public function getProgressAttribute()
+    {
+        $countProgramsLearned = Program::whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id())->where('programs.lesson_id', $this->id);
+        })->count();
+
+        $countTotalPrograms = $this->programs->count();
+
+        return $countTotalPrograms == 0 ? 0 : round(($countProgramsLearned / $countTotalPrograms) * 100, 2);
+    }
 }

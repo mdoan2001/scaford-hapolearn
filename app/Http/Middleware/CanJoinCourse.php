@@ -18,7 +18,7 @@ class CanJoinCourse
     public function handle(Request $request, Closure $next)
     {
         $course = Course::find($request['course_id']);
-        if ($course->isJoined) {
+        if ($course->isJoined()) {
             return redirect('home');
         }
 

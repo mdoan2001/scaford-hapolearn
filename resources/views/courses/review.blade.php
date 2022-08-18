@@ -6,10 +6,7 @@
                 <div class="left">
                     <img src=" {{ asset($review->user->avatar) }}" alt="" class="user-avatar">
                     <div class="user-name">
-                        {{ $review->user->full_name }}
-                        @if ($review->isYourReview())
-                            {{ '(You)' }}
-                        @endif
+                        {{ $review->user->name }}
                     </div>
                     <div class="user-stars">
 
@@ -57,10 +54,7 @@
                             <div class="left">
                                 <img src="{{ asset($reply->user->avatar) }}" alt="" class="user-avatar">
                                 <div class="user-name">
-                                    {{ $reply->user->full_name }}
-                                    @if ($reply->isYourReply())
-                                        {{ '(You)' }}
-                                    @endif
+                                    {{ $reply->user->name }}
                                 </div>
                                 <div class="user-time">{{ $reply->created_at }}</div>
                             </div>
@@ -104,7 +98,7 @@
             </div>
         </div>
     @endforeach
-    @if ($course->isJoined && !$course->isReviewed)
+    @if ($course->isJoined() && !$course->isReviewed())
         <form id="jsLeaveReview" class="leave-review" action="{{ route('reviews.store') }}" method="POST">
             @csrf
             <div class="leave-title">Leave a Review</div>

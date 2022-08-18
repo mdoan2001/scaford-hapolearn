@@ -26,4 +26,21 @@ class Program extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function isLearned()
+    {
+        return auth()->check() && $this->where('id', $this->id)->whereHas('users', function ($query) {
+            $query->where('users.id', auth()->id());
+        })->exists();
+    }
+
+    public function getClassOfIconAttribute()
+    {
+        return config('programs')[$this->type]['icon'];
+    }
+
+    public function getCategoryAttribute()
+    {
+        return config('programs')[$this->type]['name'];
+    }
 }
