@@ -25,8 +25,15 @@ class ResetPasswordRequest extends FormRequest
     {
         return [
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/u',
+            'password_confirmation' => 'required|required_with:password|same:password'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'password.regex' => __('message.register_password'),
         ];
     }
 

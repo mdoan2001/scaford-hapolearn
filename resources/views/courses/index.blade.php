@@ -109,9 +109,9 @@
                 <div class="col-md-6">
                     <div class="course-item">
                         <div class="course-main">
-                            <div class="left">
+                            <a href="{{ route('courses.show', [$course->id]) }}" class="left">
                                 <img src="{{ $course->image }}" alt="">
-                            </div>
+                            </a>
                             <div class="right">
                                 <div class="course-name">{{ $course->name }}</div>
                                 <div class="course-desciption">{{ $course->description }}</div>

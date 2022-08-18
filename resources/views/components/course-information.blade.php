@@ -52,18 +52,18 @@
             <form action="{{ route('course-user.destroy', [$course->id]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE" />
-                <button type="button" class="btn btn-primary leave-course button" data-toggle="modal"
-                    data-target="#exampleModal">
+                <button type="button" class="btn btn-primary leave-course button bg-danger shadow-none" data-toggle="modal"
+                    data-target="#finishModel">
                     {{ __('artribute.finish') }}
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="finishModel" tabindex="-1" role="dialog"
+                    aria-labelledby="finishModelLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                <h5 class="modal-title text-danger" id="finishModelLabel">
                                     {{ __('message.notification') }}!</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -87,7 +87,32 @@
             <form action="{{ route('course-user.update', [$course->id]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT" />
-                <button class="btn leave-course button">{{ __('artribute.reJoin') }}</button>
+                <button type="button" class="btn leave-course button" data-toggle="modal"
+                    data-target="#rejoinModel">{{ __('artribute.reJoin') }}</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="rejoinModel" tabindex="-1" role="dialog"
+                    aria-labelledby="rejoinModelLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger" id="rejoinModelLabel">
+                                    {{ __('message.notification') }}!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{ __('message.rejoin_course') }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary bg-danger"
+                                    data-dismiss="modal">{{ __('artribute.close') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('artribute.agree') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     @endif

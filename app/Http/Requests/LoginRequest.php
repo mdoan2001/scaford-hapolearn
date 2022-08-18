@@ -24,8 +24,15 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => 'required|min:6',
-            'password' => 'required|min:6',
+            'user_name' => 'required|regex:/^\S*$/u',
+            'password' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'user_name.regex' => __('message.login_uername'),
         ];
     }
 

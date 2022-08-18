@@ -53,7 +53,7 @@
 
                             <div class="form-group  row mb-0">
                                 <div class="form-group-submit">
-                                    <button type="submit" class="btn-submit">
+                                    <button id="loginBtn" type="submit" class="btn-submit">
                                         {{ __('artribute.sign_in') }}
                                     </button>
 
@@ -75,7 +75,7 @@
                                 <div class="text-hr">
                                     <p>{{ __('artribute.or_new_to_hapolearn') }}</p>
                                 </div>
-                                <a href="" class="btn btn-block login-btn login-create">
+                                <a href="{{ route('register') }}" class="btn btn-block login-btn login-create">
                                     {{ __('artribute.create_new_account') }}
                                 </a>
                             </div>

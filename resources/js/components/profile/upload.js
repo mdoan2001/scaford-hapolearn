@@ -4,6 +4,8 @@ $(document).ready(function () {
   })
 
   $('#jsUploadInput').change((function () {
-    $('#userAvatar').attr('src', URL.createObjectURL(event.target.files[0]));
+    const userAvatar = $('#userAvatar');
+    userAvatar.attr('src', URL.createObjectURL(event.target.files[0]));
+    userAvatar.css('border', '2px solid #007bff');
   }))
 });

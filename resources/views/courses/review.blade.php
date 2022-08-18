@@ -42,7 +42,6 @@
             <form class="form-edit-comment" action="{{ route('reviews.update', [$review->id]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="course_id" value="{{ $course->id }}}}">
                 <textarea class="edit-comment" name="comment" id="" cols="30" rows="3"></textarea>
                 <button type="submit" class="edit-submit fa-solid fa-paper-plane"></button>
             </form>
@@ -80,7 +79,6 @@
                             method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
-                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                             <textarea class="edit-reply" name="comment" id="" cols="30" rows="2"></textarea>
                             <button type="submit" class="edit-submit fa-solid fa-paper-plane"></button>
                         </form>
@@ -146,7 +144,7 @@
                 @enderror
             </div>
             <input type="hidden" name="course_id" value="{{ $course->id }}">
-            <button type="submit" id="jsLeaveReviewBtn" class="btn">Send</button>
+            <button type="submit" id="jsLeaveReviewBtn" class="button">Send</button>
         </form>
     @endif
 </div>

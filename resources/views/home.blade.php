@@ -20,9 +20,9 @@
 
             @foreach ($mainCourses as $course)
                 <div class="course col-md col-sm-12 card">
-                    <div class="img bg-dark-blue">
+                    <a href="{{ route('courses.show', [$course->id]) }}" class="img bg-dark-blue">
                         <img class="card-img" src="{{ $course->image }}" alt="Card image">
-                    </div>
+                    </a>
                     <div class="card-body">
                         <div class="card-top">
                             <div class="card-title">{{ $course->name }}</div>
@@ -49,9 +49,9 @@
         <div class="row list-course">
             @foreach ($otherCourses as $course)
                 <div class="course col-md col-sm-12 card">
-                    <div class="img bg-dark-blue">
+                    <a href="{{ route('courses.show', [$course->id]) }}" class="img bg-dark-blue">
                         <img class="card-img" src="{{ $course->image }}" alt="Card image">
-                    </div>
+                    </a>
                     <div class="card-body">
                         <div class="card-top">
                             <div class="card-title">{{ $course->name }}</div>
@@ -124,7 +124,8 @@
                             <img src="{{ asset($review->user->picture) }}" alt="anh" class="user-avatar">
                             <div class="user-info">
                                 <div class="user-name">{{ $review->user->full_name }}</div>
-                                <div class="user-language">{{ $review->course->name }}</div>
+                                <a href="{{ route('courses.show', [$review->course->id]) }}"
+                                    class="user-language">{{ $review->course->name }}</a>
                                 <div class="user-stars">
 
                                     @php

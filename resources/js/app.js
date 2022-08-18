@@ -16,7 +16,8 @@ require('./components/lessons/preview');
 require('./components/lessons/learn-lesson');
 require('./components/header/change-language');
 require('./components/model');
+require('./components/hold_tab');
 
 const app = new Vue({
-    el: '#app',
+  el: '#app',
 });

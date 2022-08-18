@@ -36,14 +36,18 @@
                     <div class="courses">
                         @foreach ($courses as $course)
                             <a href="{{ route('courses.show', [$course->id]) }}" class="course">
-                                <img src="{{ $course->image }}" alt="" class="course-img">
+                                <div class="div-img">
+                                    <img src="{{ $course->image }}" alt="" class="course-img">
+                                </div>
                                 <div class="course-name">{{ $course->title }}</div>
                             </a>
                         @endforeach
 
                         <a href="{{ route('courses.index') }}" class="course add-course">
-                            <div class="course-img">
-                                <i class="fa-solid fa-plus"></i>
+                            <div class="div-img">
+                                <div class="course-img">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
                             </div>
                             <div class="course-name">{{ __('artribute.add_course') }}</div>
                         </a>

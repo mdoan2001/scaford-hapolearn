@@ -37,7 +37,7 @@ class ResetPasswordController extends Controller
         $updatePassword = PasswordReset::where(['email' => $request->email, 'token' => $request->token])->first();
 
         if (!$updatePassword) {
-            return back()->withInput()->with('error', 'Invalid token!');
+            return back()->withInput()->with('error', __('message.email_invalid'));
         }
 
         User::where('email', $request->email)

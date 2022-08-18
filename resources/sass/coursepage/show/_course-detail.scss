@@ -21,17 +21,18 @@
     color: white;
 
     &:hover {
-      opacity: 0.8;
-    }
+        opacity: 0.8;
+      }
   }
 
   .lessons-join {
     padding: 10px 45px;
+    opacity: 0.8;
   }
 
   .lessons-join.active {
-    background-color: $success;
-    cursor: auto;
+    opacity: 1;
+    cursor: pointer;
   }
 
   .row {
@@ -684,6 +685,7 @@
 
     i {
       margin-right: 10px;
+      transform: translateY(2px);
     }
   }
 

@@ -44,7 +44,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <li class="nav-item nav-item--login nav-item--logout">
-                            <button type="submit" class="btn btn-danger btn-login">{{ __('artribute.logout') }}</button>
+                            <button id="logoutBtn" type="submit" class="btn btn-danger btn-login">{{ __('artribute.logout') }}</button>
                         </li>
                     </form>
                 @endif

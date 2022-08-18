@@ -39,18 +39,19 @@
                                 <form class="form-join" action="{{ route('course-user.store') }}" method="POST">
                                     @csrf
                                     @if ($course->isFinished())
-                                        <div class="button lessons-join active">{{ __('artribute.done') }}</div>
+                                        <div class="button lessons-join bg-danger shadow-none">
+                                            {{ __('artribute.done') }}</div>
                                     @else
                                         @if ($course->isJoined() &&
                                             auth()->user()->isTeacher())
-                                            <div class="button lessons-join active">{{ __('artribute.teaching') }}</div>
+                                            <div class="button lessons-join">{{ __('artribute.teaching') }}</div>
                                         @elseif($course->isJoined() &&
                                             !auth()->user()->isTeacher())
-                                            <div class="button lessons-join active">{{ __('artribute.learning') }}</div>
+                                            <div class="button lessons-join">{{ __('artribute.learning') }}</div>
                                         @else
                                             <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <button type="submit"
-                                                class="button lessons-join">{{ __('artribute.joinCourse') }}</button>
+                                                class="button lessons-join active">{{ __('artribute.joinCourse') }}</button>
                                         @endif
                                     @endif
 
@@ -131,12 +132,6 @@
                                         <div class="reviews-item-hr"></div>
                                         <div class="reviews-item-num">{{ $course->one_stars }}</div>
                                     </div>
-                                    <div
-                                        class="reviews-item @if ($course->zero_stars > 0) {{ 'active' }} @endif">
-                                        <div class="reviews-item-label">0 {{ __('artribute.star') }}</div>
-                                        <div class="reviews-item-hr"></div>
-                                        <div class="reviews-item-num">{{ $course->zero_stars }}</div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="show-all" id="showAllComments">
@@ -155,8 +150,8 @@
                         <div class="title">{{ __('artribute.course_description') }}</div>
                         <p class="content">{{ $course->description }}</p>
                     </div>
-                    @include('components.course-information');
-                    @include('components.suggestion-course-bar');
+                    @include('components.course-information')
+                    @include('components.suggestion-course-bar')
                 </div>
             </div>
         </div>
