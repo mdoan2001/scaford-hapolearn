@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container login">
+    <div class="container login pd-40">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="card">
@@ -11,9 +11,9 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            @if (session('error'))
+                            @if (session('status'))
                                 <div class="alert alert-danger" role="alert">
-                                    {{ session('error') }}
+                                    {{ session('status') }}
                                 </div>
                             @endif
 
@@ -53,7 +53,7 @@
 
                             <div class="form-group  row mb-0">
                                 <div class="form-group-submit">
-                                    <button type="submit" class="btn-submit">
+                                    <button id="loginBtn" type="submit" class="btn-submit">
                                         {{ __('artribute.sign_in') }}
                                     </button>
 
@@ -66,16 +66,16 @@
                             </div>
                             <div class="login-footer">
                                 <div class="text-hr">
-                                    <p>Sign in with</p>
+                                    <p>{{ __('artribute.sign_in_with') }}</p>
                                 </div>
                                 <a href="" class="btn btn-block login-btn login-google">
                                     <i class="fa-brands fa-google-plus-g"></i>
                                     Google
                                 </a>
                                 <div class="text-hr">
-                                    <p>or New to Hapolearn</p>
+                                    <p>{{ __('artribute.or_new_to_hapolearn') }}</p>
                                 </div>
-                                <a href="" class="btn btn-block login-btn login-create">
+                                <a href="{{ route('register') }}" class="btn btn-block login-btn login-create">
                                     {{ __('artribute.create_new_account') }}
                                 </a>
                             </div>

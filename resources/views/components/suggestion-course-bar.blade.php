@@ -10,7 +10,7 @@
         @endforeach
 
         <div class="other-course-row">
-            <a href="{{ route('courses.index') }}" class="btn view-all">{{ __('artribute.view_all_course') }}</a>
+            <a href="{{ route('courses.index') }}" class="btn view-all button">{{ __('artribute.view_all_course') }}</a>
         </div>
     </div>
 </div>

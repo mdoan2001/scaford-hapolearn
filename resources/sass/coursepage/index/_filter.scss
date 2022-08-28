@@ -80,6 +80,10 @@
     background-color: $green;
     border: 1px solid $green;
     color: white;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .search {
@@ -129,6 +133,11 @@
       border: 0;
       outline: 0;
       margin-bottom: 0;
+      min-width: 82px;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     .btn.active {

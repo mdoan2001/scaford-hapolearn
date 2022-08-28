@@ -86,7 +86,7 @@ class User extends Authenticatable
 
     public function getExperienceAttribute()
     {
-        return Carbon::parse($this['created_at'])->diff(Carbon::now())->format('%y');
+        return Carbon::parse($this['created_at'])->diff(Carbon::now())->format('%y') . ' ' . __('artribute.year_experience');
     }
 
     public function isYou()
@@ -101,6 +101,11 @@ class User extends Authenticatable
 
     public function getNameAttribute()
     {
-        return ($this->isYou()) ? $this['full_name'] . ' (You)' : $this['full_name'];
+        return ($this->isYou()) ? $this['full_name'] . ' (' . __('artribute.you') . ')' : $this['full_name'];
+    }
+
+    public function getPictureAttribute()
+    {
+        return ($this->avatar) ? $this->avatar : config('users.default_avatar');
     }
 }

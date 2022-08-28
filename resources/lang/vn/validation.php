@@ -14,9 +14,9 @@ return [
     */
 
     'password' => 'Mật khẩu không đúng',
-    'required' => 'Trường :attribute không được để trống',
+    'required' => ':attribute không được để trống',
     'min' => [
-        'string' => 'Trường :attribute phải có ít nhất :min ký tự',
+        'string' => ':attribute phải có ít nhất :min ký tự',
     ],
     'same' => ':attribute và :other phải trùng nhau',
     'regex' => ':attribute có ký tự không hợp lệ',
@@ -26,4 +26,5 @@ return [
     'between' => [
         'numeric' => ':attribute phải từ :min đến :max.',
     ],
+    'exists' => ':attribute đã chọn không đúng.',
 ];

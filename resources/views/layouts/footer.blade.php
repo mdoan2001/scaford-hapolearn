@@ -3,37 +3,37 @@
         <div class="container text-center text-md-start mt-5 content">
             <div class="row mt-3">
                 <div class="col-md-4 col-sm-6 col-12 mx-auto footer-item mb-4 footer-intro">
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    <a href="{{ route('home') }}" class="text-uppercase fw-bold mb-4">
                         <img src="/images/logo-2.png" alt="logo">
-                    </h6>
+                    </a>
                     <p class="text-white text-right footer-text">
                         Interactive lessons, "on-the-go" practice, peer support.
                     </p>
                 </div>
                 <div class="col-md-2 col-sm-6 col-6 text-white footer-item">
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Home</a>
+                        <a href="{{ route('home') }}" class="text-reset">Home</a>
                     </p>
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Features</a>
+                        <a href="{{ route('home') }}" class="text-reset">Features</a>
                     </p>
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Courses</a>
+                        <a href="{{ route('home') }}" class="text-reset">Courses</a>
                     </p>
                     </p>
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Blog</a>
+                        <a href="{{ route('home') }}" class="text-reset">Blog</a>
                     </p>
                 </div>
                 <div class="col-md-2 col-sm-6 col-6  text-white footer-item ">
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Contact</a>
+                        <a href="{{ route('home') }}" class="text-reset">Contact</a>
                     </p>
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">Terms of Use</a>
+                        <a href="{{ route('home') }}" class="text-reset">Terms of Use</a>
                     </p>
                     <p class="footer-text">
-                        <a href="#!" class="text-reset">FAQ</a>
+                        <a href="{{ route('home') }}" class="text-reset">FAQ</a>
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-12 text-white footer-item footer-social">
@@ -48,13 +48,14 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                     </div>
-                    <a href="#" class="link text-white">facebook.com/tuyen.dung.haposoft</a>
+                    <a href="https://haposoft.com/vi/join-us"
+                        class="link text-white">facebook.com/tuyen.dung.haposoft</a>
                 </div>
             </div>
         </div>
     </section>
     <div class="text-center p-4 text-bottom">
-        © 2020 HapoLearn, Inc.
+        © 2022 HapoLearn, Inc.
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/">All rights reserved.</a>
     </div>
 </footer>

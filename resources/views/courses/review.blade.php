@@ -4,7 +4,7 @@
         <div class="comment" id="form-{{ $review->id }}">
             <div class="comment-user">
                 <div class="left">
-                    <img src=" {{ asset($review->user->avatar) }}" alt="" class="user-avatar">
+                    <img src=" {{ asset($review->user->picture) }}" alt="" class="user-avatar">
                     <div class="user-name">
                         {{ $review->user->name }}
                     </div>
@@ -42,7 +42,6 @@
             <form class="form-edit-comment" action="{{ route('reviews.update', [$review->id]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="course_id" value="{{ $course->id }}}}">
                 <textarea class="edit-comment" name="comment" id="" cols="30" rows="3"></textarea>
                 <button type="submit" class="edit-submit fa-solid fa-paper-plane"></button>
             </form>
@@ -52,7 +51,7 @@
 
                         <div class="comment-user">
                             <div class="left">
-                                <img src="{{ asset($reply->user->avatar) }}" alt="" class="user-avatar">
+                                <img src="{{ asset($reply->user->picture) }}" alt="" class="user-avatar">
                                 <div class="user-name">
                                     {{ $reply->user->name }}
                                 </div>
@@ -80,7 +79,6 @@
                             method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
-                            <input type="hidden" name="course_id" value="{{ $course->id }}">
                             <textarea class="edit-reply" name="comment" id="" cols="30" rows="2"></textarea>
                             <button type="submit" class="edit-submit fa-solid fa-paper-plane"></button>
                         </form>
@@ -91,7 +89,8 @@
                     <input type="hidden" name="review_id" value="{{ $review->id }}">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div>
-                        <input type="text" name="content" class="reply-input" placeholder="Your comment..." required>
+                        <input type="text" name="content" class="reply-input"
+                            placeholder="{{ __('artribute.your_comment') }}..." required>
                         <button type="submit" class="reply-submit fa-solid fa-paper-plane"></button>
                     </div>
                 </form>
@@ -145,7 +144,7 @@
                 @enderror
             </div>
             <input type="hidden" name="course_id" value="{{ $course->id }}">
-            <button type="submit" id="jsLeaveReviewBtn" class="btn">Send</button>
+            <button type="submit" id="jsLeaveReviewBtn" class="button">Send</button>
         </form>
     @endif
 </div>

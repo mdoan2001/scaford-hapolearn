@@ -23,7 +23,7 @@ class ReviewController extends Controller
             'content' => $request['comment'],
         ];
         Review::create($data);
-        return redirect()->route('courses.show', [$request['course_id']]);
+        return redirect()->back();
     }
 
     /**
@@ -40,7 +40,7 @@ class ReviewController extends Controller
             $review['content'] = $request['comment'];
             $review->save();
         }
-        return redirect()->route('courses.show', [$request['course_id']]);
+        return redirect()->back();
     }
 
     /**
@@ -52,6 +52,6 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         Review::find($id)->forceDelete();
-        return redirect()->route('courses.index');
+        return redirect()->back();
     }
 }

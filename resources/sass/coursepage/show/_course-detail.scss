@@ -6,23 +6,33 @@
 
   .btn {
     background-color: $green;
-    border-radius: 22px;
-    box-shadow: inset 0px 1.5px 2px #6F8710;
     border: 0;
-    color: white;
 
     &:hover {
       opacity: 0.8;
     }
   }
 
+  .button {
+    background-color: $green;
+    border-radius: 22px;
+    box-shadow: inset 0px 1.5px 2px #6F8710;
+    border: 0;
+    color: white;
+
+    &:hover {
+        opacity: 0.8;
+      }
+  }
+
   .lessons-join {
     padding: 10px 45px;
+    opacity: 0.8;
   }
 
   .lessons-join.active {
-    background-color: $success;
-    cursor: auto;
+    opacity: 1;
+    cursor: pointer;
   }
 
   .row {
@@ -89,7 +99,7 @@
       border-bottom: 1px solid #E2E0E0;
     }
 
-    .lessons-action .btn {
+    .lessons-action .button {
       font-size: 18px;
       font-weight: 700;
     }
@@ -535,7 +545,7 @@
       font-size: 16px;
     }
 
-    .btn.done {
+    .button.done {
       opacity: 0.6;
       cursor: auto;
     }
@@ -586,7 +596,7 @@
     font-size: 22px;
   }
 
-  .btn {
+  .button {
     padding: 6px 41px;
   }
 
@@ -675,6 +685,7 @@
 
     i {
       margin-right: 10px;
+      transform: translateY(2px);
     }
   }
 
@@ -687,6 +698,10 @@
     font-size: 18px;
     font-weight: 700;
     margin: -8px auto;
+  }
+
+  .modal-body {
+    font-size: initial;
   }
 
   form {
@@ -766,7 +781,7 @@
     flex-direction: column;
     gap: 20px;
 
-    .btn {
+    .button {
       width: 100%;
     }
   }
@@ -941,7 +956,7 @@
   }
 
   .course-detail .lessons .lessons-filter {
-    .btn {
+    .button {
       padding: 5px;
     }
   }

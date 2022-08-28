@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Http\Requests\ResetPasswordRequest;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\PasswordReset;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +31,20 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function reset(ResetPasswordRequest $request)
+    {
+        $updatePassword = PasswordReset::where(['email' => $request->email, 'token' => $request->token])->first();
+
+        if (!$updatePassword) {
+            return back()->withInput()->with('error', __('message.email_invalid'));
+        }
+
+        User::where('email', $request->email)
+            ->update(['password' => Hash::make($request->password)]);
+
+        PasswordReset::where(['email' => $request->email])->delete();
+        toastr()->success(__('message.resetpass_success'), ['timeOut' => 3000]);
+        return redirect('/login');
+    }
 }

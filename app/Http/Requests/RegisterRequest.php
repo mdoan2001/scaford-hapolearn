@@ -26,8 +26,16 @@ class RegisterRequest extends FormRequest
         return [
             'user_name' => 'required|string|unique:users|max:255|regex:/^\S*$/u',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-            'password_confirmation' => 'required|string|min:6|required_with:password|same:password'
+            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/u',
+            'password_confirmation' => 'required|required_with:password|same:password'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'password.regex' => __('message.register_password'),
+            'user_name.regex' => __('message.login_uername'),
         ];
     }
 

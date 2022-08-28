@@ -11,7 +11,7 @@
 }
 
 .container {
-  padding: 0 5px;
+  padding: 10px 5px;
 }
 
 .list-top {
@@ -55,10 +55,18 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
 
     .card-img {
       width: 100%;
       height: 100%;
+      transition: all .3s ease-out;
+      -webkit-transition: all .3s ease-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -114,6 +122,8 @@
   }
 
   .card-bot {
+    margin-top: 10px;
+
     .btn {
       background-color: $green;
       border: 0;
@@ -123,6 +133,11 @@
       font-weight: 700;
       padding: 8px 30px;
       margin-top: auto;
+      min-width: 190px;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }
@@ -140,6 +155,10 @@
     font-weight: 700;
     text-decoration: none;
     color: $green;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .icon {

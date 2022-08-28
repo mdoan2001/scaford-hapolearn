@@ -12,6 +12,7 @@
 
 // Variables
 @import 'variables';
+@import 'model';
 @import './homepage/header';
 @import './homepage/banner';
 @import './homepage/course';
@@ -21,6 +22,7 @@
 @import './homepage/statistic';
 @import './homepage/footer';
 @import './homepage/login';
+@import './homepage/resetpass';
 @import './homepage/register';
 @import './coursepage/index/filter';
 @import './coursepage/index/list-course';

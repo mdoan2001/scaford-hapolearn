@@ -25,7 +25,6 @@ class UpdateReviewRequest extends FormRequest
     {
         return [
             'comment' => 'required',
-            'course_id' => 'required',
         ];
     }
 }

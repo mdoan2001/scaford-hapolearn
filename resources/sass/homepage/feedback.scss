@@ -117,6 +117,13 @@
 
     .user-language {
       font-size: 16px;
+      color: $text;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        color: $green;
+      }
     }
   }
 }

@@ -15,7 +15,7 @@
             <div class="program-btn">
                 <input type="hidden" name="program_id" value="{{ $program->id }}">
                 <button type="submit"
-                    class="btn program-preview js-program-preview @if ($program->isLearned()) {{ 'learned' }} @endif">Preview</button>
+                    class="button program-preview js-program-preview @if ($program->isLearned()) {{ 'learned' }} @endif">Preview</button>
             </div>
         </form>
     @endforeach

@@ -23,7 +23,7 @@ class ReplyController extends Controller
             'content' => $request['content'],
         ];
         Reply::create($data);
-        return redirect()->route('courses.show', [$request['course_id']]);
+        return redirect()->back();
     }
 
     /**
@@ -40,7 +40,7 @@ class ReplyController extends Controller
             $reply['content'] = $request['comment'];
             $reply->save();
         }
-        return redirect()->route('courses.show', [$request['course_id']]);
+        return redirect()->back();
     }
 
     /**
@@ -52,6 +52,6 @@ class ReplyController extends Controller
     public function destroy($id)
     {
         Reply::find($id)->forceDelete();
-        return redirect()->route('courses.index');
+        return redirect()->back();
     }
 }

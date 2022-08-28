@@ -1,0 +1,22 @@
+.reset-password {
+  .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .col-form-label {
+    align-self: flex-start;
+  }
+
+  .btn-reset {
+    background-color: $green;
+    border-radius: 5px;
+    border: 0;
+
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
