@@ -108,4 +108,14 @@ class User extends Authenticatable
     {
         return ($this->avatar) ? $this->avatar : config('users.default_avatar');
     }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
